@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  html {
+    font-family: "Noto Sans", sans-serif;
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply min-h-screen bg-day-200 dark:bg-night-800 text-day-800 dark:text-night-100;
+  }
+}
