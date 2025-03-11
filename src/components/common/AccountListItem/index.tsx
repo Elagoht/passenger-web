@@ -9,7 +9,7 @@ const AccountListItem: FC<AccountCard> = ({
   return <Link
     className="flex items-center max-w-md w-full relative gap-2 p-2
     rounded-2xl transition-all duration-200 border-2 border-transparent
-    hover:border-day-400 dark:hover:border-night-500
+    hover:border-day-300 dark:hover:border-night-500
     hover:text-night-50 dark:hover:text-day-950"
     to={`/accounts/${id}`}
   >
