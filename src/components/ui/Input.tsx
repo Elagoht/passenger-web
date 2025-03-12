@@ -28,7 +28,7 @@ export const Input = ({
     {label &&
       <label
         htmlFor={props.name}
-        className="block text-sm font-medium mb-1 text-night-700 dark:text-day-200"
+        className="block text-sm font-medium ml-4 mb-1 text-night-700 dark:text-day-200"
       >
         {label}
       </label>

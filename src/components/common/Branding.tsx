@@ -16,7 +16,8 @@ const Branding: FC<BrandingProps> = ({
     <img
       src="/android-chrome-512x512.png"
       alt="logo"
-      className={classNames({
+      className={classNames(
+        "transition-all duration-1000 ease-in-out", {
         "w-24 h-24": size === "small",
         "w-40 h-40": size === "medium",
         "w-64 h-64": size === "large",

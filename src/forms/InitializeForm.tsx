@@ -15,7 +15,7 @@ const InitializeForm: FC = () => {
     }}
     onSubmit={() => { }}
   >
-    <Form className="flex flex-col gap-4 fade-in">
+    <Form className="flex flex-col gap-6 fade-in">
       <Input
         icon={<IconUser />}
         name="email"

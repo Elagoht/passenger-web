@@ -1,10 +1,10 @@
+import classNames from "classnames"
 import { FC, useState } from "react"
 import Branding from "../../../components/common/Branding"
 import Button from "../../../components/ui/Button"
-import { Subtitle, Title } from "../../../components/ui/Typography"
-import useDictStore from "../../../stores/dict"
-import classNames from "classnames"
+import { Paragraph, Title } from "../../../components/ui/Typography"
 import InitializeForm from "../../../forms/InitializeForm"
+import useDictStore from "../../../stores/dict"
 
 const InitializeWindow: FC = () => {
   const { dict } = useDictStore()
@@ -18,7 +18,7 @@ const InitializeWindow: FC = () => {
       transition-all duration-1000 ease-in-out"
       style={{
         opacity: isStarted ? 0 : 1,
-        paddingTop: isStarted ? "0" : "56%",
+        paddingTop: isStarted ? "0" : "75%",
         backgroundImage: `url(/assets/images/onboarding.webp)`
       }}
     >
@@ -31,12 +31,14 @@ const InitializeWindow: FC = () => {
     <div className="flex flex-col grow text-center
       bg-day-200 dark:bg-night-400"
     >
-      <Branding size="large" className={classNames(
+      <Branding size={
+        isStarted ? "medium" : "large"
+      } className={classNames(
         "relative transition-all duration-1000 ease-in-out", {
         "-mt-24": !isStarted
       })} />
 
-      <div className="flex flex-col grow p-8">
+      <div className="flex flex-col grow p-6">
         <Title className="text-cream-500 relative">
           {isStarted
             ? dict.windows.initialize.register.title
@@ -44,12 +46,12 @@ const InitializeWindow: FC = () => {
           }
         </Title>
 
-        <Subtitle className="text-cream-600 my-4 relative italic grow">
+        <Paragraph className="text-cream-600 my-4 relative italic grow">
           {isStarted
             ? dict.windows.initialize.register.description
             : dict.branding.slogan
           }
-        </Subtitle>
+        </Paragraph>
 
         {isStarted && <InitializeForm />}
 
