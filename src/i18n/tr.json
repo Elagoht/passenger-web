@@ -1,0 +1,56 @@
+{
+  "meta": {
+    "lang": "tr",
+    "locale": "tr-TR",
+    "name": "Türkçe"
+  },
+  "branding": {
+    "name": "Yolcu",
+    "slogan": "Çünkü güvenliğiniz bir başkasının aracındaki bir yolcu olmamalı."
+  },
+  "windows": {
+    "initialize": {
+      "welcome": {
+        "start": "Hemen Başla"
+      },
+      "register": {
+        "title": "Kasa Oluşturun",
+        "description": "Yeni bir kasa oluşturun ve hesaplarınızı saklayın.",
+        "form": {
+          "email": "E-Posta",
+          "passphrase": "Parola",
+          "submit": "Kasa Oluştur"
+        }
+      },
+      "recovery": {
+        "title": "Kasanızı Koruyun.",
+        "description": "Bir kurtarma anahtarı otomatik olarak oluşturuldu. Parolanızı unutursanız, bu anahtarı kullanarak kasayı kurtarabilirsiniz. Bunu güvenli bir yerde saklamalısınız. Bunu kasanızın PUK kodu olarak düşünün.",
+        "warning": "BU ANAHTARI KAYBETMEYİN. EĞER KAYBETTİYSENİZ, KASANIZI BİR DAHA KURTARAMAZSINIZ.",
+        "fields": {
+          "recoveryKey": "Kurtarma Anahtarı"
+        },
+        "understood": "Anladım"
+      },
+      "checkIfNoted": {
+        "title": "Çiftte Kontrol",
+        "description": "Kurtarma anahtarınızı gerçekten güvenli bir yere sakladınız mı? Aşağıda yazabilir misiniz?",
+        "fields": {
+          "recoveryKey": "Kurtarma Anahtarınızı Yazın"
+        },
+        "confirmed": "Yazdım!",
+        "goBack": "Tamam, Geri Dön"
+      },
+      "letsStart": {
+        "title": "Hemen Başla",
+        "description": "Tamamsınız! Şimdi kasanızı kullanmaya başlayabilirsiniz.",
+        "submit": "Hemen Başla!"
+      }
+    }
+  },
+  "forms": {
+    "fields": {
+      "email": "E-Posta",
+      "password": "Parola"
+    }
+  }
+}

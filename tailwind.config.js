@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./src/**/*.{ts,tsx}"],
+  content: ["./src/**/*.tsx"],
   theme: {
     extend: {
       colors: {
@@ -56,6 +56,9 @@ export default {
           900: "#0a090b",
           950: "#050405",
         },
+      },
+      screens: {
+        xs: "480px",
       },
     },
   },

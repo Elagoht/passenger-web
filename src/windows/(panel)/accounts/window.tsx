@@ -1,7 +1,6 @@
 import { FC, useEffect, useState } from "react"
-import AccountListItem from "../../components/common/AccountListItem"
-import Screen from "../../components/layout/Screen"
-import { getAccounts } from "../../services/accounts"
+import AccountListItem from "../../../components/common/AccountListItem"
+import { getAccounts } from "../../../services/accounts"
 
 const AccountsWindow: FC = () => {
   const [accounts, setAccounts] = useState<AccountCard[]>([])
@@ -15,14 +14,14 @@ const AccountsWindow: FC = () => {
   }, [])
 
   if (accounts.length === 0) {
-    return <Screen>
+    return <>
       <h1>Passphrases</h1>
 
       <p>No accounts found</p>
-    </Screen>
+    </>
   }
 
-  return <Screen>
+  return <>
     <h1>Passphrases</h1>
 
     <div className="flex flex-wrap gap-2">
@@ -37,7 +36,7 @@ const AccountsWindow: FC = () => {
         />
       )}
     </div>
-  </Screen>
+  </>
 }
 
 export default AccountsWindow

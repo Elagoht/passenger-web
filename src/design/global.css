@@ -1,14 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer components {
   html {
-    font-family: "Noto Sans", sans-serif;
+    font-size: 20px;
+    font-family: "Outfit", sans-serif;
     @apply scroll-smooth;
   }
 
   body {
-    @apply min-h-screen bg-day-200 dark:bg-night-800 text-day-800 dark:text-night-100;
+    @apply bg-night-500 min-h-screen;
+  }
+
+  main {
+    @apply bg-day-200 dark:bg-night-800 text-day-800 dark:text-night-100;
+  }
+}
+
+.fade-in {
+  animation: fade-in 1s ease-in-out;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }

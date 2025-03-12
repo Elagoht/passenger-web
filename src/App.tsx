@@ -1,23 +1,26 @@
-import { FC, PropsWithChildren, useEffect, useState } from 'react'
+import { FC, useEffect } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { getIsInitialized } from './services/auth'
-import AccountsWindow from './windows/accounts/window'
+import AuthorizedLayout from './components/layout/AuthorizedLayout'
+import UnauthorizedLayout from './components/layout/UnauthorizedLayout'
+import { initializeDict } from './stores/dict'
+import InitializeWindow from './windows/(auth)/initialize/window'
+import AccountsWindow from './windows/(panel)/accounts/window'
 
-const App: FC<PropsWithChildren> = () => {
-  const [isInitialized, setIsInitialized] = useState<boolean>()
-  useEffect(() => {
-    const fetchIsInitialized = async () => {
-      const response = await getIsInitialized()
-      setIsInitialized(response.initialized)
-    }
-    fetchIsInitialized()
-  }, [])
-
-  return <pre>{JSON.stringify(isInitialized, null, 2)}</pre>
+const App: FC = () => {
+  useEffect(() => initializeDict(), [])
 
   return <BrowserRouter>
+
     <Routes>
-      <Route path="/" element={<AccountsWindow />} />
+      {/* Unauthorized Routes */}
+      <Route element={<UnauthorizedLayout />}>
+        <Route path="/initialize" element={<InitializeWindow />} />
+      </Route>
+
+      {/* Authorized Routes */}
+      <Route element={<AuthorizedLayout />}>
+        <Route path="/" element={<AccountsWindow />} />
+      </Route>
     </Routes>
   </BrowserRouter>
 }
