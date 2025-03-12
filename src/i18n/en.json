@@ -15,7 +15,7 @@
       },
       "register": {
         "title": "Create your Vault",
-        "description": "Create a new Vault to store your Accounts.",
+        "description": "to store your accounts.",
         "form": {
           "email": "Email",
           "passphrase": "Passphrase",

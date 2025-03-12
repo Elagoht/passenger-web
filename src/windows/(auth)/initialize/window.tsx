@@ -36,7 +36,7 @@ const InitializeWindow: FC = () => {
         "-mt-24": !isStarted
       })} />
 
-      <div className="flex flex-col grow p-4">
+      <div className="flex flex-col grow p-8">
         <Title className="text-cream-500 relative">
           {isStarted
             ? dict.windows.initialize.register.title
@@ -55,7 +55,7 @@ const InitializeWindow: FC = () => {
 
         {!isStarted &&
           <Button
-            className="relative m-8 !rounded-full transition-all
+            className="relative transition-all
             duration-1000 ease-in-out"
             onClick={() => setIsStarted(true)}
           >

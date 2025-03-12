@@ -15,7 +15,7 @@
       },
       "register": {
         "title": "Kasa Oluşturun",
-        "description": "Yeni bir kasa oluşturun ve hesaplarınızı saklayın.",
+        "description": "ve hesaplarınızı saklayın.",
         "form": {
           "email": "E-Posta",
           "passphrase": "Parola",
