@@ -1,9 +1,7 @@
-import { FC } from 'react'
+import { FC } from "react";
 
 const RecoveryKeyWindow: FC = () => {
-  return <>
+  return <></>;
+};
 
-  </>
-}
-
-export default RecoveryKeyWindow
+export default RecoveryKeyWindow;

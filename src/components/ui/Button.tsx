@@ -1,19 +1,19 @@
-import classNames from "classnames"
-import { useFormikContext } from "formik"
-import React from "react"
+import classNames from "classnames";
+import { useFormikContext } from "formik";
+import React from "react";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "solid" | "gradient" | "text" | "outlined"
+  variant?: "solid" | "gradient" | "text" | "outlined";
   color?:
-  | "primary"
-  | "secondary"
-  | "success"
-  | "warning"
-  | "danger"
-  | "info"
-  | "neutral"
-  children: React.ReactNode
-  className?: string
+    | "primary"
+    | "secondary"
+    | "success"
+    | "warning"
+    | "danger"
+    | "info"
+    | "neutral";
+  children: React.ReactNode;
+  className?: string;
 }
 
 const Button = ({
@@ -24,24 +24,27 @@ const Button = ({
   disabled,
   ...props
 }: ButtonProps) => {
-  const formik = useFormikContext()
-  const isDisabled = disabled || formik?.isSubmitting
+  const formik = useFormikContext();
+  const isDisabled = disabled || formik?.isSubmitting;
 
-  return <button
-    className={classNames(
-      baseStyles,
-      variantStyles[variant][color],
-      className
-    )}
-    disabled={isDisabled}
-    type="button"
-    {...props}
-  >
-    {children}
-  </button>
-}
+  return (
+    <button
+      className={classNames(
+        baseStyles,
+        variantStyles[variant][color],
+        className,
+      )}
+      disabled={isDisabled}
+      type="button"
+      {...props}
+    >
+      {children}
+    </button>
+  );
+};
 
-const baseStyles = "px-4 py-3 rounded-full font-semibold transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed hover:brightness-110"
+const baseStyles =
+  "px-4 py-3 rounded-full font-semibold transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed hover:brightness-110";
 
 const variantStyles = {
   solid: {
@@ -80,6 +83,6 @@ const variantStyles = {
     info: "border border-blue-600 text-blue-600",
     neutral: "border border-gray-600 text-gray-600",
   },
-}
+};
 
-export default Button
+export default Button;

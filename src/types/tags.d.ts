@@ -1,6 +1,6 @@
 type TagBadge = {
-  id: string
-  name: string
-  color: string
-  icon: number
-}
+  id: string;
+  name: string;
+  color: string;
+  icon: number;
+};

@@ -1,1 +1,1 @@
-type Language = "en" | "tr"
+type Language = "en" | "tr";
