@@ -4,6 +4,7 @@ import AuthorizedLayout from "./components/layout/AuthorizedLayout";
 import UnauthorizedLayout from "./components/layout/UnauthorizedLayout";
 import { initializeDict } from "./stores/dict";
 import InitializeWindow from "./windows/(auth)/initialize/window";
+import LoginWindow from "./windows/(auth)/login/window";
 import RegisterWindow from "./windows/(auth)/register/window";
 import AccountsWindow from "./windows/(panel)/accounts/window";
 
@@ -16,7 +17,8 @@ const App: FC = () => {
         {/* Unauthorized Routes */}
         <Route element={<UnauthorizedLayout />}>
           <Route path="/initialize" element={<InitializeWindow />} />
-          <Route path="/register" element={<RegisterWindow />} />
+          <Route path="/initialize/register" element={<RegisterWindow />} />
+          <Route path="/login" element={<LoginWindow />} />
         </Route>
 
         {/* Authorized Routes */}

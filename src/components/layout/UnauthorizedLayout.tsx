@@ -1,10 +1,23 @@
-import { FC } from "react";
-import { Navigate } from "react-router";
+import { FC, useEffect } from "react";
+import { Navigate, useNavigate } from "react-router";
 import { Outlet } from "react-router-dom";
+import { getIsInitialized } from "../../services/auth";
 import useAuthStore from "../../stores/auth";
 
 const UnauthorizedLayout: FC = () => {
   const { token } = useAuthStore();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (token !== null) return;
+
+    getIsInitialized().then((response) => {
+      if (response.initialized) {
+        return navigate("/login");
+      }
+      return navigate("/");
+    });
+  }, [navigate, token]);
 
   if (token !== null) {
     return <Navigate to="/" replace />;

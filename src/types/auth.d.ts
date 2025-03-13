@@ -3,13 +3,11 @@ type ResponseIsInitialized = {
 };
 
 type RequestInitialize = {
-  email: string;
-  password: string;
+  passphrase: string;
 };
 
 type RequestLogin = {
-  email: string;
-  password: string;
+  passphrase: string;
 };
 
 type ResponseLogin = {
@@ -17,8 +15,8 @@ type ResponseLogin = {
 };
 
 type RequestInitialize = {
-  email: string;
-  password: string;
+  username: string;
+  passphrase: string;
 };
 
 type ResponseInitialize = {

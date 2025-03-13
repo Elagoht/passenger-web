@@ -72,6 +72,7 @@ export const Input = ({
 
         {props.type === "password" && (
           <button
+            type="button"
             className="absolute inset-y-0 right-4 flex items-center"
             onClick={() => setShowPassword(!showPassword)}
           >

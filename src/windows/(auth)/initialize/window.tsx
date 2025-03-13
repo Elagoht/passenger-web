@@ -27,7 +27,7 @@ const InitializeWindow: FC = () => {
 
       <Button
         variant="gradient"
-        onClick={() => navigate("/register")}
+        onClick={() => navigate("/initialize/register")}
         className="w-full max-w-sm"
       >
         {dict.windows.initialize.welcome.start}

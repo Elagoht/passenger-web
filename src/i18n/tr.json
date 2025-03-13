@@ -17,15 +17,15 @@
         "title": "Kasa Oluşturun",
         "description": "ve hesaplarınızı saklayın.",
         "form": {
-          "email": "E-Posta",
           "passphrase": "Parola",
-          "submit": "Kasa Oluştur"
+          "submit": "Kasa Oluştur",
+          "error": "Kasa oluşturulamadı"
         }
       },
       "recovery": {
         "title": "Kasanızı Koruyun.",
-        "description": "Bir kurtarma anahtarı otomatik olarak oluşturuldu. Parolanızı unutursanız, bu anahtarı kullanarak kasayı kurtarabilirsiniz. Bunu güvenli bir yerde saklamalısınız. Bunu kasanızın PUK kodu olarak düşünün.",
-        "warning": "BU ANAHTARI KAYBETMEYİN. EĞER KAYBETTİYSENİZ, KASANIZI BİR DAHA KURTARAMAZSINIZ.",
+        "description": "Bir kurtarma anahtarı otomatik olarak oluşturuldu. Parolanızı unutursanız, bu anahtarı kullanarak kasayı kurtarabilirsiniz. Bunu güvenli bir yerde saklamalısınız. Bunu kasanızın Sim kartınızın PUK kodu olarak düşünün.",
+        "warning": "BU ANAHTARI KAYBETMEYİN. EĞER KAYBEDERSENİZ, KASANIZI BİR DAHA KURTARAMAZSINIZ.",
         "fields": {
           "recoveryKey": "Kurtarma Anahtarı"
         },
@@ -45,12 +45,25 @@
         "description": "Tamamsınız! Şimdi kasanızı kullanmaya başlayabilirsiniz.",
         "submit": "Hemen Başla!"
       }
+    },
+    "login": {
+      "title": "Giriş Yap",
+      "subtitle": "Kasanıza",
+      "form": {
+        "passphrase": "Parola",
+        "submit": "Kilidi Aç"
+      },
+      "forgot": "Anahtarınızı mı kaybettiniz?"
     }
   },
   "forms": {
     "fields": {
-      "email": "E-Posta",
-      "password": "Parola"
+      "username": "Kullanıcı Adı",
+      "passphrase": "Parola"
     }
+  },
+  "errors": {
+    "unexpected": "Bir beklenmedik hata oluştu. Lütfen daha sonra tekrar deneyiniz.",
+    "invalidCredentials": "Sizi tanıyamadık."
   }
 }

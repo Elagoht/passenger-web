@@ -17,9 +17,9 @@
         "title": "Create your Vault",
         "description": "to store your accounts.",
         "form": {
-          "email": "Email",
           "passphrase": "Passphrase",
-          "submit": "Create Vault"
+          "submit": "Create Vault",
+          "error": "Failed to create vault"
         }
       },
       "recovery": {
@@ -45,12 +45,25 @@
         "description": "You are all set! You can now start using your Vault.",
         "submit": "Let's Dive In!"
       }
+    },
+    "login": {
+      "title": "Login",
+      "subtitle": "to your Vault",
+      "form": {
+        "passphrase": "Passphrase",
+        "submit": "Unlock"
+      },
+      "forgot": "Did you lose your keys?"
     }
   },
   "forms": {
     "fields": {
-      "email": "Email",
-      "password": "Password"
+      "username": "Username",
+      "passphrase": "Passphrase"
     }
+  },
+  "errors": {
+    "unexpected": "An unexpected error occurred. Please try again later.",
+    "invalidCredentials": "We don't recognize you."
   }
 }

@@ -41,3 +41,7 @@ export const initializeDict = () => {
 };
 
 export default useDictStore;
+
+declare global {
+  type Dict = typeof en;
+}
