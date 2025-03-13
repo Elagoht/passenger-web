@@ -1,20 +1,20 @@
-import React, { useState } from 'react'
-import { useField, FieldHookConfig } from 'formik'
-import classNames from 'classnames'
-import { IconEye, IconEyeOff } from '@tabler/icons-react'
+import { Icon, IconEye, IconEyeOff, IconProps } from "@tabler/icons-react"
+import classNames from "classnames"
+import { FieldHookConfig, useField } from "formik"
+import React, { createElement, useState } from "react"
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string
   error?: string
   name: string
   standalone?: boolean
-  icon?: React.ReactNode
+  icon?: React.ForwardRefExoticComponent<IconProps & React.RefAttributes<Icon>>
 }
 
 export const Input = ({
   label, error, className, standalone = true, icon, ...props
 }: InputProps) => {
-  const [showPassword, setShowPassword] = useState(false)
+  const [showPassword, setShowPassword] = useState(props.type !== "password")
 
   const [field, meta] = standalone
     ? useField(props as FieldHookConfig<string>)
@@ -40,20 +40,29 @@ export const Input = ({
           ? field
           : props
         )}
+        type={props.type === "password"
+          ? showPassword
+            ? "text"
+            : "password"
+          : props.type
+        }
         className={classNames(
-          'w-full px-4 py-3 min-w-none rounded-full bg-day-300 dark:bg-night-500',
-          'text-night-900 dark:text-day-200 transition-all duration-300',
-          'outline-none focus:ring-2 ring-dream-600',
+          "w-full min-w-0 px-4 py-2 min-w-none rounded-full",
+          "bg-day-300 dark:bg-night-500",
+          "text-night-900 dark:text-day-200 transition-all",
+          "outline-none focus:ring-2 ring-dream-600",
           className, {
-          'pl-12': icon,
-          'pr-12': props.type === "password",
-          'border-red-500 focus:border-red-500 focus:ring-red-500': showError
+          "pl-12": icon,
+          "pr-12": props.type === "password",
+          "border-red-500 focus:border-red-500 focus:ring-red-500": showError
         })}
       />
 
       {icon &&
         <div className="absolute inset-y-0 left-4 flex items-center">
-          {icon}
+          {createElement(icon, {
+            size: 24,
+          })}
         </div>
       }
 

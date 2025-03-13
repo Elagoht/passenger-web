@@ -12,16 +12,12 @@
   }
 
   body {
-    @apply bg-night-500 min-h-screen;
-  }
-
-  main {
     @apply bg-day-200 dark:bg-night-800 text-day-800 dark:text-night-100;
   }
 }
 
 .fade-in {
-  animation: fade-in 1s ease-in-out;
+  animation: fade-in 0.3s ease-in-out;
 }
 
 @keyframes fade-in {

@@ -9,7 +9,7 @@ const AuthorizedLayout: FC = () => {
     return <Navigate to="/initialize" replace />
   }
 
-  return <main className="max-w-screen-xl mx-auto p-4">
+  return <main className="fade-in">
     <Outlet />
   </main>
 }

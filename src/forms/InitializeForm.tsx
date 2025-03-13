@@ -1,9 +1,10 @@
-import { FC } from "react"
-import { Formik, Form } from "formik"
-import useDictStore from "../stores/dict"
-import { Input } from "../components/ui/Input"
-import Button from "../components/ui/Button"
 import { IconLock, IconUser } from "@tabler/icons-react"
+import { Form, Formik } from "formik"
+import { FC } from "react"
+import Pre from "../components/debug/Pre"
+import Button from "../components/ui/Button"
+import { Input } from "../components/ui/Input"
+import useDictStore from "../stores/dict"
 
 const InitializeForm: FC = () => {
   const { dict } = useDictStore()
@@ -13,18 +14,21 @@ const InitializeForm: FC = () => {
       email: "",
       password: ""
     }}
-    onSubmit={() => { }}
+    onSubmit={(values, { setSubmitting }) => {
+      setSubmitting(false)
+    }}
   >
-    <Form className="flex flex-col gap-6 fade-in">
+    <Form className="flex flex-col gap-6 mt-12 max-w-md w-full">
       <Input
-        icon={<IconUser />}
+        icon={IconUser}
         name="email"
         label={dict.forms.fields.email}
       />
       <Input
-        icon={<IconLock />}
+        icon={IconLock}
+        type="password"
         name="password"
-        label={dict.forms.fields.password}
+label={dict.forms.fields.password}
       />
 
       <Button
@@ -33,6 +37,8 @@ const InitializeForm: FC = () => {
       >
         {dict.windows.initialize.register.form.submit}
       </Button>
+
+      <Pre />
     </Form>
   </Formik>
 }

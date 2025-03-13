@@ -3,6 +3,9 @@ export default {
   content: ["./src/**/*.tsx"],
   theme: {
     extend: {
+      backgroundImage: {
+        onboarding: "url(/assets/images/onboarding.webp)",
+      },
       colors: {
         dream: {
           50: "#fbf6fd",
