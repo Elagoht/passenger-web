@@ -3,9 +3,11 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AuthorizedLayout from "./components/layout/AuthorizedLayout";
 import UnauthorizedLayout from "./components/layout/UnauthorizedLayout";
 import { initializeDict } from "./stores/dict";
+import CheckIfNotedWindow from "./windows/(auth)/initialize/check-if-noted/window";
+import RecoveryKeyWindow from "./windows/(auth)/initialize/recovery-key/window";
+import RegisterWindow from "./windows/(auth)/initialize/register/window";
 import InitializeWindow from "./windows/(auth)/initialize/window";
 import LoginWindow from "./windows/(auth)/login/window";
-import RegisterWindow from "./windows/(auth)/register/window";
 import AccountsWindow from "./windows/(panel)/accounts/window";
 import SplashWindow from "./windows/window";
 
@@ -22,6 +24,14 @@ const App: FC = () => {
         <Route element={<UnauthorizedLayout />}>
           <Route path="/initialize" element={<InitializeWindow />} />
           <Route path="/initialize/register" element={<RegisterWindow />} />
+          <Route
+            path="/initialize/recovery-key"
+            element={<RecoveryKeyWindow />}
+          />
+          <Route
+            path="/initialize/check-if-noted"
+            element={<CheckIfNotedWindow />}
+          />
           <Route path="/login" element={<LoginWindow />} />
         </Route>
 

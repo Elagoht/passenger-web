@@ -6,7 +6,7 @@ const AuthorizedLayout: FC = () => {
   const { token } = useAuthStore();
 
   if (token === null) {
-    return <Navigate to="/initialize" replace />;
+    return <Navigate to="/" replace />;
   }
 
   return (

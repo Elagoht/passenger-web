@@ -2,6 +2,7 @@ import { IconLock } from "@tabler/icons-react";
 import { Form, Formik } from "formik";
 import { FC } from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router";
 import Button from "../components/ui/Button";
 import { Input } from "../components/ui/Input";
 import { postInitialize } from "../services/auth";
@@ -12,17 +13,21 @@ import toastError from "../utilities/ToastError";
 const InitializeForm: FC = () => {
   const { dict } = useDictStore();
   const { setRecoveryKey } = useAuthStore();
-
+  const navigate = useNavigate();
   return (
     <Formik<RequestInitialize>
       initialValues={{ passphrase: "" }}
       onSubmit={(values, { setSubmitting }) => {
         postInitialize(values)
-          .then((response) => setRecoveryKey(response.recoveryKey))
+          .then((response) => {
+            setRecoveryKey(response.recoveryKey);
+            navigate("/initialize/recovery-key");
+          })
           .catch((error) => {
             toastError(error, dict, {
               400: () => {
-                toast.error(dict.errors.unexpected);
+                toast.error(dict.errors.alreadyInitialized);
+                navigate("/login");
               },
             });
           })

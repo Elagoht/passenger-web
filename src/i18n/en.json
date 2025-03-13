@@ -25,11 +25,9 @@
       },
       "recovery": {
         "title": "Cover your Vault",
-        "description": "A recovery key is automatically generated for you. If you forget your passphrase, you can use this key to recover your Vault. You should save it in a safe place. Think it is the PUK code of your Vault.",
+        "description": "A recovery key is automatically generated for you. If you forget your passphrase, you can use this key to recover your Vault. You should save it in a safe place. Think it is the PUK on Sim card of your Vault.",
         "warning": "DO NOT LOSE THIS KEY. IF YOU LOSE IT, YOU WILL NOT BE ABLE TO RECOVER YOUR VAULT.",
-        "fields": {
-          "recoveryKey": "Recovery Key"
-        },
+        "recoveryKey": "Recovery Key",
         "understood": "I Understand"
       },
       "checkIfNoted": {
@@ -65,6 +63,9 @@
   },
   "errors": {
     "unexpected": "An unexpected error occurred. Please try again later.",
-    "invalidCredentials": "We don't recognize you."
+    "invalidCredentials": "We don't recognize you.",
+    "clipboard": "Failed to copy to clipboard.",
+    "alreadyInitialized": "You have already initialized your Vault.",
+    "invalidRecoveryKey": "Invalid recovery key."
   }
 }

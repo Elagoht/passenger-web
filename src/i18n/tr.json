@@ -27,9 +27,7 @@
         "title": "Kasanızı Koruyun.",
         "description": "Bir kurtarma anahtarı otomatik olarak oluşturuldu. Parolanızı unutursanız, bu anahtarı kullanarak kasayı kurtarabilirsiniz. Bunu güvenli bir yerde saklamalısınız. Bunu kasanızın Sim kartınızın PUK kodu olarak düşünün.",
         "warning": "BU ANAHTARI KAYBETMEYİN. EĞER KAYBEDERSENİZ, KASANIZI BİR DAHA KURTARAMAZSINIZ.",
-        "fields": {
-          "recoveryKey": "Kurtarma Anahtarı"
-        },
+        "recoveryKey": "Kurtarma Anahtarı",
         "understood": "Anladım"
       },
       "checkIfNoted": {
@@ -65,6 +63,8 @@
   },
   "errors": {
     "unexpected": "Bir beklenmedik hata oluştu. Lütfen daha sonra tekrar deneyiniz.",
-    "invalidCredentials": "Sizi tanıyamadık."
+    "invalidCredentials": "Sizi tanıyamadık.",
+    "clipboard": "Kopyalama işlemi başarısız oldu.",
+    "alreadyInitialized": "Kasanız zaten oluşturuldu."
   }
 }
