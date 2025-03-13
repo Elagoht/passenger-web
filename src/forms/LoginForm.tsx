@@ -20,7 +20,7 @@ const LoginForm: FC = () => {
         postLogin(values)
           .then((response) => {
             login(response.token);
-            navigate("/");
+            navigate("/accounts");
           })
           .catch((error) => toastError(error, dict))
           .finally(() => setSubmitting(false));

@@ -7,6 +7,7 @@ import InitializeWindow from "./windows/(auth)/initialize/window";
 import LoginWindow from "./windows/(auth)/login/window";
 import RegisterWindow from "./windows/(auth)/register/window";
 import AccountsWindow from "./windows/(panel)/accounts/window";
+import SplashWindow from "./windows/window";
 
 const App: FC = () => {
   useEffect(() => initializeDict(), []);
@@ -14,6 +15,9 @@ const App: FC = () => {
   return (
     <BrowserRouter>
       <Routes>
+        {/* Splash Screen */}
+        <Route path="/" element={<SplashWindow />} />
+
         {/* Unauthorized Routes */}
         <Route element={<UnauthorizedLayout />}>
           <Route path="/initialize" element={<InitializeWindow />} />
@@ -23,7 +27,7 @@ const App: FC = () => {
 
         {/* Authorized Routes */}
         <Route element={<AuthorizedLayout />}>
-          <Route path="/" element={<AccountsWindow />} />
+          <Route path="/accounts" element={<AccountsWindow />} />
         </Route>
       </Routes>
     </BrowserRouter>

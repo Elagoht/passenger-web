@@ -8,7 +8,7 @@ const RegisterWindow: FC = () => {
   const { dict } = useDictStore();
 
   return (
-    <Container className="text-center min-h-screen">
+    <Container className="text-center">
       <Title className="text-cream-500">
         {dict.windows.initialize.register.title}
       </Title>

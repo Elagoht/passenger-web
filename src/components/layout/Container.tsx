@@ -11,7 +11,7 @@ const Container: FC<PropsWithChildren<ContainerProps>> = ({
     <div
       {...props}
       className={classNames(
-        "flex flex-col items-center justify-center h-screen p-6 fade-in",
+        "flex flex-col items-center justify-center p-6 fade-in",
         props.className,
       )}
     >

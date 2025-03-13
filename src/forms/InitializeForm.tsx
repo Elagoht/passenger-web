@@ -2,7 +2,6 @@ import { IconLock } from "@tabler/icons-react";
 import { Form, Formik } from "formik";
 import { FC } from "react";
 import toast from "react-hot-toast";
-import Pre from "../components/debug/Pre";
 import Button from "../components/ui/Button";
 import { Input } from "../components/ui/Input";
 import { postInitialize } from "../services/auth";
@@ -41,8 +40,6 @@ const InitializeForm: FC = () => {
         <Button type="submit" color="success">
           {dict.windows.initialize.register.form.submit}
         </Button>
-
-        <Pre />
       </Form>
     </Formik>
   );
