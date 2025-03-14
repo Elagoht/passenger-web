@@ -32,10 +32,10 @@ const CopyText: FC<CopyTextProps> = ({ text, onClick }) => {
         handleCopy();
         onClick?.();
       }}
-      className="flex items-center rounded-lg p-2 gap-2 overflow-hidden
+      className="flex select-text items-center w-full rounded-lg p-2 gap-2 overflow-hidden
       bg-day-500 dark:bg-night-500 text-night-500 dark:text-day-500"
     >
-      <span className="text-xs break-all">{text}</span>
+      <span className="text-xs break-all grow">{text}</span>
 
       <span className="shrink-0">
         {copied ? <IconCopyCheck className="text-green-600" /> : <IconCopy />}

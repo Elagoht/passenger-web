@@ -11,3 +11,12 @@ export const postInitialize = async (request: RequestInitialize) => {
 export const postLogin = async (request: RequestLogin) => {
   return await apiCall.post<ResponseLogin>("/auth/login", request);
 };
+
+export const postForgotPassphrase = async (
+  request: RequestForgotPassphrase,
+) => {
+  return await apiCall.post<ResponseForgotPassphrase>(
+    "/auth/reset-passphrase",
+    request,
+  );
+};

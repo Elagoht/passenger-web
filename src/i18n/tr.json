@@ -53,6 +53,19 @@
         "submit": "Kilidi Aç"
       },
       "forgot": "Anahtarınızı mı kaybettiniz?"
+    },
+    "forgotPassphrase": {
+      "title": "Anahtarınızı mı kaybettiniz?",
+      "description": "Kasanızı oluştururken bir kurtarma anahtarı oluşturmuştuk. Hatırladınız mı? İşte şimdi o gerekiyor.",
+      "form": {
+        "recoveryKey": "Kurtarma Anahtarınız",
+        "submit": "Yeni Parola İsteyin"
+      }
+    },
+    "assignedPassphrase": {
+      "title": "Atanan Parola",
+      "description": "İşte yeni parolanız. Giriş yaptıktan sonra değiştirebilirsiniz.",
+      "continue": "Devam Et"
     }
   },
   "forms": {
@@ -63,6 +76,7 @@
   },
   "errors": {
     "unexpected": "Bir beklenmedik hata oluştu. Lütfen daha sonra tekrar deneyiniz.",
+    "badRequest": "Çalışmış gibi görünmüyor.",
     "invalidCredentials": "Sizi tanıyamadık.",
     "clipboard": "Kopyalama işlemi başarısız oldu.",
     "alreadyInitialized": "Kasanız zaten oluşturuldu."

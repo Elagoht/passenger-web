@@ -53,6 +53,19 @@
         "submit": "Unlock"
       },
       "forgot": "Did you lose your keys?"
+    },
+    "forgotPassphrase": {
+      "title": "Forgot My Keys",
+      "description": "While creating your Vault, we have generated a recovery key for you. The PUK code of your Vault. Remember it? It's required now.",
+      "form": {
+        "recoveryKey": "Recovery Key",
+        "submit": "Request New Passphrase"
+      }
+    },
+    "assignedPassphrase": {
+      "title": "Assigned Passphrase",
+      "description": "Here is your new passphrase. You can change it after login.",
+      "continue": "Continue"
     }
   },
   "forms": {
@@ -63,6 +76,7 @@
   },
   "errors": {
     "unexpected": "An unexpected error occurred. Please try again later.",
+    "badRequest": "This didn't work.",
     "invalidCredentials": "We don't recognize you.",
     "clipboard": "Failed to copy to clipboard.",
     "alreadyInitialized": "You have already initialized your Vault.",

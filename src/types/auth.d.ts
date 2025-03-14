@@ -23,3 +23,11 @@ type ResponseInitialize = {
   token: string;
   recoveryKey: string;
 };
+
+type RequestForgotPassphrase = {
+  recoveryKey: string;
+};
+
+type ResponseForgotPassphrase = {
+  assignedPassphrase: string;
+};

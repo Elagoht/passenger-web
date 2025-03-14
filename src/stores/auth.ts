@@ -6,6 +6,8 @@ interface AuthState {
   logout: () => void;
   recoveryKey: string | null;
   setRecoveryKey: (recoveryKey: string) => void;
+  assignedPassphrase: string | null;
+  setAssignedPassphrase: (assignedPassphrase: string | null) => void;
 }
 
 const useAuthStore = create<AuthState>((set) => ({
@@ -18,6 +20,10 @@ const useAuthStore = create<AuthState>((set) => ({
   recoveryKey: null,
 
   setRecoveryKey: (recoveryKey) => set({ recoveryKey }),
+
+  assignedPassphrase: null,
+
+  setAssignedPassphrase: (assignedPassphrase) => set({ assignedPassphrase }),
 }));
 
 export default useAuthStore;

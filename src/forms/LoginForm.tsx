@@ -1,6 +1,6 @@
 import { Form, Formik } from "formik";
 import { FC } from "react";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import Button from "../components/ui/Button";
 import { Input } from "../components/ui/Input";
 import { postLogin } from "../services/auth";
@@ -32,6 +32,12 @@ const LoginForm: FC = () => {
           name="passphrase"
           label={dict.forms.fields.passphrase}
         />
+
+        <small className="flex items-center justify-end gap-4 -mt-4 mr-4">
+          <Link tabIndex={1} to="/forgot-passphrase">
+            {dict.windows.login.forgot}
+          </Link>
+        </small>
 
         <Button type="submit">{dict.windows.login.form.submit}</Button>
       </Form>

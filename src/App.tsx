@@ -3,6 +3,8 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AuthorizedLayout from "./components/layout/AuthorizedLayout";
 import UnauthorizedLayout from "./components/layout/UnauthorizedLayout";
 import { initializeDict } from "./stores/dict";
+import AssignedPassphraseWindow from "./windows/(auth)/forgot-password/assigned-passphrase/window";
+import ForgotPassphraseWindow from "./windows/(auth)/forgot-password/window";
 import CheckIfNotedWindow from "./windows/(auth)/initialize/check-if-noted/window";
 import LetsStartWindow from "./windows/(auth)/initialize/lets-start/window";
 import RecoveryKeyWindow from "./windows/(auth)/initialize/recovery-key/window";
@@ -23,7 +25,10 @@ const App: FC = () => {
 
         {/* Unauthorized Routes */}
         <Route element={<UnauthorizedLayout />}>
+          {/* Login */}
           <Route path="/login" element={<LoginWindow />} />
+
+          {/* Onboarding */}
           <Route path="/initialize" element={<InitializeWindow />} />
           <Route path="/initialize/register" element={<RegisterWindow />} />
           <Route
@@ -35,6 +40,15 @@ const App: FC = () => {
             element={<CheckIfNotedWindow />}
           />
           <Route path="/initialize/lets-start" element={<LetsStartWindow />} />
+          {/* Passphrase Recovery */}
+          <Route
+            path="/forgot-passphrase"
+            element={<ForgotPassphraseWindow />}
+          />
+          <Route
+            path="/forgot-passphrase/assigned-passphrase"
+            element={<AssignedPassphraseWindow />}
+          />
         </Route>
 
         {/* Authorized Routes */}
