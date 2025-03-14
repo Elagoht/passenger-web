@@ -6,7 +6,7 @@ import useAuthStore from "../../stores/auth";
 const UnauthorizedLayout: FC = () => {
   const { token } = useAuthStore();
 
-  if (token !== null) {
+  if (token !== "") {
     return <Navigate to="/accounts" replace />;
   }
 

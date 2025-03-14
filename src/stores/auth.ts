@@ -2,7 +2,7 @@ import { create } from "zustand";
 
 interface AuthState {
   login: (token: string) => void;
-  token: string | null;
+  token: string;
   logout: () => void;
   recoveryKey: string | null;
   setRecoveryKey: (recoveryKey: string) => void;
@@ -11,11 +11,11 @@ interface AuthState {
 }
 
 const useAuthStore = create<AuthState>((set) => ({
-  token: null,
+  token: "",
 
   login: (token) => set({ token }),
 
-  logout: () => set({ token: null }),
+  logout: () => set({ token: "" }),
 
   recoveryKey: null,
 

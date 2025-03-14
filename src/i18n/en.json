@@ -66,6 +66,56 @@
       "title": "Assigned Passphrase",
       "description": "Here is your new passphrase. You can change it after login.",
       "continue": "Continue"
+    },
+    "accounts": {
+      "notFound": "No accounts found. Add one to get started.",
+      "gridButtons": {
+        "lists": "Lists",
+        "tags": "Tags",
+        "panic": "Panic"
+      }
+    },
+    "tools": {
+      "title": "Tools",
+      "items": [
+        {
+          "title": "Statistics",
+          "description": "Graphs, charts, and more."
+        },
+        {
+          "title": "Wordlists",
+          "description": "Import and manage brute force wordlists."
+        },
+        {
+          "title": "Analyses",
+          "description": "Initialize new analysis or view their reports."
+        },
+        {
+          "title": "News",
+          "description": "Get the latest leaks and breaches."
+        }
+      ]
+    },
+    "settings": {
+      "title": "Settings",
+      "items": [
+        {
+          "title": "Import Accounts",
+          "description": "Import from browser and password managers."
+        },
+        {
+          "title": "Export Accounts",
+          "description": "Export CSV for browser and password managers."
+        },
+        {
+          "title": "Change Master Passphrase",
+          "description": "Passphrase when you login."
+        },
+        {
+          "title": "Preferences",
+          "description": "Strict mode, interface theme, etc."
+        }
+      ]
     }
   },
   "forms": {
@@ -79,7 +129,6 @@
     "badRequest": "This didn't work.",
     "invalidCredentials": "We don't recognize you.",
     "clipboard": "Failed to copy to clipboard.",
-    "alreadyInitialized": "You have already initialized your Vault.",
-    "invalidRecoveryKey": "Invalid recovery key."
+    "alreadyInitialized": "You have already initialized your Vault."
   }
 }

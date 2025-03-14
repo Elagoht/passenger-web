@@ -1,7 +1,13 @@
 type AccountCard = {
   id: string;
-  name: string;
+  platform: string;
   identity: string;
-  icon?: string;
-  tags: TagBadge[];
+  icon: string;
+  tags: Tag[];
+  url: string;
+};
+
+type ResponseAccountPassphrase = {
+  passphrase: string;
+  copiedCount: number;
 };

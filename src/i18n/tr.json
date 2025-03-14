@@ -66,6 +66,56 @@
       "title": "Atanan Parola",
       "description": "İşte yeni parolanız. Giriş yaptıktan sonra değiştirebilirsiniz.",
       "continue": "Devam Et"
+    },
+    "accounts": {
+      "notFound": "Hesap bulunamadı. Bir tane ekleyin.",
+      "gridButtons": {
+        "lists": "Listeler",
+        "tags": "Etiketler",
+        "panic": "Panik"
+      }
+    },
+    "tools": {
+      "title": "Araçlar",
+      "items": [
+        {
+          "title": "İstatistikler",
+          "description": "Grafikler, tablolar ve daha fazlası."
+        },
+        {
+          "title": "Kelime Listesileri",
+          "description": "Yeni listeler ekleyin ve onları yönetin."
+        },
+        {
+          "title": "Analizler",
+          "description": "Yeni analiz başlatın veya raporlarınızı görün."
+        },
+        {
+          "title": "Haberler",
+          "description": "Son sızıntılardan haberdar olun."
+        }
+      ]
+    },
+    "settings": {
+      "title": "Ayarlar",
+      "items": [
+        {
+          "title": "Hesapları İçe Aktar",
+          "description": "Tarayıcı ve parola yöneticilerinden içe aktarın."
+        },
+        {
+          "title": "Hesapları Dışa Aktar",
+          "description": "Tarayıcı ve parola yöneticileri için CSV olarak dışa aktarın."
+        },
+        {
+          "title": "Ana Parolayı Değiştir",
+          "description": "Giriş yapmada kullandığınız parolayı değiştirin."
+        },
+        {
+          "title": "Tercihler",
+          "description": "Katı mod, arayüz renkleri ve daha fazlası."
+        }
+      ]
     }
   },
   "forms": {

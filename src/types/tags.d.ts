@@ -3,4 +3,5 @@ type TagBadge = {
   name: string;
   color: string;
   icon: number;
+  isPanic: boolean;
 };

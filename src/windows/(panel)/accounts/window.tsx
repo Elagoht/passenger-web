@@ -1,46 +1,87 @@
+import { IconList, IconLoader, IconTag, IconUrgent } from "@tabler/icons-react";
 import { FC, useEffect, useState } from "react";
 import AccountListItem from "../../../components/common/AccountListItem";
+import Container from "../../../components/layout/Container";
+import { Paragraph } from "../../../components/ui/Typography";
+import FeatureButton from "../../../components/windows/accounts/FeatureButton";
+import SearchAccountsForm from "../../../forms/SearchAccountsForm";
 import { getAccounts } from "../../../services/accounts";
+import useAuthStore from "../../../stores/auth";
+import useDictStore from "../../../stores/dict";
 
 const AccountsWindow: FC = () => {
+  const { token } = useAuthStore();
+  const { dict } = useDictStore();
+
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [accounts, setAccounts] = useState<AccountCard[]>([]);
 
   useEffect(() => {
+    setIsLoading(true);
+
     const fetchAccounts = async () => {
-      const accounts = await getAccounts();
-      setAccounts(accounts);
+      getAccounts(token).then((accounts) => {
+        setAccounts(accounts);
+      });
     };
     fetchAccounts();
-  }, []);
+    setIsLoading(false);
+  }, [token]);
 
-  if (accounts.length === 0) {
+  if (isLoading) {
     return (
-      <>
-        <h1>Passphrases</h1>
-
-        <p>No accounts found</p>
-      </>
+      <Container className="flex items-center justify-center">
+        <IconLoader className="animate-spin" />
+      </Container>
     );
   }
 
   return (
-    <>
-      <h1>Passphrases</h1>
+    <Container className="flex gap-4 items-stretch !justify-start">
+      <SearchAccountsForm />
 
-      <div className="flex flex-wrap gap-2">
-        {accounts.map((account) => (
-          <AccountListItem
-            key={account.id}
-            id={account.id}
-            icon={account.icon}
-            name={account.name}
-            identity={account.identity}
-            tags={account.tags}
-          />
+      <div className="flex gap-2 w-full">
+        {getButtons(dict).map((button) => (
+          <FeatureButton key={button.title} {...button} />
         ))}
       </div>
-    </>
+
+      {accounts.length === 0 ? (
+        <Paragraph>{dict.windows.accounts.notFound}</Paragraph>
+      ) : (
+        <div className="flex flex-col gap-1 !justify-start">
+          {accounts.map((account) => (
+            <AccountListItem key={account.id} {...account} />
+          ))}
+        </div>
+      )}
+    </Container>
   );
+};
+
+const getButtons = (dict: Dict) => {
+  return [
+    {
+      title: dict.windows.accounts.gridButtons.lists,
+      icon: IconList,
+      className:
+        "border-cream-500 bg-cream-500 text-cream-900 dark:text-cream-500",
+      onClick: () => {},
+    },
+    {
+      title: dict.windows.accounts.gridButtons.tags,
+      icon: IconTag,
+      className:
+        "border-dream-500 bg-dream-500 text-dream-900 dark:text-dream-500",
+      onClick: () => {},
+    },
+    {
+      title: dict.windows.accounts.gridButtons.panic,
+      icon: IconUrgent,
+      className: "border-red-500 bg-red-500 text-red-900 dark:text-red-500",
+      onClick: () => {},
+    },
+  ];
 };
 
 export default AccountsWindow;
