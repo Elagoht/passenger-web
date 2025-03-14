@@ -11,6 +11,7 @@ import RecoveryKeyWindow from "./windows/(auth)/initialize/recovery-key/window";
 import RegisterWindow from "./windows/(auth)/initialize/register/window";
 import InitializeWindow from "./windows/(auth)/initialize/window";
 import LoginWindow from "./windows/(auth)/login/window";
+import AccountDetailsWindow from "./windows/(panel)/accounts/[id]/window";
 import AccountsWindow from "./windows/(panel)/accounts/window";
 import SettingsWindow from "./windows/(panel)/settings/window";
 import ToolsWindow from "./windows/(panel)/tools/window";
@@ -38,6 +39,7 @@ const router = createBrowserRouter([
     element: <AuthorizedLayout />,
     children: [
       { path: "/accounts", element: <AccountsWindow /> },
+      { path: "/accounts/:id", element: <AccountDetailsWindow /> },
       { path: "/tools", element: <ToolsWindow /> },
       { path: "/settings", element: <SettingsWindow /> },
     ],

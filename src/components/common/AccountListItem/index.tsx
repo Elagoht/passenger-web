@@ -21,7 +21,7 @@ const AccountListItem: FC<AccountCard> = ({
     >
       <AccountIcon icon={icon} url={url} platform={platform} />
 
-      <Link to={url} className="flex flex-col grow">
+      <Link to={`/accounts/${id}`} className="flex flex-col grow">
         <strong className="text-lg">{platform}</strong>
 
         <small className="text-sm">{identity}</small>

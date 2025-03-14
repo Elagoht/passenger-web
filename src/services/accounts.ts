@@ -6,6 +6,12 @@ export const getAccounts = async (token: string) => {
   });
 };
 
+export const getAccountById = async (token: string, id: string) => {
+  return await apiCall.get<Account>(`/accounts/${id}`, {
+    Authorization: `Bearer ${token}`,
+  });
+};
+
 export const getAccountPassphrase = async (token: string, id: string) => {
   return await apiCall.get<ResponseAccountPassphrase>(
     `/accounts/${id}/passphrase`,
