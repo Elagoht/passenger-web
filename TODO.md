@@ -1,0 +1,42 @@
+# API To Frontend Progress
+
+- [~] /accounts
+- [X] /accounts/{id}
+- [ ] /accounts/{id}/similar-passphrases
+- [ ] /accounts/{id}/tags/{tagId}
+- [X] /accounts/{id}/passphrase
+- [ ] /analyses/initialize/{wordlistId}
+- [ ] /analyses/stop/{analysisId}
+- [ ] /analyses/observe/{id}
+- [ ] /analyses/available-wordlists
+- [ ] /analyses/reports
+- [ ] /analyses/reports/{id}
+- [X] /auth/is-initialized
+- [X] /auth/initialize
+- [X] /auth/login
+- [X] /auth/reset-passphrase
+- [ ] /auth/change-passphrase
+- [ ] /collections
+- [ ] /collections/{id}
+- [ ] /collections/{id}/accounts/{accountId}
+- [X] /generate
+- [X] /generate/alternative
+- [ ] /leaks/news
+- [ ] /leaks/{id}
+- [ ] /leaks
+- [ ] /panic
+- [ ] /preferences
+- [ ] /preferences/{key}
+- [ ] /stats/graph/strength
+- [ ] /stats/graph/strength/{accountId}
+- [ ] /tags
+- [ ] /tags/{id}
+- [ ] /transfer/import
+- [ ] /transfer/export
+- [ ] /word-lists/import
+- [ ] /word-lists
+- [ ] /word-lists/{id}
+- [ ] /word-lists/{id}/status
+- [ ] /word-lists/{id}/download
+- [ ] /word-lists/{id}/cancel-download
+- [ ] /word-lists/{id}/validate

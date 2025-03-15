@@ -75,6 +75,26 @@
         "panic": "Panik"
       }
     },
+    "accountDetails": {
+      "title": "Hesap Ayrıntıları",
+      "description": "Hesabınızın ayrıntıları burada yatıyor.",
+      "details": {
+        "timesCopied": "Kopyalanma Sayısı",
+        "lastCopiedAt": "Son Kopyalanma Tarihi",
+        "strengthGraph": "Güç Grafiği"
+      },
+      "edit": {
+        "form": {
+          "platform": "Platform",
+          "identity": "Kimlik",
+          "icon": "Simge",
+          "url": "URL",
+          "note": "Not",
+          "passphrase": "Parola",
+          "save": "Kaydet"
+        }
+      }
+    },
     "tools": {
       "title": "Araçlar",
       "items": [
@@ -123,6 +143,10 @@
       "username": "Kullanıcı Adı",
       "passphrase": "Parola"
     }
+  },
+  "generators": {
+    "generate": "Oluştur",
+    "manipulate": "Değiştir"
   },
   "errors": {
     "unexpected": "Bir beklenmedik hata oluştu. Lütfen daha sonra tekrar deneyiniz.",

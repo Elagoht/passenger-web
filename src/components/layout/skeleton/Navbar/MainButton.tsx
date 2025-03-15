@@ -18,7 +18,7 @@ const MainButton: FC = () => {
   }, []);
 
   return (
-    <Link to="/accounts">
+    <Link to="/accounts" className="md:hidden">
       <button
         onClick={() => {
           if (!isActive) return;
@@ -26,11 +26,12 @@ const MainButton: FC = () => {
             window.scrollTo({ top: 0, behavior: "smooth" });
           }
         }}
-        className={classNames("rounded-full p-4 -m-4 shadow-inner", {
-          "bg-day-300 dark:bg-night-700 text-day-00 dark:text-night-100 shadow-day-400 dark:shadow-night-500":
-            !isActive,
-          "bg-cream-500 text-cream-900": isActive,
-        })}
+        className={classNames(
+          "rounded-full p-4 -m-4 shadow-inner bg-gradient-to-t",
+          "from-cream-500 to-cream-300 text-cream-700",
+          "transition-all duration-300",
+          { grayscale: !isActive },
+        )}
       >
         {createElement(getIcon(isActive, isOnTop), {
           size: 64,

@@ -1,6 +1,7 @@
+import { Icon, IconProps } from "@tabler/icons-react";
 import classNames from "classnames";
 import { useFormikContext } from "formik";
-import React from "react";
+import React, { createElement } from "react";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "solid" | "gradient" | "text" | "outlined";
@@ -14,6 +15,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     | "neutral";
   children: React.ReactNode;
   className?: string;
+  icon?: React.ForwardRefExoticComponent<IconProps & React.RefAttributes<Icon>>;
 }
 
 const Button = ({
@@ -22,6 +24,7 @@ const Button = ({
   children,
   className,
   disabled,
+  icon,
   ...props
 }: ButtonProps) => {
   const formik = useFormikContext();
@@ -39,12 +42,17 @@ const Button = ({
       {...props}
     >
       {children}
+
+      {icon &&
+        createElement(icon, {
+          className: "absolute right-4 top-1/2 -translate-y-1/2",
+        })}
     </button>
   );
 };
 
 const baseStyles =
-  "px-4 py-3 rounded-full font-semibold transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed hover:brightness-110";
+  "px-4 py-3 relative rounded-full font-semibold transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed hover:brightness-110";
 
 const variantStyles = {
   solid: {

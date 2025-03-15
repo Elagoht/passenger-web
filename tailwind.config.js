@@ -5,6 +5,7 @@ export default {
     extend: {
       backgroundImage: {
         onboarding: "url(/assets/images/onboarding.webp)",
+        ffflux: "url(/assets/images/ffflux.svg)",
       },
       colors: {
         dream: {

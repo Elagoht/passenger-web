@@ -12,11 +12,11 @@
   }
 
   body {
-    @apply bg-day-200 dark:bg-night-800 text-night-500 dark:text-day-500;
+    @apply bg-day-200 dark:bg-night-800 text-night-500 dark:text-day-500 bg-ffflux;
   }
 
   main {
-    @apply max-sm:pb-12;
+    @apply max-md:pb-12;
   }
 }
 

@@ -28,7 +28,7 @@ const AccountIcon: FC<Pick<AccountCard, "icon" | "platform" | "url">> = ({
       ) : (
         <div
           className="w-12 h-12 shrink-0 rounded-full bg-day-400
-      dark:bg-night-400 text-day-950 dark:text-night-950
+          dark:bg-night-900 text-night-100 dark:text-day-900
           flex items-center justify-center font-semibold text-2xl"
         >
           {getInitials(platform)}

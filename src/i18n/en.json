@@ -75,6 +75,26 @@
         "panic": "Panic"
       }
     },
+    "accountDetails": {
+      "title": "Account Details",
+      "description": "Here lies the details of your account.",
+      "details": {
+        "timesCopied": "Times Copied",
+        "lastCopiedAt": "Last Copied At",
+        "strengthGraph": "Strength Graph"
+      },
+      "edit": {
+        "form": {
+          "platform": "Platform",
+          "identity": "Identity",
+          "icon": "Icon",
+          "url": "URL",
+          "note": "Note",
+          "passphrase": "Passphrase",
+          "save": "Save"
+        }
+      }
+    },
     "tools": {
       "title": "Tools",
       "items": [
@@ -123,6 +143,10 @@
       "username": "Username",
       "passphrase": "Passphrase"
     }
+  },
+  "generators": {
+    "generate": "Generate",
+    "manipulate": "Manipulate"
   },
   "errors": {
     "unexpected": "An unexpected error occurred. Please try again later.",

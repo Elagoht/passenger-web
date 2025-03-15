@@ -19,6 +19,15 @@ type Account = {
   lastCopiedAt: string;
 };
 
+type RequestAccountEdit = Partial<{
+  platform: string;
+  identity: string;
+  icon: string;
+  url: string;
+  note: string;
+  passphrase: string;
+}>;
+
 type ResponseAccountPassphrase = {
   passphrase: string;
   copiedCount: number;

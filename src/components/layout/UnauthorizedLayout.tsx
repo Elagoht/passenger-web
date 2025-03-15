@@ -11,10 +11,10 @@ const UnauthorizedLayout: FC = () => {
   }
 
   return (
-    <main className="grid sm:grid-cols-3 grid-cols-1 fade-in min-h-screen">
+    <main className="grid md:grid-cols-3 grid-cols-1 fade-in min-h-screen">
       <aside className="bg-cover bg-center bg-onboarding min-h-36" />
 
-      <section className="sm:col-span-2 flex flex-col justify-center">
+      <section className="md:col-span-2 flex flex-col justify-center">
         <Outlet />
       </section>
     </main>
