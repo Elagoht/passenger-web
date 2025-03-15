@@ -31,7 +31,8 @@ export const Input = ({
       {label && (
         <label
           htmlFor={props.name}
-          className="block text-sm font-medium ml-4 mb-1 text-night-700 dark:text-day-200"
+          className="block text-sm font-medium ml-4 mb-1
+          text-night-700 dark:text-day-200"
         >
           {label}
         </label>
@@ -48,6 +49,7 @@ export const Input = ({
               : props.type
           }
           className={classNames(
+            "shadow-inner shadow-day-400 dark:shadow-night-300",
             "w-full min-w-0 px-4 py-2 min-w-none rounded-full",
             "bg-day-100 dark:bg-night-400",
             "text-night-900 dark:text-day-200 transition-all",

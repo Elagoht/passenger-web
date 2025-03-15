@@ -146,7 +146,7 @@
   },
   "generators": {
     "generate": "Generate",
-    "manipulate": "Manipulate"
+    "alternate": "Alternate"
   },
   "errors": {
     "unexpected": "An unexpected error occurred. Please try again later.",

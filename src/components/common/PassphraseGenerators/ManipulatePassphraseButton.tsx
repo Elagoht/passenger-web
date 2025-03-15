@@ -18,7 +18,7 @@ const ManipulatePassphraseButton: FC<ManipulatePassphraseButtonProps> = ({
 
   return (
     <Button
-      variant="gradient"
+      variant="outlined"
       color="warning"
       size="small"
       icon={IconRefresh}
@@ -33,7 +33,7 @@ const ManipulatePassphraseButton: FC<ManipulatePassphraseButtonProps> = ({
           });
       }}
     >
-      {dict.generators.generate}
+      {dict.generators.alternate}
     </Button>
   );
 };

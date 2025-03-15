@@ -1,16 +1,18 @@
 import { IconKey, IconSettings, IconTools } from "@tabler/icons-react";
 import { FC } from "react";
 import Branding from "../../../common/Branding";
+import Box from "../../../ui/Box";
 import MainButton from "./MainButton";
 import NavBarLink from "./NavBarLink";
 
 const Navbar: FC = () => {
   return (
-    <aside
-      className="flex flex-col items-center gap-6 md:m-6 md:p-6
-      shadow-inner self-stretch min-w-64 md:shadow-day-400 shadow-day-50
-      rounded-t-3xl dark:shadow-night-500 md:rounded-3xl bg-day-100
-      dark:bg-night-900 max-md:fixed bottom-0 left-0 right-0 z-30"
+    <Box
+      orientation="vertical"
+      padding="sm"
+      shadow="outer"
+      className="items-center gap-6 md:m-6 md:p-6 self-stretch min-w-64
+      max-md:fixed bottom-0 left-0 right-0 z-30 md:w-min"
     >
       <Branding size="small" className="max-md:hidden" />
 
@@ -31,7 +33,7 @@ const Navbar: FC = () => {
 
         <NavBarLink icon={IconSettings} label="Settings" path="/settings" />
       </nav>
-    </aside>
+    </Box>
   );
 };
 
