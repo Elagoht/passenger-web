@@ -153,6 +153,7 @@
     "badRequest": "This didn't work.",
     "invalidCredentials": "We don't recognize you.",
     "clipboard": "Failed to copy to clipboard.",
-    "alreadyInitialized": "You have already initialized your Vault."
+    "alreadyInitialized": "You have already initialized your Vault.",
+    "invalidRecoveryKey": "Invalid recovery key."
   }
 }

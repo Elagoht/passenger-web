@@ -26,6 +26,7 @@ const GeneratePassphraseButton: FC<GeneratePassphraseButtonProps> = ({
     <Button
       variant="gradient"
       color="info"
+      size="small"
       icon={dices[dice]}
       onClick={async () => {
         await getGeneratedPassphrase()

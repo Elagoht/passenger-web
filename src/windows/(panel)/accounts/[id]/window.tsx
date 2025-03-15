@@ -79,7 +79,7 @@ const AccountDetailsWindow: FC = () => {
 
         <Paragraph>{dict.windows.accountDetails.description}</Paragraph>
 
-        <AccountEditForm {...account} />
+        <AccountEditForm {...account} icon={null} />
       </div>
 
       <div className="flex flex-col gap-4 h-full">

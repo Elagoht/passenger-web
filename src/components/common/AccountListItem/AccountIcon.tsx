@@ -1,19 +1,12 @@
-import { FC, useCallback, useState } from "react";
+import { FC, useState } from "react";
 import { Link } from "react-router-dom";
+import Yarn from "../../../utilities/Yarn";
 
 const AccountIcon: FC<Pick<AccountCard, "icon" | "platform" | "url">> = ({
   icon,
   platform,
   url,
 }) => {
-  const getInitials = useCallback((name: string): string => {
-    return name
-      .split(" ")
-      .map((n) => n[0].toUpperCase())
-      .slice(0, 2)
-      .join("");
-  }, []);
-
   const [iconToDisplay, setIconToDisplay] = useState<string | null>(null);
 
   return (
@@ -23,7 +16,7 @@ const AccountIcon: FC<Pick<AccountCard, "icon" | "platform" | "url">> = ({
           src={icon}
           alt={platform}
           className="w-12 h-12 shrink-0 rounded-full"
-          onError={() => setIconToDisplay(getInitials(platform))}
+          onError={() => setIconToDisplay(Yarn.getInitials(platform))}
         />
       ) : (
         <div
@@ -31,7 +24,7 @@ const AccountIcon: FC<Pick<AccountCard, "icon" | "platform" | "url">> = ({
           dark:bg-night-900 text-night-100 dark:text-day-900
           flex items-center justify-center font-semibold text-2xl"
         >
-          {getInitials(platform)}
+          {Yarn.getInitials(platform)}
         </div>
       )}
     </Link>

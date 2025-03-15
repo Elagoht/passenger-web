@@ -20,6 +20,7 @@ const ManipulatePassphraseButton: FC<ManipulatePassphraseButtonProps> = ({
     <Button
       variant="gradient"
       color="warning"
+      size="small"
       icon={IconRefresh}
       onClick={async () => {
         if (input.length === 0) return;

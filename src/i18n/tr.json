@@ -153,6 +153,7 @@
     "badRequest": "Çalışmış gibi görünmüyor.",
     "invalidCredentials": "Sizi tanıyamadık.",
     "clipboard": "Kopyalama işlemi başarısız oldu.",
-    "alreadyInitialized": "Kasanız zaten oluşturuldu."
+    "alreadyInitialized": "Kasanız zaten oluşturuldu.",
+    "invalidRecoveryKey": "Geçersiz kurtarma anahtarı."
   }
 }

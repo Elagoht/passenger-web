@@ -13,6 +13,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     | "danger"
     | "info"
     | "neutral";
+  size?: "small" | "medium" | "large";
   children: React.ReactNode;
   className?: string;
   icon?: React.ForwardRefExoticComponent<IconProps & React.RefAttributes<Icon>>;
@@ -21,6 +22,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 const Button = ({
   variant = "solid",
   color = "primary",
+  size = "medium",
   children,
   className,
   disabled,
@@ -34,6 +36,7 @@ const Button = ({
     <button
       className={classNames(
         baseStyles,
+        sizeStyles[size],
         variantStyles[variant][color],
         className,
       )}
@@ -45,14 +48,29 @@ const Button = ({
 
       {icon &&
         createElement(icon, {
-          className: "absolute right-4 top-1/2 -translate-y-1/2",
+          className: classNames(
+            iconSizeStyles[size],
+            "absolute top-1/2 -translate-y-1/2",
+          ),
         })}
     </button>
   );
 };
 
 const baseStyles =
-  "px-4 py-3 relative rounded-full font-semibold transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed hover:brightness-110";
+  "relative rounded-full font-semibold transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed hover:brightness-110";
+
+const sizeStyles = {
+  small: "px-2 py-1",
+  medium: "px-4 py-3",
+  large: "px-6 py-4",
+};
+
+const iconSizeStyles = {
+  small: "w-4 h-4 right-2",
+  medium: "w-6 h-6 right-3",
+  large: "w-8 h-8 right-4",
+};
 
 const variantStyles = {
   solid: {

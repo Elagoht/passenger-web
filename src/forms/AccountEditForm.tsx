@@ -1,6 +1,6 @@
 import {
   IconBadgeTm,
-  IconFavicon,
+  IconDeviceFloppy,
   IconLink,
   IconLock,
   IconUser,
@@ -8,6 +8,7 @@ import {
 import { Formik } from "formik";
 import { FC } from "react";
 import { Form } from "react-router";
+import FaviconPreview from "../components/common/FaviconPreview";
 import PassphraseGenerators from "../components/common/PassphraseGenerators";
 import Button from "../components/ui/Button";
 import { Input } from "../components/ui/Input";
@@ -32,18 +33,19 @@ const AccountEditForm: FC<RequestAccountEdit> = (props) => {
             name="identity"
           />
 
-          <Input
-            icon={IconFavicon}
-            label={dict.windows.accountDetails.edit.form.icon}
-            name="icon"
-          />
-
-          <Input
-            type=""
-            icon={IconLink}
-            label={dict.windows.accountDetails.edit.form.url}
-            name="url"
-          />
+          <FaviconPreview
+            url={values.url}
+            icon={values.icon || null}
+            initialIcon={props.icon || null}
+            setIcon={(icon) => setFieldValue("icon", icon)}
+          >
+            <Input
+              type="url"
+              icon={IconLink}
+              label={dict.windows.accountDetails.edit.form.url}
+              name="url"
+            />
+          </FaviconPreview>
 
           <Input
             type="password"
@@ -57,7 +59,7 @@ const AccountEditForm: FC<RequestAccountEdit> = (props) => {
             onChange={(passphrase) => setFieldValue("passphrase", passphrase)}
           />
 
-          <Button type="submit">
+          <Button type="submit" icon={IconDeviceFloppy}>
             {dict.windows.accountDetails.edit.form.save}
           </Button>
         </Form>

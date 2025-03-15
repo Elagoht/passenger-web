@@ -2,7 +2,7 @@ type AccountCard = {
   id: string;
   platform: string;
   identity: string;
-  icon: string;
+  icon: string | null;
   tags: Tag[];
   url: string;
 };
@@ -11,7 +11,7 @@ type Account = {
   id: string;
   platform: string;
   identity: string;
-  icon: string;
+  icon: string | null;
   tags: Tag[];
   url: string;
   note: string;
@@ -22,7 +22,7 @@ type Account = {
 type RequestAccountEdit = Partial<{
   platform: string;
   identity: string;
-  icon: string;
+  icon: string | null;
   url: string;
   note: string;
   passphrase: string;
