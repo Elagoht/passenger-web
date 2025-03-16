@@ -1,14 +1,14 @@
 import { IconLoader } from "@tabler/icons-react";
 import { FC, useEffect, useState } from "react";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
-import Container from "../../../../components/layout/Container";
-import { Paragraph, Title } from "../../../../components/ui/Typography";
-import DetailsColumn from "../../../../components/windows/accounts/account-details/DetailsColumn";
-import AccountEditForm from "../../../../forms/AccountEditForm";
-import { getAccountById } from "../../../../services/accounts";
-import useAuthStore from "../../../../stores/auth";
-import useDictStore from "../../../../stores/dict";
-import toastError from "../../../../utilities/ToastError";
+import Container from "../../../../../components/layout/Container";
+import { Paragraph, Title } from "../../../../../components/ui/Typography";
+import DetailsColumn from "../../../../../components/windows/accounts/account-details/DetailsColumn";
+import AccountForm from "../../../../../forms/AccountForm";
+import { getAccountById } from "../../../../../services/accounts";
+import useAuthStore from "../../../../../stores/auth";
+import useDictStore from "../../../../../stores/dict";
+import toastError from "../../../../../utilities/ToastError";
 
 const AccountDetailsWindow: FC = () => {
   const { id } = useParams();
@@ -31,7 +31,7 @@ const AccountDetailsWindow: FC = () => {
       .finally(() => setIsLoading(false));
   }, [id, navigate, token, dict]);
 
-  if (!id || !account) return <Navigate to="/accounts" />;
+  if (!id) return <Navigate to="/accounts" />;
 
   if (isLoading)
     return (
@@ -47,14 +47,26 @@ const AccountDetailsWindow: FC = () => {
 
         <Paragraph>{dict.windows.accountDetails.description}</Paragraph>
 
-        <AccountEditForm {...account} icon={null} />
+        <AccountForm
+          mode="edit"
+          initialValues={{
+            icon: account?.icon,
+            id: account?.id,
+            identity: account?.identity,
+            note: account?.note,
+            platform: account?.platform,
+            url: account?.url,
+          }}
+        />
       </div>
 
-      <DetailsColumn
-        id={account.id}
-        copiedCount={account.copiedCount}
-        lastCopiedAt={account.lastCopiedAt}
-      />
+      {account && (
+        <DetailsColumn
+          id={account.id}
+          copiedCount={account.copiedCount}
+          lastCopiedAt={account.lastCopiedAt}
+        />
+      )}
     </Container>
   );
 };

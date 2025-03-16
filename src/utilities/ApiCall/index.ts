@@ -15,7 +15,10 @@ class ApiHandler {
   ): Promise<TResponse> {
     const response = await fetch(`${this.baseUrl}${endpoint}`, {
       method,
-      headers: { "Content-Type": "application/json", ...headers },
+      headers: {
+        "Content-Type": "application/json",
+        ...headers,
+      },
       body: body ? JSON.stringify(body) : undefined,
     });
 

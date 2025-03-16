@@ -68,12 +68,28 @@
       "continue": "Continue"
     },
     "accounts": {
+      "fab": {
+        "add": "Add Account"
+      },
       "notFound": "No accounts found. Add one to get started.",
       "gridButtons": {
         "lists": "Lists",
         "tags": "Tags",
         "panic": "Panic"
       }
+    },
+    "addAccount": {
+      "title": "Add Account",
+      "form": {
+        "platform": "Platform",
+        "identity": "Identity",
+        "icon": "Icon",
+        "url": "URL",
+        "note": "Note",
+        "passphrase": "Passphrase",
+        "save": "Save"
+      },
+      "success": "New account added."
     },
     "accountDetails": {
       "title": "Account Details",

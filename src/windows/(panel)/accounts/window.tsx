@@ -1,7 +1,15 @@
-import { IconList, IconLoader, IconTag, IconUrgent } from "@tabler/icons-react";
+import {
+  IconList,
+  IconLoader,
+  IconPlus,
+  IconTag,
+  IconUrgent,
+} from "@tabler/icons-react";
 import { FC, useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import AccountListItem from "../../../components/common/AccountListItem";
 import Container from "../../../components/layout/Container";
+import FAB from "../../../components/ui/FAB";
 import { Paragraph } from "../../../components/ui/Typography";
 import FeatureButton from "../../../components/windows/accounts/FeatureButton";
 import SearchAccountsForm from "../../../forms/SearchAccountsForm";
@@ -12,6 +20,8 @@ import useDictStore from "../../../stores/dict";
 const AccountsWindow: FC = () => {
   const { token } = useAuthStore();
   const { dict } = useDictStore();
+
+  const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [accounts, setAccounts] = useState<AccountCard[]>([]);
@@ -55,6 +65,13 @@ const AccountsWindow: FC = () => {
           ))}
         </div>
       )}
+
+      <FAB
+        icon={IconPlus}
+        label={dict.windows.accounts.fab.add}
+        color="secondary"
+        onClick={() => navigate("/accounts/add")}
+      />
     </Container>
   );
 };

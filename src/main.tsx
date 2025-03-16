@@ -8,6 +8,6 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <App />
 
-    <Toaster />
+    <Toaster position="bottom-right" />
   </StrictMode>,
 );

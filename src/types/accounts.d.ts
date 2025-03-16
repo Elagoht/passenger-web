@@ -19,7 +19,16 @@ type Account = {
   lastCopiedAt: string;
 };
 
+type RequestAccountAdd = {
+  platform: string;
+  identity: string;
+  icon: string | null;
+  url: string;
+  note: string;
+  passphrase: string;
+};
 type RequestAccountEdit = Partial<{
+  id: string;
   platform: string;
   identity: string;
   icon: string | null;

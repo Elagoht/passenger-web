@@ -68,12 +68,28 @@
       "continue": "Devam Et"
     },
     "accounts": {
+      "fab": {
+        "add": "Hesap Ekle"
+      },
       "notFound": "Hesap bulunamadı. Bir tane ekleyin.",
       "gridButtons": {
         "lists": "Listeler",
         "tags": "Etiketler",
         "panic": "Panik"
       }
+    },
+    "addAccount": {
+      "title": "Hesap Ekle",
+      "form": {
+        "platform": "Platform",
+        "identity": "Kimlik",
+        "icon": "Simge",
+        "url": "URL",
+        "note": "Not",
+        "passphrase": "Parola",
+        "save": "Kaydet"
+      },
+      "success": "Yeni hesap eklendi."
     },
     "accountDetails": {
       "title": "Hesap Ayrıntıları",

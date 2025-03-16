@@ -18,3 +18,23 @@ export const getAccountPassphrase = async (token: string, id: string) => {
     { Authorization: `Bearer ${token}` },
   );
 };
+
+export const postAccountAdd = async (
+  token: string,
+  data: RequestAccountAdd,
+) => {
+  return await apiCall.post<void>("/accounts", data, {
+    Authorization: `Bearer ${token}`,
+  });
+};
+
+export const postAccountUpdate = async (
+  token: string,
+  data: RequestAccountEdit,
+) => {
+  return await apiCall.patch<void>(
+    `/accounts/${data.id}`,
+    { ...data, id: undefined },
+    { Authorization: `Bearer ${token}` },
+  );
+};
