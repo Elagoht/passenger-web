@@ -48,7 +48,7 @@ const AccountForm: FC<AccountFormProps> = ({
       validationSchema={mode === "add" ? createAccountSchema(dict) : undefined}
     >
       {({ values, setFieldValue }) => (
-        <Form className="flex flex-col gap-4 w-full mt-6">
+        <Form autoComplete="off" className="flex flex-col gap-4 w-full mt-6">
           <Input
             icon={IconBadgeTm}
             label={dict.windows.accountDetails.edit.form.platform}
@@ -71,6 +71,8 @@ const AccountForm: FC<AccountFormProps> = ({
             icon={IconKey}
             type="password"
             name="passphrase"
+            autoComplete="off"
+            autoSave="off"
             label={
               mode === "edit"
                 ? dict.windows.accountDetails.edit.form.passphrase
@@ -78,7 +80,14 @@ const AccountForm: FC<AccountFormProps> = ({
             }
           />
 
-          <StrengthMeter passphrase={values.passphrase || ""} />
+          <StrengthMeter
+            passphrase={values.passphrase || ""}
+            wantedFeedback={
+              mode === "add" ||
+              (mode === "edit" &&
+                initialValues.passphrase !== values.passphrase)
+            }
+          />
 
           <PassphraseGenerators
             input={values.passphrase || ""}

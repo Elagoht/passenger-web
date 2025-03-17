@@ -162,6 +162,19 @@
     "generate": "Generate",
     "alternate": "Alternate"
   },
+  "strength": {
+    "checks": {
+      "numbers": "Add numbers for stronger password",
+      "uppercase": "Add uppercase letters for stronger password",
+      "lowercase": "Add lowercase letters for stronger password",
+      "special": "Add special characters for stronger password",
+      "length": "Add more characters for stronger password",
+      "sequential": "Avoid sequential characters",
+      "repeated": "Avoid repeating characters",
+      "minLength": "Password must be at least {{minLength}} characters long",
+      "strong": "Password is strong"
+    }
+  },
   "errors": {
     "unexpected": "An unexpected error occurred. Please try again later.",
     "badRequest": "This didn't work.",

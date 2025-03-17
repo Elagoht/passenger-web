@@ -2,53 +2,61 @@ export class Strength {
   private static readonly MIN_LENGTH = 8;
   private static readonly MAX_SCORE = 100;
   private static readonly MIN_VALID_SCORE = 60;
+  private readonly dict: Dict;
+  private readonly CHECKS: StrengthCheck[];
 
-  private static readonly CHECKS: readonly StrengthCheck[] = [
-    {
-      check: (pass: string) => !/\d/.test(pass),
-      penalty: 20,
-      message: "Add numbers for stronger password",
-    },
-    {
-      check: (pass: string) => !/[A-Z]/.test(pass),
-      penalty: 20,
-      message: "Add uppercase letters for stronger password",
-    },
-    {
-      check: (pass: string) => !/[a-z]/.test(pass),
-      penalty: 20,
-      message: "Add lowercase letters for stronger password",
-    },
-    {
-      check: (pass: string) => !/[!@#$%^&*(),.?":{}|<>]/.test(pass),
-      penalty: 20,
-      message: "Add special characters for stronger password",
-    },
-    {
-      check: (pass: string) => Strength.checkRepeatedCharacters(pass),
-      penalty: 10,
-      message: "Avoid repeating characters",
-    },
-    {
-      check: (pass: string) => Strength.hasSequentialCharacters(pass),
-      penalty: 15,
-      message: "Avoid sequential characters",
-    },
-  ] as const;
+  public constructor(dict: Dict) {
+    this.dict = dict;
+    this.CHECKS = [
+      {
+        check: (pass: string) => !/\d/.test(pass),
+        penalty: 20,
+        message: this.dict.strength.checks.numbers,
+      },
+      {
+        check: (pass: string) => !/[A-Z]/.test(pass),
+        penalty: 20,
+        message: this.dict.strength.checks.uppercase,
+      },
+      {
+        check: (pass: string) => !/[a-z]/.test(pass),
+        penalty: 20,
+        message: this.dict.strength.checks.lowercase,
+      },
+      {
+        check: (pass: string) => !/[!@#$%^&*(),.?":{}|<>]/.test(pass),
+        penalty: 20,
+        message: this.dict.strength.checks.special,
+      },
+      {
+        check: (pass: string) => Strength.checkRepeatedCharacters(pass),
+        penalty: 10,
+        message: this.dict.strength.checks.repeated,
+      },
+      {
+        check: (pass: string) => Strength.hasSequentialCharacters(pass),
+        penalty: 15,
+        message: this.dict.strength.checks.sequential,
+      },
+    ];
+  }
 
-  static evaluate(passphrase: string): StrengthResult {
+  public evaluate(passphrase: string): StrengthResult {
     // Basic length check
-    if (passphrase.length < this.MIN_LENGTH) {
+    if (passphrase.length < Strength.MIN_LENGTH) {
       return {
         score: 0,
         isValid: false,
         feedback: [
-          `Password must be at least ${this.MIN_LENGTH} characters long`,
+          this.dict.strength.checks.minLength.replace(
+            "{{minLength}}",
+            Strength.MIN_LENGTH.toString(),
+          ),
         ],
       };
     }
 
-    let score = this.MAX_SCORE;
+    let score = Strength.MAX_SCORE;
     const feedback: string[] = [];
 
     // Run all checks
@@ -59,12 +67,12 @@ export class Strength {
       }
     }
 
-    score = this.normalizeScore(score);
+    score = Strength.normalizeScore(score);
 
     return {
       score,
-      isValid: score >= this.MIN_VALID_SCORE,
-      feedback: feedback.length ? feedback : ["Password is strong"],
+      isValid: score >= Strength.MIN_VALID_SCORE,
+      feedback: feedback.length ? feedback : [this.dict.strength.checks.strong],
     };
   }
 

@@ -162,6 +162,19 @@
     "generate": "Oluştur",
     "alternate": "Değiştir"
   },
+  "strength": {
+    "checks": {
+      "numbers": "Daha güçlü parola için sayılar ekleyin",
+      "uppercase": "Daha güçlü parola için büyük harfler ekleyin",
+      "lowercase": "Daha güçlü parola için küçük harfler ekleyin",
+      "special": "Daha güçlü parola için özel karakterler ekleyin",
+      "length": "Daha güçlü parola için daha fazla karakter ekleyin",
+      "sequential": "Sıralı karakterleri kaçının",
+      "repeated": "Tekrar eden karakterleri kaçının",
+      "minLength": "Parola en az {{minLength}} karakter olmalı",
+      "strong": "Parola güçlü"
+    }
+  },
   "errors": {
     "unexpected": "Bir beklenmedik hata oluştu. Lütfen daha sonra tekrar deneyiniz.",
     "badRequest": "Çalışmış gibi görünmüyor.",
