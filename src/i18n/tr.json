@@ -95,7 +95,7 @@
       "details": {
         "timesAccessed": "Erişim Sayısı",
         "lastAccessedAt": "Son Erişim Tarihi",
-        "strengthGraph": "Güç Grafiği"
+        "strengthGraph": "Zamana Göre Güç"
       },
       "edit": {
         "form": {

@@ -5,9 +5,9 @@ import { Navigate, useNavigate, useParams } from "react-router-dom";
 import Container from "../../../../../components/layout/Container";
 import { Paragraph, Title } from "../../../../../components/ui/Typography";
 import { DetailPill } from "../../../../../components/windows/accounts/account-details/DetailPill";
-import DetailsColumn from "../../../../../components/windows/accounts/account-details/DetailsColumn";
 import AccountForm from "../../../../../forms/AccountForm";
 import { getAccountById } from "../../../../../services/accounts";
+import { getStrengthGraphOfAccount } from "../../../../../services/stats";
 import useAuthStore from "../../../../../stores/auth";
 import useDictStore from "../../../../../stores/dict";
 import toastError from "../../../../../utilities/ToastError";
@@ -32,6 +32,15 @@ const AccountDetailsWindow: FC = () => {
       .catch((error) => toastError(error, dict))
       .finally(() => setIsLoading(false));
   }, [id, navigate, token, dict]);
+
+  const [strengthGraph, setStrengthGraph] = useState<StrengthGraph>();
+
+  useEffect(() => {
+    if (!id) return;
+    getStrengthGraphOfAccount(token, id)
+      .then((graph) => setStrengthGraph(graph))
+      .catch((error) => toastError(error, dict));
+  }, [id, token, dict]);
 
   if (!id) return <Navigate to="/accounts" />;
 
@@ -80,27 +89,22 @@ const AccountDetailsWindow: FC = () => {
         </div>
       </Container>
 
-      <Container className="grid grid-cols-1 xl:grid-cols-2 gap-8 justify-start">
-        <div className="flex flex-col gap-4 h-full">
-          <AccountForm
-            onSubmitSuccess={() => {
-              toast.success(dict.windows.accountDetails.success);
-              navigate("/accounts");
-            }}
-            mode="edit"
-            initialValues={{
-              id: account?.id,
-              identity: account?.identity,
-              note: account?.note,
-              platform: account?.platform,
-              url: account?.url,
-              passphrase: account?.passphrase,
-            }}
-          />
-        </div>
-
-        {account && <DetailsColumn id={account.id} />}
-      </Container>
+      <AccountForm
+        onSubmitSuccess={() => {
+          toast.success(dict.windows.accountDetails.success);
+          navigate("/accounts");
+        }}
+        mode="edit"
+        strengthGraph={strengthGraph}
+        initialValues={{
+          id: account?.id,
+          identity: account?.identity,
+          note: account?.note,
+          platform: account?.platform,
+          url: account?.url,
+          passphrase: account?.passphrase,
+        }}
+      />
     </section>
   );
 };

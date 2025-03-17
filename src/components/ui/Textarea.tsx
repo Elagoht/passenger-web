@@ -1,9 +1,10 @@
-import { Icon, IconEye, IconEyeOff, IconProps } from "@tabler/icons-react";
+import { Icon, IconProps } from "@tabler/icons-react";
 import classNames from "classnames";
 import { FieldHookConfig, useField } from "formik";
-import React, { createElement, FC, useState } from "react";
+import React, { createElement, FC } from "react";
 
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+interface TextareaProps
+  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   label?: string;
   error?: string;
   name: string;
@@ -11,7 +12,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   icon?: React.ForwardRefExoticComponent<IconProps & React.RefAttributes<Icon>>;
 }
 
-export const Input: FC<InputProps> = ({
+export const Textarea: FC<TextareaProps> = ({
   label,
   error,
   className,
@@ -19,8 +20,6 @@ export const Input: FC<InputProps> = ({
   icon,
   ...props
 }) => {
-  const [showPassword, setShowPassword] = useState(props.type !== "password");
-
   const [field, meta] = useField(props as FieldHookConfig<string>);
 
   // Use a fallback for meta when not standalone
@@ -39,24 +38,18 @@ export const Input: FC<InputProps> = ({
       )}
 
       <div className="relative">
-        <input
+        <textarea
+          style={props.style}
           {...(standalone ? field : props)}
-          type={
-            props.type === "password"
-              ? showPassword
-                ? "text"
-                : "password"
-              : props.type
-          }
           className={classNames(
             "w-full min-w-0 px-4 py-2 min-w-none rounded-2xl",
             "bg-day-100 dark:bg-night-400",
             "text-night-900 dark:text-day-200 transition-all",
             "outline-none focus:ring-2 ring-dream-600",
+            "resize-y min-h-32",
             className,
             {
               "pl-12": icon,
-              "pr-12": props.type === "password",
               "border-red-500 focus:border-red-500 focus:ring-red-500":
                 showError,
             },
@@ -64,21 +57,11 @@ export const Input: FC<InputProps> = ({
         />
 
         {icon && (
-          <div className="absolute inset-y-0 left-4 flex items-center">
+          <div className="absolute top-4 left-4">
             {createElement(icon, {
               size: 24,
             })}
           </div>
-        )}
-
-        {props.type === "password" && (
-          <button
-            type="button"
-            className="absolute inset-y-0 right-4 flex items-center"
-            onClick={() => setShowPassword(!showPassword)}
-          >
-            {showPassword ? <IconEyeOff /> : <IconEye />}
-          </button>
         )}
       </div>
 

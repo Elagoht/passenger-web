@@ -95,7 +95,7 @@
       "details": {
         "timesAccessed": "Times Accessed",
         "lastAccessedAt": "Last Accessed At",
-        "strengthGraph": "Strength Graph"
+        "strengthGraph": "Strength Over Time"
       },
       "edit": {
         "form": {
