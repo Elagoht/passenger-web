@@ -12,6 +12,7 @@ import Container from "../../../components/layout/Container";
 import FAB from "../../../components/ui/FAB";
 import { Paragraph } from "../../../components/ui/Typography";
 import FeatureButton from "../../../components/windows/accounts/FeatureButton";
+import TagsModal from "../../../components/windows/accounts/TagsModal";
 import SearchAccountsForm from "../../../forms/SearchAccountsForm";
 import { getAccounts } from "../../../services/accounts";
 import useAuthStore from "../../../stores/auth";
@@ -25,7 +26,7 @@ const AccountsWindow: FC = () => {
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [accounts, setAccounts] = useState<AccountCard[]>([]);
-
+  const [isTagsModalOpen, setIsTagsModalOpen] = useState<boolean>(false);
   useEffect(() => {
     setIsLoading(true);
 
@@ -51,7 +52,7 @@ const AccountsWindow: FC = () => {
       <SearchAccountsForm />
 
       <div className="flex md:gap-4 gap-2 w-full">
-        {getButtons(dict).map((button) => (
+        {getButtons(dict, () => setIsTagsModalOpen(true)).map((button) => (
           <FeatureButton key={button.title} {...button} />
         ))}
       </div>
@@ -71,11 +72,16 @@ const AccountsWindow: FC = () => {
         color="secondary"
         onClick={() => navigate("/accounts/add")}
       />
+
+      <TagsModal
+        isOpen={isTagsModalOpen}
+        onClose={() => setIsTagsModalOpen(false)}
+      />
     </Container>
   );
 };
 
-const getButtons = (dict: Dict) => {
+const getButtons = (dict: Dict, openTagsModal: () => void) => {
   return [
     {
       title: dict.windows.accounts.gridButtons.lists,
@@ -89,7 +95,7 @@ const getButtons = (dict: Dict) => {
       icon: IconTag,
       className:
         "border-dream-500 bg-dream-500 text-dream-900 dark:text-dream-500",
-      onClick: () => {},
+      onClick: openTagsModal,
     },
     {
       title: dict.windows.accounts.gridButtons.panic,
