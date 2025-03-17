@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-const TagBadge: FC<Pick<TagBadge, "color" | "icon">> = ({ color, icon }) => {
+const TagBadge: FC<Pick<Tag, "color" | "icon">> = ({ color, icon }) => {
   return (
     <div
       className="grid place-items-center gap-2 w-7 h-7 rounded-md"
