@@ -24,7 +24,7 @@ const GeneratePassphraseButton: FC<GeneratePassphraseButtonProps> = ({
 
   return (
     <Button
-      variant="outlined"
+      variant="text"
       color="info"
       size="small"
       icon={dices[dice]}

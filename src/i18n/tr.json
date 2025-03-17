@@ -68,9 +68,6 @@
       "continue": "Devam Et"
     },
     "accounts": {
-      "fab": {
-        "add": "Hesap Ekle"
-      },
       "notFound": "Hesap bulunamadı. Bir tane ekleyin.",
       "gridButtons": {
         "lists": "Listeler",
@@ -94,9 +91,10 @@
     "accountDetails": {
       "title": "Hesap Ayrıntıları",
       "description": "Hesabınızın ayrıntıları burada yatıyor.",
+      "success": "Hesap güncellendi.",
       "details": {
-        "timesCopied": "Kopyalanma Sayısı",
-        "lastCopiedAt": "Son Kopyalanma Tarihi",
+        "timesAccessed": "Erişim Sayısı",
+        "lastAccessedAt": "Son Erişim Tarihi",
         "strengthGraph": "Güç Grafiği"
       },
       "edit": {

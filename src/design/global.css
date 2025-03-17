@@ -33,3 +33,18 @@
     opacity: 1;
   }
 }
+
+.raise-graph {
+  animation: raise-graph 0.3s ease-in-out;
+  @apply origin-bottom;
+}
+
+@keyframes raise-graph {
+  from {
+    transform: scaleY(0%);
+  }
+
+  to {
+    transform: scaleY(100%);
+  }
+}

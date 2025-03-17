@@ -4,7 +4,7 @@ import { createElement, FC } from "react";
 
 type FABProps = {
   icon: React.ForwardRefExoticComponent<IconProps & React.RefAttributes<Icon>>;
-  label: string;
+  label?: string;
   color: "primary" | "secondary" | "neutral";
   onClick: () => void;
 };
@@ -13,15 +13,15 @@ const FAB: FC<FABProps> = ({ icon, label, color, onClick }) => {
   return (
     <button
       className={classNames(
-        "flex items-center justify-center rounded-full p-2 shadow-md",
-        "fixed sm:bottom-4 bottom-20 right-4 gap-2",
+        "flex items-center justify-center rounded-full p-2",
+        "fixed md:bottom-6 md:right-6 bottom-16 right-2 gap-2",
         colors[color],
       )}
       onClick={onClick}
     >
       {createElement(icon, { size: 32 })}
 
-      <span className="text-sm font-medium">{label}</span>
+      {label && <span className="text-sm font-medium">{label}</span>}
     </button>
   );
 };

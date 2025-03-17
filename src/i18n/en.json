@@ -68,9 +68,6 @@
       "continue": "Continue"
     },
     "accounts": {
-      "fab": {
-        "add": "Add Account"
-      },
       "notFound": "No accounts found. Add one to get started.",
       "gridButtons": {
         "lists": "Lists",
@@ -94,9 +91,10 @@
     "accountDetails": {
       "title": "Account Details",
       "description": "Here lies the details of your account.",
+      "success": "Account updated.",
       "details": {
-        "timesCopied": "Times Copied",
-        "lastCopiedAt": "Last Copied At",
+        "timesAccessed": "Times Accessed",
+        "lastAccessedAt": "Last Accessed At",
         "strengthGraph": "Strength Graph"
       },
       "edit": {

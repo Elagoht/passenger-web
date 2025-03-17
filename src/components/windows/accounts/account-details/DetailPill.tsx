@@ -1,5 +1,4 @@
 import { FC } from "react";
-import Box from "../../../ui/Box";
 
 type DetailPillProps = {
   title: string;
@@ -8,10 +7,13 @@ type DetailPillProps = {
 
 export const DetailPill: FC<DetailPillProps> = ({ title, content }) => {
   return (
-    <Box padding="sm" className="text-center">
+    <div
+      className="text-center flex flex-col gap-1 bg-day-100
+      dark:bg-night-800 rounded-lg p-2"
+    >
       <strong>{title}</strong>
 
       <span>{content}</span>
-    </Box>
+    </div>
   );
 };

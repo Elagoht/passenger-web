@@ -27,10 +27,11 @@ const MainButton: FC = () => {
           }
         }}
         className={classNames(
-          "rounded-full p-4 -m-4 shadow-inner bg-gradient-to-t",
-          "from-cream-500 to-cream-300 text-cream-700",
-          "transition-all duration-300",
-          { grayscale: !isActive },
+          "rounded-full p-3 -m-3 transition-all duration-300",
+          {
+            "bg-cream-500 text-cream-900 dark:text-cream-100": isActive,
+            "bg-dream-500 text-dream-900 dark:text-dream-100": !isActive,
+          },
         )}
       >
         {createElement(getIcon(isActive, isOnTop), {

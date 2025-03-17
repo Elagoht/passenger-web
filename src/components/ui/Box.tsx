@@ -6,7 +6,6 @@ type BoxProps = PropsWithChildren<{
   color: "default" | "inverted" | "cream" | "dream";
   padding: "none" | "sm" | "md" | "lg" | "xl";
   rounded: "none" | "sm" | "md" | "lg" | "xl" | "full";
-  shadow: "inner" | "outer" | "none";
   className?: string;
   orientation?: "horizontal" | "vertical";
 }>;
@@ -14,7 +13,6 @@ type BoxProps = PropsWithChildren<{
 const Box: FC<Partial<BoxProps>> = ({
   children,
   shade = 100,
-  shadow = "inner",
   color = "default",
   padding = "md",
   rounded = "xl",
@@ -29,7 +27,6 @@ const Box: FC<Partial<BoxProps>> = ({
         paddingClasses[padding],
         roundedClasses[rounded],
         orientationClasses[orientation],
-        shadowClasses[shadow][color],
         className,
       )}
     >
@@ -75,30 +72,6 @@ const colorClasses: Record<
     700: "bg-dream-700 dark:bg-dream-300 text-dream-300 dark:text-dream-700",
     800: "bg-dream-800 dark:bg-dream-200 text-dream-200 dark:text-dream-800",
     900: "bg-dream-900 dark:bg-dream-100 text-dream-100 dark:text-dream-900",
-  },
-};
-
-const shadowClasses: Record<
-  BoxProps["shadow"],
-  Record<BoxProps["color"], string>
-> = {
-  inner: {
-    default: "shadow-inner shadow-day-400 dark:shadow-night-300",
-    inverted: "shadow-inner shadow-night-400 dark:shadow-day-300",
-    cream: "shadow-inner shadow-cream-400 dark:shadow-cream-300",
-    dream: "shadow-inner shadow-dream-400 dark:shadow-dream-300",
-  },
-  outer: {
-    default: "shadow-md shadow-day-400 dark:shadow-night-300",
-    inverted: "shadow-md shadow-night-400 dark:shadow-day-300",
-    cream: "shadow-md shadow-cream-400 dark:shadow-cream-300",
-    dream: "shadow-md shadow-dream-400 dark:shadow-dream-300",
-  },
-  none: {
-    default: "",
-    inverted: "",
-    cream: "",
-    dream: "",
   },
 };
 

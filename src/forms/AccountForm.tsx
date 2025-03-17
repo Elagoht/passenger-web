@@ -8,7 +8,6 @@ import {
 } from "@tabler/icons-react";
 import { Form, Formik } from "formik";
 import { FC } from "react";
-import FaviconPreview from "../components/common/FaviconPreview";
 import PassphraseGenerators from "../components/common/PassphraseGenerators";
 import Button from "../components/ui/Button";
 import { Input } from "../components/ui/Input";
@@ -37,43 +36,27 @@ const AccountForm: FC<AccountFormProps> = ({
       initialValues={initialValues ? initialValues : defaultValues}
       onSubmit={async (values, { setSubmitting }) => {
         (mode === "edit"
-          ? postAccountUpdate(token, {
-              ...values,
-              id: initialValues?.id,
-            })
+          ? postAccountUpdate(token, { ...values, id: initialValues?.id })
           : postAccountAdd(token, values as RequestAccountAdd)
         )
-          .then(() => {
-            onSubmitSuccess?.();
-          })
-          .catch((error) => {
-            toastError(error, dict);
-          })
-          .finally(() => {
-            setSubmitting(false);
-          });
+          .then(() => onSubmitSuccess?.())
+          .catch((error) => toastError(error, dict))
+          .finally(() => setSubmitting(false));
       }}
     >
       {({ values, setFieldValue }) => (
-        <Form className="flex flex-col gap-4 w-full">
+        <Form className="flex flex-col gap-4 w-full mt-6">
           <Input
             icon={IconBadgeTm}
             label={dict.windows.accountDetails.edit.form.platform}
             name="platform"
           />
 
-          <FaviconPreview
-            url={values.url}
-            icon={values.icon || null}
-            initialIcon={mode === "edit" ? initialValues?.icon || null : null}
-            setIcon={(icon) => setFieldValue("icon", icon)}
-          >
-            <Input
-              icon={IconLink}
-              label={dict.windows.accountDetails.edit.form.url}
-              name="url"
-            />
-          </FaviconPreview>
+          <Input
+            icon={IconLink}
+            label={dict.windows.accountDetails.edit.form.url}
+            name="url"
+          />
 
           <Input
             icon={IconUser}
@@ -103,10 +86,7 @@ const AccountForm: FC<AccountFormProps> = ({
             label={dict.windows.addAccount.form.note}
           />
 
-          <Button
-            type="submit"
-            icon={mode === "edit" ? IconDeviceFloppy : undefined}
-          >
+          <Button type="submit" icon={IconDeviceFloppy}>
             {mode === "edit"
               ? dict.windows.accountDetails.edit.form.save
               : dict.windows.addAccount.form.save}
@@ -120,7 +100,6 @@ const AccountForm: FC<AccountFormProps> = ({
 const defaultValues: RequestAccountAdd = {
   platform: "",
   identity: "",
-  icon: null,
   url: "",
   note: "",
   passphrase: "",

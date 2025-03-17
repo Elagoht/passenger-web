@@ -22,7 +22,7 @@ const AccountPassphraseCopier: FC<Pick<AccountCard, "id">> = ({ id }) => {
   };
 
   return (
-    <button className="p-2 rounded-full" onClick={handleCopy}>
+    <button className="shrink-0 p-2 rounded-full" onClick={handleCopy}>
       {copied ? <IconCheck size={24} /> : <IconCopy size={24} />}
     </button>
   );

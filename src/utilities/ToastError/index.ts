@@ -1,13 +1,24 @@
 import toast from "react-hot-toast";
+import useAuthStore from "../../stores/auth";
 
 function toastError(
   error: HttpError,
   dict: Dict,
   handlers?: ToastErrorHandlers,
 ) {
+  if (!error.data) {
+    toast.error(dict.errors.unexpected);
+    return;
+  }
+
+  const { logout } = useAuthStore.getState();
+
   const defaultHandlers: ToastErrorHandlers = {
     400: () => toast.error(dict.errors.unexpected),
-    401: () => toast.error(dict.errors.invalidCredentials),
+    401: () => {
+      toast.error(dict.errors.invalidCredentials);
+      logout();
+    },
   };
 
   if (handlers?.[error.status]) {

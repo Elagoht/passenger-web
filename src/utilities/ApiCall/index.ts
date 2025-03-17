@@ -29,6 +29,10 @@ class ApiHandler {
       } as const;
     }
 
+    if (response.headers.get("content-length") === "0") {
+      return {} as TResponse;
+    }
+
     return response.json() as Promise<TResponse>;
   }
 

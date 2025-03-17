@@ -6,13 +6,11 @@ const StrengthGraphBar: FC<StrengthGraphEntry> = ({ date, strength }) => {
 
   return (
     <div className="flex flex-col gap-2 items-center">
-      <div
-        className="w-6 h-full flex items-end outline-2 outline-dashed
-        outline-day-300 dark:outline-night-300 rounded-lg"
-      >
+      <div className="w-6 h-full flex items-end bg-day-400 dark:bg-night-200 rounded-lg">
         <div
           className="w-full bg-gradient-to-t from-dream-700 to-dream-500
-          rounded-lg text-xs text-dream-100 text-center p-1"
+          flex items-start pt-1 justify-center rounded-lg text-xs text-dream-100
+          text-center transition-all raise-graph"
           style={{ height: `${strength}%` }}
         >
           {strength}

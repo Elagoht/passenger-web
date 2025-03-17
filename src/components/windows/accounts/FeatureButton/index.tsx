@@ -18,7 +18,8 @@ const FeatureButton: FC<FeatureButtonProps> = ({
   return (
     <button
       className={classNames(
-        "rounded-lg flex flex-col items-center justify-center border-opacity-60 bg-opacity-40 p-2 border-2 w-full",
+        "flex max-md:flex-col md:gap-2 items-center justify-center",
+        "bg-opacity-40 p-2 w-full rounded-2xl",
         className,
       )}
       onClick={onClick}

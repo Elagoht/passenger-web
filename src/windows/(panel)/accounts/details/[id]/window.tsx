@@ -1,5 +1,6 @@
 import { IconLoader } from "@tabler/icons-react";
 import { FC, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import Container from "../../../../../components/layout/Container";
 import { Paragraph, Title } from "../../../../../components/ui/Typography";
@@ -48,14 +49,18 @@ const AccountDetailsWindow: FC = () => {
         <Paragraph>{dict.windows.accountDetails.description}</Paragraph>
 
         <AccountForm
+          onSubmitSuccess={() => {
+            toast.success(dict.windows.accountDetails.success);
+            navigate("/accounts");
+          }}
           mode="edit"
           initialValues={{
-            icon: account?.icon,
             id: account?.id,
             identity: account?.identity,
             note: account?.note,
             platform: account?.platform,
             url: account?.url,
+            passphrase: account?.passphrase,
           }}
         />
       </div>

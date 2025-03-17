@@ -9,21 +9,23 @@ const AccountListItem: FC<AccountCard> = ({
   platform,
   identity,
   tags,
-  icon,
   url,
 }) => {
   return (
     <li
       className="flex items-center max-w-md w-full relative gap-2 p-2
-      rounded-2xl transition-all duration-200 hover:scale-105
-      hover:text-night-50 dark:hover:text-day-100"
+      rounded-2xl transition-all duration-200 text-day-900
+      hover:text-night-100 dark:text-day-100"
     >
-      <AccountIcon icon={icon} url={url} platform={platform} />
+      <AccountIcon url={url} platform={platform} />
 
-      <Link to={`/accounts/${id}`} className="flex flex-col grow">
-        <strong className="text-lg">{platform}</strong>
+      <Link
+        to={`/accounts/details/${id}`}
+        className="flex flex-col overflow-auto grow"
+      >
+        <strong className="text-lg truncate">{platform}</strong>
 
-        <small className="text-sm">{identity}</small>
+        <small className="text-sm truncate">{identity}</small>
       </Link>
 
       <div className="flex flex-wrap gap-2 absolute top-0 right-2">

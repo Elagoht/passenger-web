@@ -47,10 +47,10 @@ const AccountsWindow: FC = () => {
   }
 
   return (
-    <Container className="flex gap-4 items-stretch !justify-start">
+    <Container className="flex md:gap-4 gap-2 items-stretch !justify-start">
       <SearchAccountsForm />
 
-      <div className="flex gap-2 w-full">
+      <div className="flex md:gap-4 gap-2 w-full">
         {getButtons(dict).map((button) => (
           <FeatureButton key={button.title} {...button} />
         ))}
@@ -68,7 +68,6 @@ const AccountsWindow: FC = () => {
 
       <FAB
         icon={IconPlus}
-        label={dict.windows.accounts.fab.add}
         color="secondary"
         onClick={() => navigate("/accounts/add")}
       />

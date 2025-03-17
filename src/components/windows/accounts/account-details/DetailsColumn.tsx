@@ -28,13 +28,13 @@ const DetailsColumn: FC<
   const details = useMemo(
     () => [
       {
-        title: dict.windows.accountDetails.details.lastCopiedAt,
+        title: dict.windows.accountDetails.details.lastAccessedAt,
         content: lastCopiedAt
           ? new Date(lastCopiedAt).toLocaleDateString(dict.meta.locale)
           : "--/--/----",
       },
       {
-        title: dict.windows.accountDetails.details.timesCopied,
+        title: dict.windows.accountDetails.details.timesAccessed,
         content: copiedCount?.toString() ?? "--",
       },
     ],
