@@ -73,6 +73,11 @@
         "lists": "Listeler",
         "tags": "Etiketler",
         "panic": "Panik"
+      },
+      "tagsModal": {
+        "title": "Etiketler",
+        "add": "Etiket Ekle",
+        "noTags": "Etiket bulunamadı. Hadi bir tane ekleyelim."
       }
     },
     "addAccount": {

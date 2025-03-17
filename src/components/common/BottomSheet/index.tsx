@@ -1,4 +1,3 @@
-import { IconX } from "@tabler/icons-react";
 import classNames from "classnames";
 import { FC, PropsWithChildren, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
@@ -7,6 +6,8 @@ type BottomSheetProps = PropsWithChildren<{
   isOpen: boolean;
   onClose: () => void;
 }>;
+
+const THRESHOLD = 80;
 
 const BottomSheet: FC<BottomSheetProps> = ({ children, isOpen, onClose }) => {
   const [dragPosition, setDragPosition] = useState(0);
@@ -42,7 +43,7 @@ const BottomSheet: FC<BottomSheetProps> = ({ children, isOpen, onClose }) => {
 
   const handleDragEnd = () => {
     setIsDragging(false);
-    if (dragPosition > 150) {
+    if (dragPosition > THRESHOLD) {
       // Threshold to close
       onClose();
     }
@@ -52,7 +53,7 @@ const BottomSheet: FC<BottomSheetProps> = ({ children, isOpen, onClose }) => {
   return createPortal(
     <div
       className={classNames(
-        "fixed inset-0 bg-black bg-opacity-50",
+        "fixed inset-0 bg-black bg-opacity-50 select-none",
         "backdrop-blur-sm transition-all duration-300 ease-in-out z-40",
         { "opacity-0 pointer-events-none": !isOpen },
       )}
@@ -80,24 +81,12 @@ const BottomSheet: FC<BottomSheetProps> = ({ children, isOpen, onClose }) => {
         <div
           className={classNames(
             "w-full relative max-w-lg bg-day-100 dark:bg-night-100",
-            "rounded-t-2xl md:rounded-2xl md:p-6 p-4",
+            "rounded-t-2xl md:rounded-2xl md:p-6 p-4 select-text",
             { "opacity-0 pointer-events-none": !isOpen },
           )}
         >
           {/* Drag handle indicator */}
-          <div
-            className="w-12 h-1 bg-gray-300 rounded-full mx-auto mb-4
-            md:hidden"
-          />
-          {/* Close button for desktop size */}
-          <button
-            onClick={onClose}
-            tabIndex={-1}
-            className="absolute top-4 right-4 text-night-100 dark:text-day-100
-            max-md:hidden"
-          >
-            <IconX />
-          </button>
+          <div className="w-12 h-1 bg-gray-300 rounded-full mx-auto mb-4" />
 
           {children}
         </div>

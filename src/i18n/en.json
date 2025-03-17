@@ -73,6 +73,11 @@
         "lists": "Lists",
         "tags": "Tags",
         "panic": "Panic"
+      },
+      "tagsModal": {
+        "title": "Tags",
+        "add": "Add Tag",
+        "noTags": "No tags found. Let's add one."
       }
     },
     "addAccount": {

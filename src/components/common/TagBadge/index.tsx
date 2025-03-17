@@ -1,12 +1,47 @@
-import { FC } from "react";
+import {
+  Icon,
+  IconBriefcase,
+  IconCamera,
+  IconDeviceGamepad,
+  IconDeviceTv,
+  IconGitFork,
+  IconHeart,
+  IconHeartHandshake,
+  IconLock,
+  IconProps,
+  IconSchool,
+  IconUrgent,
+} from "@tabler/icons-react";
+import classNames from "classnames";
+import { createElement, FC } from "react";
 
-const TagBadge: FC<Pick<Tag, "color" | "icon">> = ({ color, icon }) => {
+type TagBadgeProps = Pick<Tag, "color" | "icon"> & {
+  size?: "small" | "medium" | "large";
+  name?: Tag["name"];
+};
+
+const TagBadge: FC<TagBadgeProps> = ({
+  color,
+  icon,
+  size = "medium",
+  name,
+}) => {
   return (
-    <div
-      className="grid place-items-center gap-2 w-7 h-7 rounded-md"
-      style={{ backgroundColor: color, color: getContrastColor(color) }}
-    >
-      {tags[icon]}
+    <div className="flex flex-col items-center w-fit">
+      <div
+        className="w-fit gap-2 rounded-md p-1"
+        style={{ backgroundColor: color, color: getContrastColor(color) }}
+      >
+        {createElement(tags[icon], {
+          className: classNames({
+            "w-4 h-4": size === "small",
+            "w-6 h-6": size === "medium",
+            "w-8 h-8": size === "large",
+          }),
+        })}
+      </div>
+
+      {name && <small>{name}</small>}
     </div>
   );
 };
@@ -23,11 +58,20 @@ const getContrastColor = (color: string) => {
   return luminance > 0.5 ? "#000" : "#fff";
 };
 
-const tags: Record<number, string> = {
-  1: "🔑",
-  2: "🔒",
-  3: "🔐",
-  4: "🔥",
+const tags: Record<
+  number,
+  React.ForwardRefExoticComponent<IconProps & React.RefAttributes<Icon>>
+> = {
+  0: IconUrgent,
+  1: IconHeart,
+  2: IconLock,
+  3: IconSchool,
+  4: IconBriefcase,
+  5: IconHeartHandshake,
+  6: IconDeviceGamepad,
+  7: IconGitFork,
+  8: IconCamera,
+  9: IconDeviceTv,
 };
 
 export default TagBadge;

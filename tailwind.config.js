@@ -64,6 +64,9 @@ export default {
       screens: {
         xs: "480px",
       },
+      gridTemplateColumns: {
+        tags: "repeat(auto-fill, minmax(3rem, 1fr))",
+      },
     },
   },
   plugins: [],
