@@ -80,6 +80,11 @@ const AccountForm: FC<AccountFormProps> = ({
             }
           />
 
+          <PassphraseGenerators
+            input={values.passphrase || ""}
+            onChange={(passphrase) => setFieldValue("passphrase", passphrase)}
+          />
+
           <StrengthMeter
             passphrase={values.passphrase || ""}
             wantedFeedback={
@@ -87,11 +92,6 @@ const AccountForm: FC<AccountFormProps> = ({
               (mode === "edit" &&
                 initialValues.passphrase !== values.passphrase)
             }
-          />
-
-          <PassphraseGenerators
-            input={values.passphrase || ""}
-            onChange={(passphrase) => setFieldValue("passphrase", passphrase)}
           />
 
           <Input

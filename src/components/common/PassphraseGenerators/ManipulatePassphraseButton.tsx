@@ -18,7 +18,7 @@ const ManipulatePassphraseButton: FC<ManipulatePassphraseButtonProps> = ({
 
   return (
     <Button
-      variant="text"
+      variant="outlined"
       color="warning"
       size="small"
       icon={IconRefresh}

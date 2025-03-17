@@ -101,13 +101,13 @@ const variantStyles = {
     neutral: "text-gray-600",
   },
   outlined: {
-    primary: "border border-cream-600 text-cream-600",
-    secondary: "border border-dream-600 text-dream-600",
-    success: "border border-green-600 text-green-600",
-    warning: "border border-orange-600 text-orange-600",
-    danger: "border border-red-600 text-red-600",
-    info: "border border-blue-600 text-blue-600",
-    neutral: "border border-gray-600 text-gray-600",
+    primary: "border-2 border-cream-600 text-cream-600",
+    secondary: "border-2 border-dream-600 text-dream-600",
+    success: "border-2 border-green-600 text-green-600",
+    warning: "border-2 border-orange-600 text-orange-600",
+    danger: "border-2 border-red-600 text-red-600",
+    info: "border-2 border-blue-600 text-blue-600",
+    neutral: "border-2 border-gray-600 text-gray-600",
   },
 };
 

@@ -15,7 +15,7 @@ const StrengthMeter: FC<StrengthMeterProps> = ({
   const { score, feedback } = new Strength(dict).evaluate(passphrase);
 
   return (
-    <div className="flex flex-col gap-2 mx-4 -m-3 -z-10">
+    <div className="flex flex-col gap-2">
       <div
         className="w-full h-4 bg-day-400 dark:bg-night-100 rounded-full
         relative"

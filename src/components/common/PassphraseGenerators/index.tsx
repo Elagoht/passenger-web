@@ -12,7 +12,7 @@ const PassphraseGenerators: FC<PassphraseGeneratorsProps> = ({
   onChange,
 }) => {
   return (
-    <div className="grid grid-cols-2 gap-2">
+    <div className="grid grid-cols-2 gap-2 -my-2">
       <GeneratePassphraseButton onPassphraseGenerated={onChange} />
 
       <ManipulatePassphraseButton

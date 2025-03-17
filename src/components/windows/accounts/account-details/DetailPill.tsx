@@ -8,10 +8,10 @@ type DetailPillProps = {
 export const DetailPill: FC<DetailPillProps> = ({ title, content }) => {
   return (
     <div
-      className="text-center flex flex-col gap-1 bg-day-100
-      dark:bg-night-800 rounded-lg p-2"
+      className="text-center flex flex-col bg-day-100
+      dark:bg-night-800 rounded-lg py-1 px-2"
     >
-      <strong>{title}</strong>
+      <strong className="text-day-900 dark:text-night-100">{title}</strong>
 
       <span>{content}</span>
     </div>
