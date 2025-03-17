@@ -169,5 +169,8 @@
     "clipboard": "Failed to copy to clipboard.",
     "alreadyInitialized": "You have already initialized your Vault.",
     "invalidRecoveryKey": "Invalid recovery key."
+  },
+  "validation": {
+    "required": "This field is required."
   }
 }

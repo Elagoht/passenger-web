@@ -169,5 +169,8 @@
     "clipboard": "Kopyalama işlemi başarısız oldu.",
     "alreadyInitialized": "Kasanız zaten oluşturuldu.",
     "invalidRecoveryKey": "Geçersiz kurtarma anahtarı."
+  },
+  "validation": {
+    "required": "Bu alan zorunludur."
   }
 }

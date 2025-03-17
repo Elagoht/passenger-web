@@ -49,7 +49,7 @@ export const Input = ({
               : props.type
           }
           className={classNames(
-            "w-full min-w-0 px-4 py-2 min-w-none rounded-full",
+            "w-full min-w-0 px-4 py-2 min-w-none rounded-2xl",
             "bg-day-100 dark:bg-night-400",
             "text-night-900 dark:text-day-200 transition-all",
             "outline-none focus:ring-2 ring-dream-600",
@@ -83,7 +83,7 @@ export const Input = ({
       </div>
 
       {showError && (
-        <p className="text-sm mt-1 text-red-500 dark:text-red-400">
+        <p className="text-sm mt-1 ml-4 text-red-500 dark:text-red-400">
           {standalone ? meta.error : error}
         </p>
       )}

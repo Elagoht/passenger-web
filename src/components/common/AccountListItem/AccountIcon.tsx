@@ -9,7 +9,12 @@ const AccountIcon: FC<Pick<AccountCard, "platform" | "url">> = ({
   const [fallback, setFallback] = useState<boolean>(false);
 
   return (
-    <Link to={url} className="w-12 h-12 shrink-0 rounded-full">
+    <Link
+      to={completeUrl(url)}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="w-12 h-12 shrink-0 rounded-full"
+    >
       {fallback ? (
         <div
           className="w-12 h-12 shrink-0 rounded-full bg-day-400
@@ -31,12 +36,16 @@ const AccountIcon: FC<Pick<AccountCard, "platform" | "url">> = ({
 };
 
 const getNakedDomain = (url: string) => {
-  if (!url) return "";
-  if (!url.startsWith("http")) url = `https://${url}`;
-  const urlObj = new URL(url);
+  const urlObj = new URL(completeUrl(url));
   const hostname = urlObj.hostname;
   const parts = hostname.split(".");
   return parts.length > 2 ? parts.slice(1).join(".") : hostname;
+};
+
+const completeUrl = (url: string) => {
+  if (!url) return "";
+  if (!url.startsWith("http")) url = `http://${url}`;
+  return url;
 };
 
 export default AccountIcon;

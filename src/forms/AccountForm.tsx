@@ -9,8 +9,10 @@ import {
 import { Form, Formik } from "formik";
 import { FC } from "react";
 import PassphraseGenerators from "../components/common/PassphraseGenerators";
+import StrengthMeter from "../components/common/StrengthMeter";
 import Button from "../components/ui/Button";
 import { Input } from "../components/ui/Input";
+import { createAccountSchema } from "../lib/validation/account";
 import { postAccountAdd, postAccountUpdate } from "../services/accounts";
 import useAuthStore from "../stores/auth";
 import useDictStore from "../stores/dict";
@@ -43,6 +45,7 @@ const AccountForm: FC<AccountFormProps> = ({
           .catch((error) => toastError(error, dict))
           .finally(() => setSubmitting(false));
       }}
+      validationSchema={mode === "add" ? createAccountSchema(dict) : undefined}
     >
       {({ values, setFieldValue }) => (
         <Form className="flex flex-col gap-4 w-full mt-6">
@@ -74,6 +77,8 @@ const AccountForm: FC<AccountFormProps> = ({
                 : dict.windows.addAccount.form.passphrase
             }
           />
+
+          <StrengthMeter passphrase={values.passphrase || ""} />
 
           <PassphraseGenerators
             input={values.passphrase || ""}

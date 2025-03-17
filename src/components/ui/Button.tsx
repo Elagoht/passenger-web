@@ -58,7 +58,7 @@ const Button = ({
 };
 
 const baseStyles =
-  "relative rounded-full font-semibold transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed hover:brightness-110";
+  "relative rounded-2xl font-semibold transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed hover:brightness-110";
 
 const sizeStyles = {
   small: "px-2 py-1",

@@ -25,12 +25,8 @@ const ManipulatePassphraseButton: FC<ManipulatePassphraseButtonProps> = ({
       onClick={async () => {
         if (input.length === 0) return;
         await postManipulatedPassphrase(input)
-          .then((response) => {
-            onPassphraseManipulated(response.passphrase);
-          })
-          .catch((error) => {
-            toastError(error, dict);
-          });
+          .then((response) => onPassphraseManipulated(response.passphrase))
+          .catch((error) => toastError(error, dict));
       }}
     >
       {dict.generators.alternate}
