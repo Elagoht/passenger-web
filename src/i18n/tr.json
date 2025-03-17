@@ -84,6 +84,7 @@
         "url": "URL",
         "note": "Not",
         "passphrase": "Parola",
+        "today": "Bugün",
         "save": "Kaydet"
       },
       "success": "Yeni hesap eklendi."

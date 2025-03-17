@@ -19,6 +19,7 @@ import { createAccountSchema } from "../lib/validation/account";
 import { postAccountAdd, postAccountUpdate } from "../services/accounts";
 import useAuthStore from "../stores/auth";
 import useDictStore from "../stores/dict";
+import { Strength } from "../utilities/Strength";
 import toastError from "../utilities/ToastError";
 
 type AccountFormProps = {
@@ -130,15 +131,38 @@ const AccountForm: FC<AccountFormProps> = ({
                 }}
               />
 
-              {strengthGraph && (
-                <div className="flex flex-col gap-4">
-                  <Subtitle className="ml-4">
-                    {dict.windows.accountDetails.details.strengthGraph}
-                  </Subtitle>
+              <div className="flex flex-col gap-4">
+                <Subtitle className="ml-4">
+                  {dict.windows.accountDetails.details.strengthGraph}
+                </Subtitle>
 
-                  <StrengthGraph data={strengthGraph} />
-                </div>
-              )}
+                <StrengthGraph
+                  data={
+                    strengthGraph
+                      ? initialValues?.passphrase !== values.passphrase
+                        ? [
+                            ...strengthGraph,
+                            {
+                              date: dict.windows.addAccount.form.today,
+                              strength: new Strength(dict).evaluate(
+                                values.passphrase || "",
+                              ).score,
+                              isNew: true,
+                            },
+                          ]
+                        : strengthGraph
+                      : [
+                          {
+                            date: dict.windows.addAccount.form.today,
+                            strength: new Strength(dict).evaluate(
+                              values.passphrase || "",
+                            ).score,
+                            isNew: true,
+                          },
+                        ]
+                  }
+                />
+              </div>
             </div>
           </Container>
         </Form>

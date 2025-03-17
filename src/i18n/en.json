@@ -84,6 +84,7 @@
         "url": "URL",
         "note": "Note",
         "passphrase": "Passphrase",
+        "today": "Today",
         "save": "Save"
       },
       "success": "New account added."
