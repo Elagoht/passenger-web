@@ -2,6 +2,7 @@ import { FC } from "react";
 import { Link } from "react-router-dom";
 import TagBadge from "../TagBadge";
 import AccountIcon from "./AccountIcon";
+import AccountIdentityCopier from "./AccountIdentityCopier";
 import AccountPassphraseCopier from "./AccountPassphraseCopier";
 
 const AccountListItem: FC<AccountCard> = ({
@@ -13,33 +14,45 @@ const AccountListItem: FC<AccountCard> = ({
 }) => {
   return (
     <li
-      className="flex items-center max-w-md w-full relative gap-2 p-2
+      className="flex items-center max-w-md w-full gap-2 p-2
       rounded-2xl transition-all duration-200 text-day-900
-      hover:text-night-100 dark:text-day-100"
+      hover:text-night-100 dark:text-day-400
+      hover:dark:text-day-100 bg-day-50 dark:bg-night-900"
     >
       <AccountIcon url={url} platform={platform} />
 
       <Link
         to={`/accounts/details/${id}`}
-        className="flex flex-col overflow-auto grow"
+        className="flex flex-col overflow-auto grow truncate font-semibold"
       >
-        <strong className="text-lg truncate">{platform}</strong>
-
-        <small className="text-sm truncate">{identity}</small>
+        {platform}
       </Link>
 
-      <div className="flex flex-wrap gap-2 absolute top-0 right-2">
-        {tags.map((tag) => (
+      <div className="flex items-center -space-x-1.5 shrink-0">
+        {tags.slice(0, 3).map((tag) => (
           <TagBadge
             key={tag.id}
             color={tag.color}
             icon={tag.icon}
+            size="xsmall"
             isPanic={tag.isPanic}
           />
         ))}
+
+        {tags.length > 4 && (
+          <div
+            className="rounded-2xl bg-day-100 dark:bg-night-100 h-min px-1
+            translate-x-1 text-xs"
+          >
+            +{tags.length - 3}
+          </div>
+        )}
       </div>
 
-      <AccountPassphraseCopier id={id} />
+      <div className="flex">
+        <AccountIdentityCopier identity={identity} />
+        <AccountPassphraseCopier id={id} />
+      </div>
     </li>
   );
 };

@@ -40,7 +40,7 @@ export const Input: FC<InputProps> = ({
 
       <div className="relative">
         <input
-          {...(standalone ? field : props)}
+          {...(standalone ? { ...props, ...field } : props)}
           type={
             props.type === "password"
               ? showPassword

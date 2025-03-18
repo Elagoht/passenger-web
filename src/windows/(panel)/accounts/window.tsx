@@ -60,7 +60,7 @@ const AccountsWindow: FC = () => {
       {accounts.length === 0 ? (
         <Paragraph>{dict.windows.accounts.notFound}</Paragraph>
       ) : (
-        <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-1 !justify-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 md:gap-4 gap-1 !justify-start">
           {accounts.map((account) => (
             <AccountListItem key={account.id} {...account} />
           ))}

@@ -1,4 +1,4 @@
-import { IconCheck, IconCopy } from "@tabler/icons-react";
+import { IconClipboardCheck, IconKey } from "@tabler/icons-react";
 import { FC, useState } from "react";
 import { toast } from "react-hot-toast";
 import { getAccountPassphrase } from "../../../services/accounts";
@@ -13,17 +13,19 @@ const AccountPassphraseCopier: FC<Pick<AccountCard, "id">> = ({ id }) => {
 
   const handleCopy = () => {
     getAccountPassphrase(token, id).then(({ passphrase }) => {
-      setCopied(true);
       navigator.clipboard
         .writeText(passphrase)
-        .then(() => setTimeout(() => setCopied(false), 1000))
+        .then(() => {
+          setCopied(true);
+          setTimeout(() => setCopied(false), 1000);
+        })
         .catch(() => toast.error(dict.errors.clipboard));
     });
   };
 
   return (
     <button className="shrink-0 p-2 rounded-full" onClick={handleCopy}>
-      {copied ? <IconCheck size={24} /> : <IconCopy size={24} />}
+      {copied ? <IconClipboardCheck size={24} /> : <IconKey size={24} />}
     </button>
   );
 };

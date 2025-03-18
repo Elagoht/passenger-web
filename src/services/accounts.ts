@@ -33,11 +33,9 @@ export const postAccountUpdate = async (
   id: string,
   data: RequestAccountEdit,
 ) => {
-  return await apiCall.patch<void>(
-    `/accounts/${id}`,
-    { ...data, id: undefined },
-    { Authorization: `Bearer ${token}` },
-  );
+  return await apiCall.patch<void>(`/accounts/${id}`, data, {
+    Authorization: `Bearer ${token}`,
+  });
 };
 
 export const postAccountTag = async (

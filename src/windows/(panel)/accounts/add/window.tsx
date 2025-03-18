@@ -12,7 +12,7 @@ const AccountAddWindow: FC = () => {
   const navigate = useNavigate();
 
   return (
-    <Container>
+    <Container className="!px-0">
       <Title>{dict.windows.addAccount.title}</Title>
 
       <AccountForm

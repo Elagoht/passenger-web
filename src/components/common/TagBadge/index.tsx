@@ -3,7 +3,7 @@ import { createElement, FC } from "react";
 import tags from "../../../data/icons";
 
 type TagBadgeProps = Pick<Tag, "color" | "icon" | "isPanic"> & {
-  size?: "small" | "medium" | "large" | "preview";
+  size?: "xsmall" | "small" | "medium" | "large" | "preview";
   name?: Tag["name"];
 };
 
@@ -28,6 +28,7 @@ const TagBadge: FC<TagBadgeProps> = ({
       >
         {createElement(tags[icon], {
           className: classNames({
+            "w-3 h-3": size === "xsmall",
             "w-4 h-4": size === "small",
             "w-6 h-6": size === "medium",
             "w-8 h-8": size === "large",
@@ -39,6 +40,7 @@ const TagBadge: FC<TagBadgeProps> = ({
       {name && (
         <figcaption
           className={classNames({
+            "text-xs w-14 truncate": size === "xsmall",
             "text-sm w-14 truncate": size === "small",
             "text-base w-16 truncate": size === "medium",
             "text-lg w-20 truncate": size === "large",

@@ -7,7 +7,7 @@ type BottomSheetProps = PropsWithChildren<{
   onClose: () => void;
 }>;
 
-const THRESHOLD = 80;
+const THRESHOLD = 120;
 
 const BottomSheet: FC<BottomSheetProps> = ({ children, isOpen, onClose }) => {
   const [dragPosition, setDragPosition] = useState(0);

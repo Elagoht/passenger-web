@@ -64,15 +64,26 @@ const AccountForm: FC<AccountFormProps> = ({
             (tag) => !values.tags.some((t) => t.id === tag.id),
           );
 
-          request = postAccountUpdate(token, id, {
+          const data = {
             identity: values.identity,
             url: values.url,
             passphrase: values.passphrase,
             note: values.note,
             platform: values.platform,
-            addTags: addTags.map((tag) => tag.id),
-            removeTags: removeTags.map((tag) => tag.id),
+            addTags: addTags.map((tag) => tag.id) || null,
+            removeTags: removeTags.map((tag) => tag.id) || null,
+          };
+
+          Object.keys(data).forEach((key) => {
+            if (
+              data[key as keyof typeof data] ===
+              initialValues[key as keyof Account]
+            ) {
+              delete data[key as keyof typeof data];
+            }
           });
+
+          request = postAccountUpdate(token, id, data);
         } else {
           request = postAccountAdd(token, {
             identity: values.identity,
@@ -106,6 +117,7 @@ const AccountForm: FC<AccountFormProps> = ({
 
               <Input
                 icon={IconLink}
+                inputMode="url"
                 label={dict.windows.accountDetails.edit.form.url}
                 name="url"
               />
@@ -201,8 +213,6 @@ const AccountForm: FC<AccountFormProps> = ({
               />
             </div>
           </Container>
-
-          <pre>{JSON.stringify(values, null, 2)}</pre>
         </Form>
       )}
     </Formik>
