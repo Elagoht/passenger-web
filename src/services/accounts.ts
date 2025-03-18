@@ -37,23 +37,3 @@ export const postAccountUpdate = async (
     Authorization: `Bearer ${token}`,
   });
 };
-
-export const postAccountTag = async (
-  token: string,
-  id: string,
-  tagId: string,
-) => {
-  return await apiCall.post<void>(`/accounts/${id}/tags/${tagId}`, {
-    Authorization: `Bearer ${token}`,
-  });
-};
-
-export const deleteAccountTag = async (
-  token: string,
-  id: string,
-  tagId: string,
-) => {
-  return await apiCall.delete<void>(`/accounts/${id}/tags/${tagId}`, {
-    Authorization: `Bearer ${token}`,
-  });
-};
