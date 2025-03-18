@@ -76,6 +76,7 @@ const BottomSheet: FC<BottomSheetProps> = ({ children, isOpen, onClose }) => {
         style={{
           transition: isDragging ? "none" : "all 0.3s ease-in-out",
           transform: `translateY(${dragPosition}px)`,
+          opacity: `calc(1 - ${dragPosition / 100})`,
         }}
       >
         <div

@@ -115,6 +115,22 @@
         }
       }
     },
+    "addTag": {
+      "title": "Add Tag",
+      "form": {
+        "name": "Name",
+        "color": "Color",
+        "icon": "Icon",
+        "iconDescription": "Choose one of the beautiful icons.",
+        "preview": "Preview",
+        "save": "Save"
+      }
+    },
+    "tagDetails": {
+      "title": "Tag Details",
+      "description": "You can tag your accounts with this.",
+      "success": "Tag updated."
+    },
     "tools": {
       "title": "Tools",
       "items": [

@@ -10,7 +10,7 @@ const LetsStartWindow: FC = () => {
   const navigate = useNavigate();
 
   return (
-    <Container className="max-w-lg mx-auto gap-4">
+    <Container className="!max-w-lg mx-auto gap-4">
       <Title className="text-center text-cream-500">
         {dict.windows.initialize.letsStart.title}
       </Title>

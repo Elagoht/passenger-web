@@ -121,6 +121,7 @@ const AccountForm: FC<AccountFormProps> = ({
               <Textarea
                 name="note"
                 label={dict.windows.addAccount.form.note}
+                className="shadow-inner shadow-cream-400 dark:shadow-cream-900"
                 style={{
                   backgroundSize: "1.5rem 1.5rem",
                   backgroundColor: "rgba(251, 191, 36, 0.05)",
@@ -131,27 +132,16 @@ const AccountForm: FC<AccountFormProps> = ({
                 }}
               />
 
-              <div className="flex flex-col gap-4">
-                <Subtitle className="ml-4">
-                  {dict.windows.accountDetails.details.strengthGraph}
-                </Subtitle>
-
-                <StrengthGraph
-                  data={
-                    strengthGraph
-                      ? initialValues?.passphrase !== values.passphrase
-                        ? [
-                            ...strengthGraph,
-                            {
-                              date: dict.windows.addAccount.form.today,
-                              strength: new Strength(dict).evaluate(
-                                values.passphrase || "",
-                              ).score,
-                              isNew: true,
-                            },
-                          ]
-                        : strengthGraph
-                      : [
+              {/*Tags will go here*/}
+              <Subtitle className="ml-4">
+                {dict.windows.accountDetails.details.strengthGraph}
+              </Subtitle>
+              <StrengthGraph
+                data={
+                  strengthGraph
+                    ? initialValues?.passphrase !== values.passphrase
+                      ? [
+                          ...strengthGraph,
                           {
                             date: dict.windows.addAccount.form.today,
                             strength: new Strength(dict).evaluate(
@@ -160,9 +150,18 @@ const AccountForm: FC<AccountFormProps> = ({
                             isNew: true,
                           },
                         ]
-                  }
-                />
-              </div>
+                      : strengthGraph
+                    : [
+                        {
+                          date: dict.windows.addAccount.form.today,
+                          strength: new Strength(dict).evaluate(
+                            values.passphrase || "",
+                          ).score,
+                          isNew: true,
+                        },
+                      ]
+                }
+              />
             </div>
           </Container>
         </Form>

@@ -26,7 +26,10 @@ const TagsModal: FC<TagsModalProps> = ({ isOpen, onClose }) => {
   useEffect(() => {
     if (isOpen && typeof tags === "undefined") {
       getTags(token)
-        .then((tags) => setTags(tags))
+        .then((tags) => {
+          setTags(tags);
+          console.log(tags);
+        })
         .catch((error) => toastError(error, dict));
     }
   }, [dict, isOpen, tags, token]);

@@ -4,12 +4,16 @@ import TagBadge from "../TagBadge";
 
 const TagListItem: FC<Tag> = (props) => {
   return (
-    <Link to={`/tags/${props.id}`}>
+    <Link
+      className="flex items-center justify-center"
+      to={`/tags/details/${props.id}`}
+    >
       <TagBadge
         icon={props.icon}
         color={props.color}
         name={props.name}
         size="large"
+        isPanic={props.isPanic}
       />
     </Link>
   );

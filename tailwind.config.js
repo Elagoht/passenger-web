@@ -65,7 +65,8 @@ export default {
         xs: "480px",
       },
       gridTemplateColumns: {
-        tags: "repeat(auto-fill, minmax(3rem, 1fr))",
+        icons: "repeat(auto-fill, minmax(2.5rem, 1fr))",
+        tags: "repeat(auto-fill, minmax(4rem, 1fr))",
       },
     },
   },

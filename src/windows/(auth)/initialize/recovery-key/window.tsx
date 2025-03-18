@@ -18,7 +18,7 @@ const RecoveryKeyWindow: FC = () => {
   const [copied, setCopied] = useState<boolean>(false);
 
   return (
-    <Container className="max-w-lg mx-auto gap-4">
+    <Container className="!max-w-lg mx-auto gap-4">
       <Title className="text-center text-cream-500">
         {dict.windows.initialize.recovery.title}
       </Title>

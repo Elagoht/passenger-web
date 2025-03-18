@@ -80,7 +80,7 @@ const variantStyles = {
     warning: "bg-orange-600 text-white",
     danger: "bg-red-600 text-white",
     info: "bg-blue-600 text-white",
-    neutral: "bg-gray-600 text-white",
+    neutral: "bg-day-600 text-white",
   },
   gradient: {
     primary: "bg-gradient-to-br from-cream-500 to-cream-600 text-cream-50",
@@ -89,7 +89,7 @@ const variantStyles = {
     warning: "bg-gradient-to-br from-orange-500 to-orange-600 text-orange-50",
     danger: "bg-gradient-to-br from-red-500 to-red-600 text-red-50",
     info: "bg-gradient-to-br from-blue-500 to-blue-600 text-blue-50",
-    neutral: "bg-gradient-to-br from-gray-500 to-gray-600 text-gray-50",
+    neutral: "bg-gradient-to-br from-day-500 to-day-600 text-day-50",
   },
   text: {
     primary: "text-cream-600",
@@ -98,7 +98,7 @@ const variantStyles = {
     warning: "text-orange-600",
     danger: "text-red-600",
     info: "text-blue-600",
-    neutral: "text-gray-600",
+    neutral: "text-day-600",
   },
   outlined: {
     primary: "border-2 border-cream-600 text-cream-600",
@@ -107,7 +107,7 @@ const variantStyles = {
     warning: "border-2 border-orange-600 text-orange-600",
     danger: "border-2 border-red-600 text-red-600",
     info: "border-2 border-blue-600 text-blue-600",
-    neutral: "border-2 border-gray-600 text-gray-600",
+    neutral: "border-2 border-day-600 text-day-600",
   },
 };
 

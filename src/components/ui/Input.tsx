@@ -55,6 +55,7 @@ export const Input: FC<InputProps> = ({
             "outline-none focus:ring-2 ring-dream-600",
             className,
             {
+              "h-10": props.type === "color",
               "pl-12": icon,
               "pr-12": props.type === "password",
               "border-red-500 focus:border-red-500 focus:ring-red-500":

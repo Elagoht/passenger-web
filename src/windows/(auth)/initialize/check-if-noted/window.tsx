@@ -8,7 +8,7 @@ const CheckIfNotedWindow: FC = () => {
   const { dict } = useDictStore();
 
   return (
-    <Container className="max-w-lg mx-auto gap-4">
+    <Container className="!max-w-lg mx-auto gap-4">
       <Title className="text-cream-500">
         {dict.windows.initialize.checkIfNoted.title}
       </Title>

@@ -30,7 +30,12 @@ const AccountListItem: FC<AccountCard> = ({
 
       <div className="flex flex-wrap gap-2 absolute top-0 right-2">
         {tags.map((tag) => (
-          <TagBadge key={tag.id} color={tag.color} icon={tag.icon} />
+          <TagBadge
+            key={tag.id}
+            color={tag.color}
+            icon={tag.icon}
+            isPanic={tag.isPanic}
+          />
         ))}
       </div>
 
