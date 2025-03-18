@@ -103,6 +103,7 @@
         "lastAccessedAt": "Son Erişim Tarihi",
         "strengthGraph": "Zamana Göre Güç"
       },
+      "tags": "Etiketler",
       "edit": {
         "form": {
           "platform": "Platform",

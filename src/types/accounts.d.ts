@@ -24,14 +24,17 @@ type RequestAccountAdd = {
   url: string;
   note: string;
   passphrase: string;
+  tags: Tag["id"][];
 };
+
 type RequestAccountEdit = Partial<{
-  id: string;
   platform: string;
   identity: string;
   url: string;
   note: string;
   passphrase: string;
+  addTags?: Tag["id"][];
+  removeTags?: Tag["id"][];
 }>;
 
 type ResponseAccountPassphrase = {

@@ -30,11 +30,32 @@ export const postAccountAdd = async (
 
 export const postAccountUpdate = async (
   token: string,
+  id: string,
   data: RequestAccountEdit,
 ) => {
   return await apiCall.patch<void>(
-    `/accounts/${data.id}`,
+    `/accounts/${id}`,
     { ...data, id: undefined },
     { Authorization: `Bearer ${token}` },
   );
+};
+
+export const postAccountTag = async (
+  token: string,
+  id: string,
+  tagId: string,
+) => {
+  return await apiCall.post<void>(`/accounts/${id}/tags/${tagId}`, {
+    Authorization: `Bearer ${token}`,
+  });
+};
+
+export const deleteAccountTag = async (
+  token: string,
+  id: string,
+  tagId: string,
+) => {
+  return await apiCall.delete<void>(`/accounts/${id}/tags/${tagId}`, {
+    Authorization: `Bearer ${token}`,
+  });
 };

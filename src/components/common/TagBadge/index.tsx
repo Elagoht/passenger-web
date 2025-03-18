@@ -18,12 +18,12 @@ const TagBadge: FC<TagBadgeProps> = ({
     <div className="flex flex-col items-center text-center">
       <figure
         className={classNames("w-fit gap-2 rounded-md p-1", {
-          "border-2 border-dashed": isPanic,
+          "outline-2 outline-dashed": isPanic,
         })}
         style={{
           backgroundColor: color,
           color: getContrastColor(color),
-          borderColor: isPanic ? getContrastColor(color) : undefined,
+          outlineColor: isPanic ? getContrastColor(color) : undefined,
         }}
       >
         {createElement(tags[icon], {
@@ -39,7 +39,7 @@ const TagBadge: FC<TagBadgeProps> = ({
       {name && (
         <figcaption
           className={classNames({
-            "text-sm w-12 truncate": size === "small",
+            "text-sm w-14 truncate": size === "small",
             "text-base w-16 truncate": size === "medium",
             "text-lg w-20 truncate": size === "large",
             "text-2xl w-32 truncate": size === "preview",

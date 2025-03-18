@@ -103,6 +103,7 @@
         "lastAccessedAt": "Last Accessed At",
         "strengthGraph": "Strength Over Time"
       },
+      "tags": "Tags",
       "edit": {
         "form": {
           "platform": "Platform",

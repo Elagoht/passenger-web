@@ -15,6 +15,7 @@ import Button from "../components/ui/Button";
 import { Input } from "../components/ui/Input";
 import { Textarea } from "../components/ui/Textarea";
 import { Subtitle } from "../components/ui/Typography";
+import TagSelector from "../components/windows/accounts/TagSelector/TagSelector";
 import { createAccountSchema } from "../lib/validation/account";
 import { postAccountAdd, postAccountUpdate } from "../services/accounts";
 import useAuthStore from "../stores/auth";
@@ -25,15 +26,22 @@ import toastError from "../utilities/ToastError";
 type AccountFormProps = {
   onSubmitSuccess?: () => void;
 } & (
-  | { mode: "add"; initialValues?: never; strengthGraph?: never }
+  | {
+      mode: "add";
+      initialValues?: never;
+      strengthGraph?: never;
+      id?: never;
+    }
   | {
       mode: "edit";
-      initialValues: RequestAccountEdit;
+      initialValues: Account;
       strengthGraph?: StrengthGraph;
+      id: string;
     }
 );
 
 const AccountForm: FC<AccountFormProps> = ({
+  id,
   mode,
   initialValues,
   strengthGraph,
@@ -43,13 +51,40 @@ const AccountForm: FC<AccountFormProps> = ({
   const { token } = useAuthStore();
 
   return (
-    <Formik<RequestAccountAdd | RequestAccountEdit>
+    <Formik
       initialValues={initialValues ? initialValues : defaultValues}
       onSubmit={async (values, { setSubmitting }) => {
-        (mode === "edit"
-          ? postAccountUpdate(token, { ...values, id: initialValues?.id })
-          : postAccountAdd(token, values as RequestAccountAdd)
-        )
+        let request: Promise<void>;
+
+        if (mode === "edit") {
+          const addTags = values.tags.filter(
+            (tag) => !initialValues.tags.some((t) => t.id === tag.id),
+          );
+          const removeTags = initialValues.tags.filter(
+            (tag) => !values.tags.some((t) => t.id === tag.id),
+          );
+
+          request = postAccountUpdate(token, id, {
+            identity: values.identity,
+            url: values.url,
+            passphrase: values.passphrase,
+            note: values.note,
+            platform: values.platform,
+            addTags: addTags.map((tag) => tag.id),
+            removeTags: removeTags.map((tag) => tag.id),
+          });
+        } else {
+          request = postAccountAdd(token, {
+            identity: values.identity,
+            url: values.url,
+            passphrase: values.passphrase,
+            note: values.note,
+            platform: values.platform,
+            tags: values.tags.map((tag) => tag.id),
+          });
+        }
+
+        request
           .then(() => onSubmitSuccess?.())
           .catch((error) => toastError(error, dict))
           .finally(() => setSubmitting(false));
@@ -110,6 +145,8 @@ const AccountForm: FC<AccountFormProps> = ({
                 }
               />
 
+              <TagSelector />
+
               <Button type="submit" icon={IconDeviceFloppy}>
                 {mode === "edit"
                   ? dict.windows.accountDetails.edit.form.save
@@ -132,10 +169,10 @@ const AccountForm: FC<AccountFormProps> = ({
                 }}
               />
 
-              {/*Tags will go here*/}
               <Subtitle className="ml-4">
                 {dict.windows.accountDetails.details.strengthGraph}
               </Subtitle>
+
               <StrengthGraph
                 data={
                   strengthGraph
@@ -164,18 +201,21 @@ const AccountForm: FC<AccountFormProps> = ({
               />
             </div>
           </Container>
+
+          <pre>{JSON.stringify(values, null, 2)}</pre>
         </Form>
       )}
     </Formik>
   );
 };
 
-const defaultValues: RequestAccountAdd = {
+const defaultValues = {
   platform: "",
   identity: "",
   url: "",
   note: "",
   passphrase: "",
+  tags: [],
 };
 
 export default AccountForm;

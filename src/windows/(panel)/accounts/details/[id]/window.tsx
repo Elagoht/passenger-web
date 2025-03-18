@@ -1,7 +1,7 @@
 import { IconLoader } from "@tabler/icons-react";
 import { FC, useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Container from "../../../../../components/layout/Container";
 import { Paragraph, Title } from "../../../../../components/ui/Typography";
 import { DetailPill } from "../../../../../components/windows/accounts/account-details/DetailPill";
@@ -18,10 +18,8 @@ const AccountDetailsWindow: FC = () => {
   const { dict } = useDictStore();
   const navigate = useNavigate();
   const [account, setAccount] = useState<Account | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    setIsLoading(true);
     if (!id) {
       navigate("/accounts");
       return;
@@ -29,8 +27,7 @@ const AccountDetailsWindow: FC = () => {
 
     getAccountById(token, id)
       .then((account) => setAccount(account))
-      .catch((error) => toastError(error, dict))
-      .finally(() => setIsLoading(false));
+      .catch((error) => toastError(error, dict));
   }, [id, navigate, token, dict]);
 
   const [strengthGraph, setStrengthGraph] = useState<StrengthGraph>();
@@ -42,9 +39,7 @@ const AccountDetailsWindow: FC = () => {
       .catch((error) => toastError(error, dict));
   }, [id, token, dict]);
 
-  if (!id) return <Navigate to="/accounts" />;
-
-  if (isLoading)
+  if (!account || !id)
     return (
       <Container>
         <IconLoader className="animate-spin" />
@@ -68,7 +63,7 @@ const AccountDetailsWindow: FC = () => {
     <section className="flex flex-col flex-1 items-center justify-center">
       <Container
         className="!flex-row flex-wrap justify-between max-md:justify-center gap-4 w-full
-        max-md:p-6 mb-0"
+        max-md:p-6 !-mb-6"
       >
         <hgroup className="flex flex-col gap-2">
           <Title>{dict.windows.accountDetails.title}</Title>
@@ -96,14 +91,8 @@ const AccountDetailsWindow: FC = () => {
         }}
         mode="edit"
         strengthGraph={strengthGraph}
-        initialValues={{
-          id: account?.id,
-          identity: account?.identity,
-          note: account?.note,
-          platform: account?.platform,
-          url: account?.url,
-          passphrase: account?.passphrase,
-        }}
+        id={account.id}
+        initialValues={account}
       />
     </section>
   );
