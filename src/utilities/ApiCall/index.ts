@@ -29,11 +29,11 @@ class ApiHandler {
       } as const;
     }
 
-    if (response.headers.get("content-length") === "0") {
+    try {
+      return (await response.json()) as TResponse;
+    } catch {
       return {} as TResponse;
     }
-
-    return response.json() as Promise<TResponse>;
   }
 
   public post<TResponse>(
