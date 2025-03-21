@@ -1,9 +1,8 @@
 # API To Frontend Progress
 
-- [~] /accounts
+- [X] /accounts
 - [X] /accounts/{id}
 - [ ] /accounts/{id}/similar-passphrases
-- [ ] /accounts/{id}/tags/{tagId}
 - [X] /accounts/{id}/passphrase
 - [ ] /analyses/initialize/{wordlistId}
 - [ ] /analyses/stop/{analysisId}
@@ -27,9 +26,9 @@
 - [ ] /preferences
 - [ ] /preferences/{key}
 - [ ] /stats/graph/strength
-- [ ] /stats/graph/strength/{accountId}
-- [ ] /tags
-- [ ] /tags/{id}
+- [X] /stats/graph/strength/{accountId}
+- [X] /tags
+- [X] /tags/{id}
 - [ ] /transfer/import
 - [ ] /transfer/export
 - [ ] /word-lists/import
