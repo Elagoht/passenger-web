@@ -25,7 +25,7 @@ const AccountIcon: FC<Pick<AccountCard, "platform" | "url">> = ({
         </div>
       ) : (
         <img
-          src={`https://favicone.com/${getNakedDomain(url)}?s=54`}
+          src={`https://favicone.com/${getNakedDomain(url)}?s=64`}
           alt={platform}
           className="w-12 h-12 shrink-0 rounded-full text-transparent"
           onError={() => setFallback(true)}
