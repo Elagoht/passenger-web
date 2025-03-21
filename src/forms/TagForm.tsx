@@ -17,11 +17,7 @@ type TagFormProps = {
   onSubmitSuccess?: () => void;
 } & (
   | { mode: "add"; initialValues?: never; id?: never }
-  | {
-      mode: "edit";
-      initialValues: RequestTagAdd;
-      id: string;
-    }
+  | { mode: "edit"; initialValues: RequestTagAdd; id: string }
 );
 
 const TagForm: FC<TagFormProps> = ({
@@ -36,13 +32,7 @@ const TagForm: FC<TagFormProps> = ({
   return (
     <Formik<RequestTagAdd>
       initialValues={
-        mode === "add"
-          ? {
-              name: "",
-              color: "#7D839F",
-              icon: 1,
-            }
-          : initialValues
+        mode === "add" ? { name: "", color: "#7D839F", icon: 1 } : initialValues
       }
       validationSchema={createTagSchema(dict)}
       onSubmit={(values, { setSubmitting }) => {
