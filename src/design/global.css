@@ -34,17 +34,32 @@
   }
 }
 
-.raise-graph {
-  animation: raise-graph 0.3s ease-in-out;
+.raise-up {
+  animation: raise-up 0.3s ease-in-out;
   @apply origin-bottom;
 }
 
-@keyframes raise-graph {
+.wide-right {
+  animation: wide-right 0.3s ease-in-out;
+  @apply origin-left;
+}
+
+@keyframes raise-up {
   from {
     transform: scaleY(0%);
   }
 
   to {
     transform: scaleY(100%);
+  }
+}
+
+@keyframes wide-right {
+  from {
+    transform: scaleX(0%);
+  }
+
+  to {
+    transform: scaleX(100%);
   }
 }

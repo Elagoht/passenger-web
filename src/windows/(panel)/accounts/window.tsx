@@ -1,9 +1,9 @@
 import {
+  IconHeart,
   IconList,
   IconLoader,
   IconPlus,
   IconTag,
-  IconUrgent,
 } from "@tabler/icons-react";
 import { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
@@ -86,21 +86,20 @@ const getButtons = (dict: Dict, openTagsModal: () => void) => {
     {
       title: dict.windows.accounts.gridButtons.lists,
       icon: IconList,
-      className:
-        "border-cream-500 bg-cream-500 text-cream-900 dark:text-cream-500",
+      className: "bg-cream-500 text-cream-900 dark:text-cream-500",
       onClick: () => {},
     },
     {
       title: dict.windows.accounts.gridButtons.tags,
       icon: IconTag,
-      className:
-        "border-dream-500 bg-dream-500 text-dream-900 dark:text-dream-500",
+      className: "bg-dream-500 text-dream-900 dark:text-dream-500",
       onClick: openTagsModal,
     },
     {
-      title: dict.windows.accounts.gridButtons.panic,
-      icon: IconUrgent,
-      className: "border-red-500 bg-red-500 text-red-900 dark:text-red-500",
+      title: dict.windows.accounts.gridButtons.favorites,
+      icon: IconHeart,
+      className:
+        "bg-night-500 dark:bg-day-900 text-day-200 dark:text-night-200",
       onClick: () => {},
     },
   ];

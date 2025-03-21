@@ -173,6 +173,7 @@ const AccountForm: FC<AccountFormProps> = ({
                 className="shadow-inner shadow-cream-400 dark:shadow-cream-900"
                 style={{
                   backgroundSize: "1.5rem 1.5rem",
+                  backgroundPosition: "0.9rem 0.15rem",
                   backgroundColor: "rgba(251, 191, 36, 0.05)",
                   backgroundImage: `
                     linear-gradient(to right, rgba(251, 191, 36, 0.25) 0.075rem, transparent 0.075rem),

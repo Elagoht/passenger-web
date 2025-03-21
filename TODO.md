@@ -24,7 +24,6 @@
 - [ ] /leaks/news
 - [ ] /leaks/{id}
 - [ ] /leaks
-- [ ] /panic
 - [ ] /preferences
 - [ ] /preferences/{key}
 - [ ] /stats/graph/strength

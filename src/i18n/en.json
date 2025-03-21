@@ -72,7 +72,7 @@
       "gridButtons": {
         "lists": "Lists",
         "tags": "Tags",
-        "panic": "Panic"
+        "favorites": "Favorites"
       },
       "tagsModal": {
         "title": "Tags",

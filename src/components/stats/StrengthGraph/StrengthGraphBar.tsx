@@ -2,38 +2,44 @@ import classNames from "classnames";
 import { FC } from "react";
 import useDictStore from "../../../stores/dict";
 
-const StrengthGraphBar: FC<StrengthGraphEntry> = ({
+type StrengthGraphBarProps = StrengthGraphEntry & {
+  isCurrent: boolean;
+};
+
+const StrengthGraphBar: FC<StrengthGraphBarProps> = ({
   date,
   strength,
   isNew,
+  isCurrent,
 }) => {
   const { dict } = useDictStore();
 
   return (
-    <div className="flex flex-col gap-2 items-center">
+    <div className="flex gap-2 items-center raise-up">
+      <time className="text-sm font-medium block w-20 text-right">
+        {formatDate(date, dict)}
+      </time>
+
       <div
-        className="w-6 h-full flex items-end bg-day-400 dark:bg-night-200
-        rounded-2xl overflow-hidden"
+        className="h-4 flex items-end bg-day-400 dark:bg-night-200
+        rounded-2xl overflow-hidden grow"
       >
         <div
           className={classNames(
-            "w-full bg-gradient-to-t flex items-start pt-1 justify-center",
+            "h-4 bg-gradient-to-t flex items-center justify-end pr-2",
             "rounded-2xl text-xs text-dream-100 text-center transition-all",
-            "raise-graph",
+            "wide-right",
             {
               " from-cream-700 to-cream-500": isNew,
               " from-dream-700 to-dream-500": !isNew,
+              "border-2 border-night-500 dark:border-day-500": isCurrent,
             },
           )}
-          style={{ height: `${strength}%` }}
+          style={{ width: `${strength}%` }}
         >
           {strength}
         </div>
       </div>
-
-      <time className="text-sm font-medium block">
-        {formatDate(date, dict)}
-      </time>
     </div>
   );
 };

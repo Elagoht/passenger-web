@@ -32,7 +32,7 @@ const StrengthMeter: FC<StrengthMeterProps> = ({
       {feedback.length > 0 && wantedFeedback && (
         <ul className="flex flex-col gap-2 list-disc list-inside">
           {feedback.map((item) => (
-            <li key={item} className="text-xs raise-graph">
+            <li key={item} className="text-xs raise-up">
               {item}
             </li>
           ))}

@@ -72,7 +72,7 @@
       "gridButtons": {
         "lists": "Listeler",
         "tags": "Etiketler",
-        "panic": "Panik"
+        "favorites": "Favoriler"
       },
       "tagsModal": {
         "title": "Etiketler",
