@@ -9,12 +9,12 @@ import { Form, Formik } from "formik";
 import { FC } from "react";
 import PassphraseGenerators from "../components/common/PassphraseGenerators";
 import StrengthMeter from "../components/common/StrengthMeter";
-import Container from "../components/layout/Container";
 import StrengthGraph from "../components/stats/StrengthGraph";
 import Button from "../components/ui/Button";
 import { Input } from "../components/ui/Input";
 import { Textarea } from "../components/ui/Textarea";
 import { Subtitle } from "../components/ui/Typography";
+import AccountDeleteButton from "../components/windows/accounts/AccountDeleteButton";
 import TagSelector from "../components/windows/accounts/TagSelector/TagSelector";
 import { createAccountSchema } from "../lib/validation/account";
 import { postAccountAdd, postAccountUpdate } from "../services/accounts";
@@ -103,10 +103,10 @@ const AccountForm: FC<AccountFormProps> = ({
       validationSchema={mode === "add" ? createAccountSchema(dict) : undefined}
     >
       {({ values, setFieldValue }) => (
-        <Form className="w-full">
-          <Container
+        <Form className="w-full flex flex-col gap-6">
+          <div
             className="grid grid-cols-1 xl:grid-cols-2
-            gap-8 justify-start"
+            gap-8 justify-start py-0 !m-0"
           >
             <div className="flex flex-col gap-4 h-full">
               <Input
@@ -156,17 +156,11 @@ const AccountForm: FC<AccountFormProps> = ({
                     initialValues.passphrase !== values.passphrase)
                 }
               />
-
-              <TagSelector />
-
-              <Button type="submit" icon={IconDeviceFloppy}>
-                {mode === "edit"
-                  ? dict.windows.accountDetails.edit.form.save
-                  : dict.windows.addAccount.form.save}
-              </Button>
             </div>
 
             <div className="flex flex-col gap-4 self-start">
+              <TagSelector />
+
               <Textarea
                 name="note"
                 label={dict.windows.addAccount.form.note}
@@ -182,8 +176,8 @@ const AccountForm: FC<AccountFormProps> = ({
                 }}
               />
 
-              <Subtitle className="ml-4">
-                {dict.windows.accountDetails.details.strengthGraph}
+              <Subtitle>
+                {dict.windows.accountDetails.details.strengthGraph}{" "}
               </Subtitle>
 
               <StrengthGraph
@@ -213,7 +207,17 @@ const AccountForm: FC<AccountFormProps> = ({
                 }
               />
             </div>
-          </Container>
+          </div>
+
+          <div className="flex flex-row gap-2 !py-0">
+            <Button type="submit" className="w-full" icon={IconDeviceFloppy}>
+              {mode === "edit"
+                ? dict.windows.accountDetails.edit.form.save
+                : dict.windows.addAccount.form.save}
+            </Button>
+
+            {mode === "edit" && <AccountDeleteButton id={id} />}
+          </div>
         </Form>
       )}
     </Formik>

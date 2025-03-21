@@ -60,10 +60,10 @@ const AccountDetailsWindow: FC = () => {
   ];
 
   return (
-    <section className="flex flex-col flex-1 items-center justify-center">
-      <Container
-        className="!flex-row flex-wrap justify-between max-md:justify-center gap-4 w-full
-        max-md:p-6 !-mb-6"
+    <Container className="flex flex-col flex-1 gap-6 items-center justify-center">
+      <div
+        className="flex justify-between max-md:justify-center gap-4 w-full
+        max-md:p-6"
       >
         <hgroup className="flex flex-col gap-2">
           <Title>{dict.windows.accountDetails.title}</Title>
@@ -82,7 +82,7 @@ const AccountDetailsWindow: FC = () => {
               />
             ))}
         </div>
-      </Container>
+      </div>
 
       <AccountForm
         onSubmitSuccess={() => {
@@ -94,7 +94,7 @@ const AccountDetailsWindow: FC = () => {
         id={account.id}
         initialValues={account}
       />
-    </section>
+    </Container>
   );
 };
 

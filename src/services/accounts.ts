@@ -37,3 +37,9 @@ export const postAccountUpdate = async (
     Authorization: `Bearer ${token}`,
   });
 };
+
+export const deleteAccount = async (token: string, id: string) => {
+  return await apiCall.delete<void>(`/accounts/${id}`, {
+    Authorization: `Bearer ${token}`,
+  });
+};

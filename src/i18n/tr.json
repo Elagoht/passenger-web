@@ -83,6 +83,7 @@
     "addAccount": {
       "title": "Hesap Ekle",
       "form": {
+        "tags": "Etiketler",
         "platform": "Platform",
         "identity": "Kimlik",
         "icon": "Simge",
@@ -114,6 +115,15 @@
           "passphrase": "Parola",
           "save": "Kaydet"
         }
+      },
+      "delete": "Hesap Sil",
+      "deleteModal": {
+        "title": "Emin misiniz?",
+        "description": "Bu işlem geri alınamaz. Hâlâ, geçmişinizde kalacak ve toplam skorunuzu etkileyecek.",
+        "submit": "Sil",
+        "cancel": "İptal",
+        "success": "Hesap silindi.",
+        "error": "Hesap silinemedi."
       }
     },
     "addTag": {

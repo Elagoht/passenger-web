@@ -83,6 +83,7 @@
     "addAccount": {
       "title": "Add Account",
       "form": {
+        "tags": "Tags",
         "platform": "Platform",
         "identity": "Identity",
         "icon": "Icon",
@@ -114,6 +115,15 @@
           "passphrase": "Passphrase",
           "save": "Save"
         }
+      },
+      "delete": "Delete Account",
+      "deleteModal": {
+        "title": "Are you sure?",
+        "description": "This action cannot be undone. Still, the history will be remain and affect your total score.",
+        "submit": "Delete",
+        "cancel": "Cancel",
+        "success": "Account deleted.",
+        "error": "Failed to delete account."
       }
     },
     "addTag": {
