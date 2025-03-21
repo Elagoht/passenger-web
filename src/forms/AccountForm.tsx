@@ -164,14 +164,14 @@ const AccountForm: FC<AccountFormProps> = ({
               <Textarea
                 name="note"
                 label={dict.windows.addAccount.form.note}
-                className="shadow-inner shadow-cream-400 dark:shadow-cream-900"
+                className="shadow-inner shadow-cream-900 text-night-500 dark:text-night-500"
                 style={{
                   backgroundSize: "1.5rem 1.5rem",
                   backgroundPosition: "0.9rem 0.15rem",
-                  backgroundColor: "rgba(251, 191, 36, 0.05)",
+                  backgroundColor: "rgba(232, 226, 169)",
                   backgroundImage: `
-                    linear-gradient(to right, rgba(251, 191, 36, 0.25) 0.075rem, transparent 0.075rem),
-                    linear-gradient(to bottom, rgba(251, 191, 36, 0.25) 0.075rem, transparent 0.075rem)
+                    linear-gradient(to right, rgba(204, 199, 144) 0.075rem, transparent 0.075rem),
+                    linear-gradient(to bottom, rgba(204, 199, 144) 0.075rem, transparent 0.075rem)
                   `,
                 }}
               />

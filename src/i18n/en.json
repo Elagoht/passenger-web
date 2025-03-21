@@ -111,7 +111,7 @@
           "save": "Save"
         }
       },
-      "delete": "Delete Account",
+      "delete": "Delete",
       "deleteModal": {
         "title": "Are you sure?",
         "description": "This action cannot be undone. Still, the history will be remain and affect your total score.",
@@ -136,7 +136,7 @@
       "title": "Tag Details",
       "description": "You can tag your accounts with this.",
       "success": "Tag updated.",
-      "delete": "Delete Tag",
+      "delete": "Delete",
       "deleteModal": {
         "title": "Are you sure?",
         "description": "Accounts tagged with this will be kept, but this deletion cannot be undone.",

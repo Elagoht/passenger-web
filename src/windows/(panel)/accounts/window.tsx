@@ -1,18 +1,10 @@
-import {
-  IconHeart,
-  IconList,
-  IconLoader,
-  IconPlus,
-  IconTag,
-} from "@tabler/icons-react";
+import { IconLoader, IconPlus } from "@tabler/icons-react";
 import { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import AccountListItem from "../../../components/common/AccountListItem";
 import Container from "../../../components/layout/Container";
 import FAB from "../../../components/ui/FAB";
 import { Paragraph } from "../../../components/ui/Typography";
-import FeatureButton from "../../../components/windows/accounts/FeatureButton";
-import TagsModal from "../../../components/windows/accounts/TagsModal";
 import SearchAccountsForm from "../../../forms/SearchAccountsForm";
 import { getAccounts } from "../../../services/accounts";
 import useAuthStore from "../../../stores/auth";
@@ -26,7 +18,7 @@ const AccountsWindow: FC = () => {
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [accounts, setAccounts] = useState<AccountCard[]>([]);
-  const [isTagsModalOpen, setIsTagsModalOpen] = useState<boolean>(false);
+
   useEffect(() => {
     setIsLoading(true);
 
@@ -51,12 +43,6 @@ const AccountsWindow: FC = () => {
     <Container className="flex md:gap-4 gap-2 items-stretch !justify-start">
       <SearchAccountsForm />
 
-      <div className="flex md:gap-4 gap-2 w-full">
-        {getButtons(dict, () => setIsTagsModalOpen(true)).map((button) => (
-          <FeatureButton key={button.title} {...button} />
-        ))}
-      </div>
-
       {accounts.length === 0 ? (
         <Paragraph>{dict.windows.accounts.notFound}</Paragraph>
       ) : (
@@ -75,37 +61,8 @@ const AccountsWindow: FC = () => {
         color="secondary"
         onClick={() => navigate("/accounts/add")}
       />
-
-      <TagsModal
-        isOpen={isTagsModalOpen}
-        onClose={() => setIsTagsModalOpen(false)}
-      />
     </Container>
   );
-};
-
-const getButtons = (dict: Dict, openTagsModal: () => void) => {
-  return [
-    {
-      title: dict.windows.accounts.gridButtons.lists,
-      icon: IconList,
-      className: "bg-cream-500 text-cream-900 dark:text-cream-500",
-      onClick: () => {},
-    },
-    {
-      title: dict.windows.accounts.gridButtons.tags,
-      icon: IconTag,
-      className: "bg-dream-500 text-dream-900 dark:text-dream-500",
-      onClick: openTagsModal,
-    },
-    {
-      title: dict.windows.accounts.gridButtons.favorites,
-      icon: IconHeart,
-      className:
-        "bg-night-500 dark:bg-day-900 text-day-200 dark:text-night-200",
-      onClick: () => {},
-    },
-  ];
 };
 
 export default AccountsWindow;

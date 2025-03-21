@@ -14,7 +14,7 @@ const AccountListItem: FC<AccountCard> = ({
 }) => {
   return (
     <li
-      className="flex items-center max-w-md w-full gap-2 p-2
+      className="flex items-center w-full gap-2 p-2
       rounded-2xl transition-all duration-200 text-day-900
       hover:text-night-100 dark:text-day-400
       hover:dark:text-day-100 bg-day-50 dark:bg-night-900"

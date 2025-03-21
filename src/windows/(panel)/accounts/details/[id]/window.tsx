@@ -61,10 +61,7 @@ const AccountDetailsWindow: FC = () => {
 
   return (
     <Container className="flex flex-col flex-1 gap-6 items-center justify-center">
-      <div
-        className="flex justify-between max-md:justify-center gap-4 w-full
-        max-md:p-6"
-      >
+      <div className="flex flex-col xl:flex-row justify-between max-md:justify-center gap-4 w-full">
         <hgroup className="flex flex-col gap-2">
           <Title>{dict.windows.accountDetails.title}</Title>
 

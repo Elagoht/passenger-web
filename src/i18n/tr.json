@@ -111,7 +111,7 @@
           "save": "Kaydet"
         }
       },
-      "delete": "Hesap Sil",
+      "delete": "Sil",
       "deleteModal": {
         "title": "Emin misiniz?",
         "description": "Bu işlem geri alınamaz. Hâlâ, geçmişinizde kalacak ve toplam skorunuzu etkileyecek.",
@@ -136,7 +136,7 @@
       "title": "Etiket Ayrıntıları",
       "description": "Hesaplarınıza bu etiketleri ekleyebilirsiniz.",
       "success": "Etiket güncellendi.",
-      "delete": "Etiket Sil",
+      "delete": "Sil",
       "deleteModal": {
         "title": "Emin misiniz?",
         "description": "Bu etiketle işaretlenmiş hesaplar korunacak, ancak bu silme işlemi geri alınamaz.",
