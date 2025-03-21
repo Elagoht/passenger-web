@@ -15,9 +15,6 @@
 - [X] /auth/login
 - [X] /auth/reset-passphrase
 - [ ] /auth/change-passphrase
-- [ ] /collections
-- [ ] /collections/{id}
-- [ ] /collections/{id}/accounts/{accountId}
 - [X] /generate
 - [X] /generate/alternative
 - [ ] /leaks/news
