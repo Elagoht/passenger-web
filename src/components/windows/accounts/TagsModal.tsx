@@ -43,15 +43,15 @@ const TagsModal: FC<TagsModalProps> = ({ isOpen, onClose }) => {
         </Button>
       </div>
 
-      <div className="grid grid-cols-tags gap-4 mt-4">
-        {tags?.length ? (
-          tags?.map((tag) => <TagListItem key={tag.id} {...tag} />)
-        ) : (
-          <Paragraph className="text-center">
-            {dict.windows.accounts.tagsModal.noTags}
-          </Paragraph>
-        )}
-      </div>
+      {tags?.length ? (
+        <div className="grid grid-cols-tags gap-4 mt-4">
+          {tags?.map((tag) => <TagListItem key={tag.id} {...tag} />)}
+        </div>
+      ) : (
+        <Paragraph className="text-center">
+          {dict.windows.accounts.tagsModal.noTags}
+        </Paragraph>
+      )}
     </BottomSheet>
   );
 };
