@@ -69,11 +69,6 @@
     },
     "accounts": {
       "notFound": "No accounts found. Add one to get started.",
-      "gridButtons": {
-        "lists": "Lists",
-        "tags": "Tags",
-        "favorites": "Favorites"
-      },
       "tagsModal": {
         "title": "Tags",
         "add": "Add Tag",

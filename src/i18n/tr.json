@@ -69,11 +69,6 @@
     },
     "accounts": {
       "notFound": "Hesap bulunamadı. Bir tane ekleyin.",
-      "gridButtons": {
-        "lists": "Listeler",
-        "tags": "Etiketler",
-        "favorites": "Favoriler"
-      },
       "tagsModal": {
         "title": "Etiketler",
         "add": "Etiket Ekle",
