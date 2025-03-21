@@ -35,7 +35,6 @@ const AccountListItem: FC<AccountCard> = ({
             color={tag.color}
             icon={tag.icon}
             size="xsmall"
-            isPanic={tag.isPanic}
           />
         ))}
 

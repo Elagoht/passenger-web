@@ -2,7 +2,7 @@ import classNames from "classnames";
 import { createElement, FC } from "react";
 import tags from "../../../data/icons";
 
-type TagBadgeProps = Pick<Tag, "color" | "icon" | "isPanic"> & {
+type TagBadgeProps = Pick<Tag, "color" | "icon"> & {
   size?: "xsmall" | "small" | "medium" | "large" | "preview";
   name?: Tag["name"];
 };
@@ -12,18 +12,14 @@ const TagBadge: FC<TagBadgeProps> = ({
   icon,
   size = "medium",
   name,
-  isPanic,
 }) => {
   return (
     <div className="flex flex-col items-center text-center">
       <figure
-        className={classNames("w-fit gap-2 rounded-md p-1", {
-          "outline-2 outline-dashed": isPanic,
-        })}
+        className="w-fit gap-2 rounded-md p-1"
         style={{
           backgroundColor: color,
           color: getContrastColor(color),
-          outlineColor: isPanic ? getContrastColor(color) : undefined,
         }}
       >
         {createElement(tags[icon], {

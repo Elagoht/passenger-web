@@ -3,9 +3,8 @@ type Tag = {
   name: string;
   color: string;
   icon: number;
-  isPanic?: boolean;
 };
 
-type RequestTagAdd = Omit<Tag, "id" | "isPanic">;
+type RequestTagAdd = Omit<Tag, "id">;
 
 type RequestTagUpdate = Partial<RequestTagAdd>;

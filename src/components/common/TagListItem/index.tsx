@@ -13,7 +13,6 @@ const TagListItem: FC<Tag> = (props) => {
         color={props.color}
         name={props.name}
         size="large"
-        isPanic={props.isPanic}
       />
     </Link>
   );

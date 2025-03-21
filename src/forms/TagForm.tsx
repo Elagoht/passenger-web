@@ -16,19 +16,17 @@ import toastError from "../utilities/ToastError";
 type TagFormProps = {
   onSubmitSuccess?: () => void;
 } & (
-  | { mode: "add"; initialValues?: never; id?: never; isPanic?: never }
+  | { mode: "add"; initialValues?: never; id?: never }
   | {
       mode: "edit";
       initialValues: RequestTagAdd;
       id: string;
-      isPanic?: boolean;
     }
 );
 
 const TagForm: FC<TagFormProps> = ({
   id,
   mode,
-  isPanic,
   initialValues,
   onSubmitSuccess,
 }) => {
@@ -101,7 +99,6 @@ const TagForm: FC<TagFormProps> = ({
                 color={values.color}
                 name={values.name}
                 icon={values.icon}
-                isPanic={isPanic}
               />
             </div>
 
