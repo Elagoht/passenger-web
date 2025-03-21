@@ -38,7 +38,8 @@ const Dialog: FC<DialogProps> = ({
       <div
         onClick={(event) => event.stopPropagation()}
         className={classNames(
-          "bg-day-100 dark:bg-night-900 rounded-2xl p-4",
+          "max-w-screen-sm w-full",
+          "bg-day-100 dark:bg-night-700 rounded-2xl p-4",
           "flex flex-col gap-4 transition-all duration-300",
           { "opacity-0 translate-y-24": !isOpen },
         )}
@@ -47,7 +48,10 @@ const Dialog: FC<DialogProps> = ({
 
         <p className="text-gray-500">{description}</p>
 
-        <div className="flex gap-2 justify-end">
+        <div
+          className="flex justify-end -m-4 mt-0 gap-2 p-2 rounded-b-2xl
+          bg-day-200 dark:bg-night-500"
+        >
           <Button onClick={onCancel} variant="outlined">
             {cancelText}
           </Button>
