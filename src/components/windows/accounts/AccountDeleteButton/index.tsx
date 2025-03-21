@@ -1,10 +1,10 @@
 import { IconTrash } from "@tabler/icons-react";
 import { FC, useState } from "react";
-import { deleteAccount } from "../../../services/accounts";
-import useAuthStore from "../../../stores/auth";
-import useDictStore from "../../../stores/dict";
-import Button from "../../ui/Button";
-import Dialog from "../../ui/Dialog";
+import { deleteAccount } from "../../../../services/accounts";
+import useAuthStore from "../../../../stores/auth";
+import useDictStore from "../../../../stores/dict";
+import Button from "../../../ui/Button";
+import Dialog from "../../../ui/Dialog";
 
 const AccountDeleteButton: FC<Pick<Account, "id">> = ({ id }) => {
   const { dict } = useDictStore();
