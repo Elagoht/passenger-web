@@ -38,6 +38,7 @@ const TagsModal: FC<TagsModalProps> = ({ isOpen, onClose }) => {
     <BottomSheet isOpen={isOpen} onClose={onClose}>
       <div className="flex items-center justify-between gap-4">
         <Subtitle>{dict.windows.accounts.tagsModal.title}</Subtitle>
+
         <Button color="success" onClick={() => navigate("/tags/add")}>
           <IconPlus />
         </Button>
