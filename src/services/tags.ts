@@ -27,3 +27,9 @@ export const patchTagUpdate = async (
     Authorization: `Bearer ${token}`,
   });
 };
+
+export const deleteTag = async (token: string, id: string) => {
+  return await apiCall.delete<Tag>(`/tags/${id}`, {
+    Authorization: `Bearer ${token}`,
+  });
+};
