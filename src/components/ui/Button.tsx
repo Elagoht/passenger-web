@@ -58,7 +58,7 @@ const Button = ({
 };
 
 const baseStyles =
-  "relative rounded-2xl font-semibold transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed hover:brightness-110";
+  "relative rounded-2xl border-2 font-semibold transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed hover:brightness-110";
 
 const sizeStyles = {
   small: "px-2 py-1",
@@ -74,22 +74,28 @@ const iconSizeStyles = {
 
 const variantStyles = {
   solid: {
-    primary: "bg-cream-600 text-white",
-    secondary: "bg-dream-600 text-white",
-    success: "bg-green-600 text-white",
-    warning: "bg-orange-600 text-white",
-    danger: "bg-red-600 text-white",
-    info: "bg-blue-600 text-white",
-    neutral: "bg-day-600 text-white",
+    primary: "bg-cream-600 text-white border-cream-600",
+    secondary: "bg-dream-600 text-white border-dream-600",
+    success: "bg-green-600 text-white border-green-600",
+    warning: "bg-orange-600 text-white border-orange-600",
+    danger: "bg-red-600 text-white border-red-600",
+    info: "bg-blue-600 text-white border-blue-600",
+    neutral: "bg-day-600 text-white border-day-600",
   },
   gradient: {
-    primary: "bg-gradient-to-br from-cream-500 to-cream-600 text-cream-50",
-    secondary: "bg-gradient-to-br from-dream-500 to-dream-600 text-dream-50",
-    success: "bg-gradient-to-br from-green-500 to-green-600 text-green-50",
-    warning: "bg-gradient-to-br from-orange-500 to-orange-600 text-orange-50",
-    danger: "bg-gradient-to-br from-red-500 to-red-600 text-red-50",
-    info: "bg-gradient-to-br from-blue-500 to-blue-600 text-blue-50",
-    neutral: "bg-gradient-to-br from-day-500 to-day-600 text-day-50",
+    primary:
+      "bg-gradient-to-br from-cream-500 to-cream-600 text-cream-50 border-cream-500",
+    secondary:
+      "bg-gradient-to-br from-dream-500 to-dream-600 text-dream-50 border-dream-500",
+    success:
+      "bg-gradient-to-br from-green-500 to-green-600 text-green-50 border-green-500",
+    warning:
+      "bg-gradient-to-br from-orange-500 to-orange-600 text-orange-50 border-orange-500",
+    danger:
+      "bg-gradient-to-br from-red-500 to-red-600 text-red-50 border-red-500",
+    info: "bg-gradient-to-br from-blue-500 to-blue-600 text-blue-50 border-blue-500",
+    neutral:
+      "bg-gradient-to-br from-day-500 to-day-600 text-day-50 border-day-500",
   },
   text: {
     primary: "text-cream-600",
@@ -101,13 +107,13 @@ const variantStyles = {
     neutral: "text-day-600",
   },
   outlined: {
-    primary: "border-2 border-cream-600 text-cream-600",
-    secondary: "border-2 border-dream-600 text-dream-600",
-    success: "border-2 border-green-600 text-green-600",
-    warning: "border-2 border-orange-600 text-orange-600",
-    danger: "border-2 border-red-600 text-red-600",
-    info: "border-2 border-blue-600 text-blue-600",
-    neutral: "border-2 border-day-600 text-day-600",
+    primary: "border-cream-600 text-cream-600",
+    secondary: "border-dream-600 text-dream-600",
+    success: "border-green-600 text-green-600",
+    warning: "border-orange-600 text-orange-600",
+    danger: "border-red-600 text-red-600",
+    info: "border-blue-600 text-blue-600",
+    neutral: "border-day-600 text-day-600",
   },
 };
 
