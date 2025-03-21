@@ -130,7 +130,16 @@
     "tagDetails": {
       "title": "Tag Details",
       "description": "You can tag your accounts with this.",
-      "success": "Tag updated."
+      "success": "Tag updated.",
+      "delete": "Delete Tag",
+      "deleteModal": {
+        "title": "Are you sure?",
+        "description": "Accounts tagged with this will be kept, but this deletion cannot be undone.",
+        "submit": "Delete",
+        "cancel": "Cancel",
+        "success": "Tag deleted.",
+        "error": "Failed to delete tag."
+      }
     },
     "tools": {
       "title": "Tools",

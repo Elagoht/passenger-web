@@ -5,6 +5,7 @@ import TagBadge from "../components/common/TagBadge";
 import Button from "../components/ui/Button";
 import { Input } from "../components/ui/Input";
 import { Subtitle } from "../components/ui/Typography";
+import TagDeleteButton from "../components/windows/tags/TagDeleteButton";
 import tags from "../data/icons";
 import { createTagSchema } from "../lib/validation/tag";
 import { patchTagUpdate, postTagAdd } from "../services/tags";
@@ -107,6 +108,8 @@ const TagForm: FC<TagFormProps> = ({
             <Button type="submit" className="w-full">
               {dict.windows.addTag.form.save}
             </Button>
+
+            {mode === "edit" && <TagDeleteButton id={id} />}
           </div>
         </Form>
       )}

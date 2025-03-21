@@ -127,6 +127,20 @@
         "save": "Kaydet"
       }
     },
+    "tagDetails": {
+      "title": "Etiket Ayrıntıları",
+      "description": "Hesaplarınıza bu etiketleri ekleyebilirsiniz.",
+      "success": "Etiket güncellendi.",
+      "delete": "Etiket Sil",
+      "deleteModal": {
+        "title": "Emin misiniz?",
+        "description": "Bu etiketle işaretlenmiş hesaplar korunacak, ancak bu silme işlemi geri alınamaz.",
+        "submit": "Sil",
+        "cancel": "İptal",
+        "success": "Etiket silindi.",
+        "error": "Etiket silinemedi."
+      }
+    },
     "tools": {
       "title": "Araçlar",
       "items": [
