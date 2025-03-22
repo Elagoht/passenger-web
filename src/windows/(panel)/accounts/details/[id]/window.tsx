@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Container from "../../../../../components/layout/Container";
 import { Paragraph, Title } from "../../../../../components/ui/Typography";
 import { DetailPill } from "../../../../../components/windows/accounts/account-details/DetailPill";
+import FindSimilar from "../../../../../components/windows/accounts/account-details/FindSimilar";
 import AccountForm from "../../../../../forms/AccountForm";
 import { getAccountById } from "../../../../../services/accounts";
 import { getStrengthGraphOfAccount } from "../../../../../services/stats";
@@ -82,6 +83,7 @@ const AccountDetailsWindow: FC = () => {
       </div>
 
       <AccountForm
+        key={account.id}
         onSubmitSuccess={() => {
           toast.success(dict.windows.accountDetails.success);
           navigate("/accounts");
@@ -91,6 +93,8 @@ const AccountDetailsWindow: FC = () => {
         id={account.id}
         initialValues={account}
       />
+
+      <FindSimilar id={account.id} />
     </Container>
   );
 };

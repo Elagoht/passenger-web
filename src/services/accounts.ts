@@ -43,3 +43,9 @@ export const deleteAccount = async (token: string, id: string) => {
     Authorization: `Bearer ${token}`,
   });
 };
+
+export const findSimilarAccounts = async (token: string, id: string) => {
+  return await apiCall.get<Account[]>(`/accounts/${id}/similar-passphrases`, {
+    Authorization: `Bearer ${token}`,
+  });
+};

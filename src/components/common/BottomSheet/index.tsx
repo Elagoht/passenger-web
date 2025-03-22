@@ -1,3 +1,4 @@
+import { IconX } from "@tabler/icons-react";
 import classNames from "classnames";
 import { FC, PropsWithChildren, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
@@ -81,13 +82,20 @@ const BottomSheet: FC<BottomSheetProps> = ({ children, isOpen, onClose }) => {
       >
         <div
           className={classNames(
-            "w-full relative max-w-lg bg-day-100 dark:bg-night-100",
+            "w-full relative max-w-lg bg-day-100 dark:bg-night-500",
             "rounded-t-2xl md:rounded-2xl md:p-6 p-4 select-text",
             { "opacity-0 pointer-events-none": !isOpen },
           )}
         >
           {/* Drag handle indicator */}
-          <div className="w-12 h-1 bg-gray-300 rounded-full mx-auto mb-4" />
+          <div className="w-12 h-1 bg-gray-300 rounded-full mx-auto mb-4 md:hidden" />
+          {/* Close button for desktop   */}
+          <button
+            onClick={onClose}
+            className="absolute top-4 right-4 max-md:hidden bg-red-500 rounded-full p-1"
+          >
+            <IconX />
+          </button>
 
           {children}
         </div>

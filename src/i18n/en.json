@@ -91,7 +91,7 @@
       "success": "Account updated.",
       "details": {
         "timesAccessed": "Times Accessed",
-        "lastAccessedAt": "Last Accessed At",
+        "lastAccessedAt": "Last Access",
         "strengthGraph": "Strength Over Time"
       },
       "tags": "Tags",
@@ -114,6 +114,16 @@
         "cancel": "Cancel",
         "success": "Account deleted.",
         "error": "Failed to delete account."
+      },
+      "findSimilar": "Find Accounts with Similar Passphrases",
+      "findSimilarButton": "Find Similar",
+      "similarityModal": {
+        "description": "We use Levenshtein distance to find similar passphrases.",
+        "title": "Similarity Check",
+        "wip": "Trying to find similar accounts",
+        "found": "Found {{count}} similar account(s). Here:",
+        "noResults": "No similar accounts found",
+        "error": "Failed to find similar accounts."
       }
     },
     "tags": {

@@ -114,6 +114,16 @@
         "cancel": "İptal",
         "success": "Hesap silindi.",
         "error": "Hesap silinemedi."
+      },
+      "findSimilar": "Benzer Parolalı Hesapları Bul",
+      "findSimilarButton": "Benzerleri Bul",
+      "similarityModal": {
+        "description": "Levenshtein mesafesi kullanılarak benzer parolalı hesaplar bulunuyor.",
+        "title": "Benzerlik Kontrolü",
+        "wip": "Benzer hesaplar aranıyor",
+        "found": "{{count}} benzer hesap bulundu. İşte onlar:",
+        "noResults": "Benzer hesap bulunamadı",
+        "error": "Benzer hesaplar bulunamadı."
       }
     },
     "tags": {

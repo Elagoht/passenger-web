@@ -11,7 +11,7 @@ export const DetailPill: FC<DetailPillProps> = ({ title, content }) => {
       className="text-center flex flex-col items-center justify-center
       bg-day-100 dark:bg-night-800 rounded-lg py-1 px-2"
     >
-      <strong className="text-day-900 dark:text-night-100">{title}</strong>
+      <strong className="text-sm text-day-900">{title}</strong>
 
       <span>{content}</span>
     </div>
