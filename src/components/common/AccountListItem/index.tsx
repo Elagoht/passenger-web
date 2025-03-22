@@ -38,7 +38,7 @@ const AccountListItem: FC<AccountCard> = ({
           />
         ))}
 
-        {tags.length > 4 && (
+        {tags.length > 3 && (
           <div
             className="rounded-2xl bg-day-100 dark:bg-night-100 h-min px-1
             translate-x-1 text-xs"
