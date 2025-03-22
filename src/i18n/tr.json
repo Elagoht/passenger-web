@@ -175,24 +175,31 @@
           "title": "Analizler",
           "description": "Yeni analiz başlatın veya raporlarınızı görün."
         },
-        "news": {
-          "title": "Haberler",
-          "description": "Son sızıntılardan haberdar olun."
+        "leaks": {
+          "title": "Sızıntılar",
+          "description": "Bilinen sızıntılar ve ihlalleri görün."
         }
       }
+    },
+    "leaks": {
+      "title": "Sızıntılar",
+      "description": "Bilinen sızıntılar ve ihlalleri görün.",
+      "seeLatest": "En Son Haberleri Görün",
+      "verified": "Doğrulandı",
+      "unverified": "Doğrulanmadı"
     },
     "settings": {
       "title": "Ayarlar",
       "items": {
-        "importAccounts": {
+        "import-accounts": {
           "title": "Hesapları İçe Aktar",
           "description": "Tarayıcı ve parola yöneticilerinden içe aktarın."
         },
-        "exportAccounts": {
+        "export-accounts": {
           "title": "Hesapları Dışa Aktar",
           "description": "Tarayıcı ve parola yöneticileri için CSV olarak dışa aktarın."
         },
-        "changePassphrase": {
+        "change-passphrase": {
           "title": "Ana Parolayı Değiştir",
           "description": "Giriş yapmada kullandığınız parolayı değiştirin."
         },
@@ -200,6 +207,15 @@
           "title": "Tercihler",
           "description": "Katı mod, arayüz renkleri ve daha fazlası."
         }
+      }
+    },
+    "changePassphrase": {
+      "title": "Ana Parolayı Değiştir",
+      "description": "Giriş yapmada kullandığınız anahtarınızı değiştirin.",
+      "form": {
+        "passphrase": "Ana Parola",
+        "submit": "Değiştir",
+        "success": "Parola değiştirildi."
       }
     }
   },
@@ -235,6 +251,9 @@
     "invalidRecoveryKey": "Geçersiz kurtarma anahtarı."
   },
   "validation": {
-    "required": "Bu alan zorunludur."
+    "required": "Bu alan zorunludur.",
+    "min": "Parola en az {{min}} karakter olmalı.",
+    "max": "Parola en fazla {{max}} karakter olmalı.",
+    "masterPassphrase": "Parola en az 2 küçük harf, 2 büyük harf, 2 sayı ve 2 özel karakter (!@#$%^&*,.?\":{}|<>) içermelidir."
   }
 }

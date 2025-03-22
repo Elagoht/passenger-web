@@ -14,7 +14,9 @@ import LoginWindow from "./windows/(auth)/login/window";
 import AccountAddWindow from "./windows/(panel)/accounts/add/window";
 import AccountDetailsWindow from "./windows/(panel)/accounts/details/[id]/window";
 import AccountsWindow from "./windows/(panel)/accounts/window";
+import ChangePassphraseWindow from "./windows/(panel)/settings/change-passphrase/window";
 import SettingsWindow from "./windows/(panel)/settings/window";
+import LeaksWindow from "./windows/(panel)/tools/news/windows";
 import TagAddWindow from "./windows/(panel)/tools/tags/add/window";
 import TagDetailsWindow from "./windows/(panel)/tools/tags/details/[id]/window";
 import TagsWindow from "./windows/(panel)/tools/tags/window";
@@ -49,7 +51,12 @@ const router = createBrowserRouter([
       { path: "/tools/tags/add", element: <TagAddWindow /> },
       { path: "/tools/tags/details/:id", element: <TagDetailsWindow /> },
       { path: "/tools", element: <ToolsWindow /> },
+      { path: "/tools/leaks", element: <LeaksWindow /> },
       { path: "/settings", element: <SettingsWindow /> },
+      {
+        path: "/settings/change-passphrase",
+        element: <ChangePassphraseWindow />,
+      },
     ],
   },
 ]);

@@ -31,3 +31,7 @@ type RequestForgotPassphrase = {
 type ResponseForgotPassphrase = {
   assignedPassphrase: string;
 };
+
+type RequestChangePassphrase = {
+  passphrase: string;
+};

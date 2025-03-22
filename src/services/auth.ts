@@ -20,3 +20,12 @@ export const postForgotPassphrase = async (
     request,
   );
 };
+
+export const postChangePassphrase = async (
+  token: string,
+  request: RequestChangePassphrase,
+) => {
+  return await apiCall.post<void>("/auth/change-passphrase", request, {
+    Authorization: `Bearer ${token}`,
+  });
+};

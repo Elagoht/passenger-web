@@ -175,24 +175,31 @@
           "title": "Analyses",
           "description": "Initialize new analysis or view their reports."
         },
-        "news": {
-          "title": "News",
-          "description": "Get the latest leaks and breaches."
+        "leaks": {
+          "title": "Leaks",
+          "description": "Get the known leaks and breaches."
         }
       }
+    },
+    "leaks": {
+      "title": "Leaks",
+      "description": "Get the known leaks and breaches.",
+      "seeLatest": "See Latest News",
+      "verified": "Verified",
+      "unverified": "Unverified"
     },
     "settings": {
       "title": "Settings",
       "items": {
-        "importAccounts": {
+        "import-accounts": {
           "title": "Import Accounts",
           "description": "Import from browser and password managers."
         },
-        "exportAccounts": {
+        "export-accounts": {
           "title": "Export Accounts",
           "description": "Export CSV for browser and password managers."
         },
-        "changePassphrase": {
+        "change-passphrase": {
           "title": "Change Master Passphrase",
           "description": "Passphrase when you login."
         },
@@ -200,6 +207,15 @@
           "title": "Preferences",
           "description": "Strict mode, interface theme, etc."
         }
+      }
+    },
+    "changePassphrase": {
+      "title": "Change Master Passphrase",
+      "description": "Master passphrase is your keyto login to your Vault.",
+      "form": {
+        "passphrase": "Master Passphrase",
+        "submit": "Change",
+        "success": "Passphrase changed."
       }
     }
   },
@@ -235,6 +251,9 @@
     "invalidRecoveryKey": "Invalid recovery key."
   },
   "validation": {
-    "required": "This field is required."
+    "required": "This field is required.",
+    "min": "Password must be at least {{min}} characters long.",
+    "max": "Password must be at most {{max}} characters long.",
+    "masterPassphrase": "Password must contain at least 2 lowercase letters, 2 uppercase letters, 2 numbers, and 2 special characters (!@#$%^&*,.?\":{}|<>)"
   }
 }

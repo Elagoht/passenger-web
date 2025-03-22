@@ -1,5 +1,6 @@
 import { IconTrash } from "@tabler/icons-react";
 import { FC, useState } from "react";
+import { useNavigate } from "react-router";
 import { deleteAccount } from "../../../../services/accounts";
 import useAuthStore from "../../../../stores/auth";
 import useDictStore from "../../../../stores/dict";
@@ -9,6 +10,8 @@ import Dialog from "../../../ui/Dialog";
 const AccountDeleteButton: FC<Pick<Account, "id">> = ({ id }) => {
   const { dict } = useDictStore();
   const { token } = useAuthStore();
+
+  const navigate = useNavigate();
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -32,8 +35,9 @@ const AccountDeleteButton: FC<Pick<Account, "id">> = ({ id }) => {
         submitColor="danger"
         submitText={dict.windows.accountDetails.deleteModal.submit}
         onSubmit={() => {
-          deleteAccount(id, token).then(() => {
+          deleteAccount(token, id).then(() => {
             setIsOpen(false);
+            navigate("/accounts");
           });
         }}
         cancelText={dict.windows.accountDetails.deleteModal.cancel}

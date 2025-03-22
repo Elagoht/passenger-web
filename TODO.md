@@ -14,7 +14,7 @@
 - [X] /auth/initialize
 - [X] /auth/login
 - [X] /auth/reset-passphrase
-- [ ] /auth/change-passphrase
+- [X] /auth/change-passphrase
 - [X] /generate
 - [X] /generate/alternative
 - [ ] /leaks/news
