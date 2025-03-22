@@ -1,12 +1,12 @@
 import { IconLoader } from "@tabler/icons-react";
 import { FC, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
-import Container from "../../../../../components/layout/Container";
-import { Subtitle, Title } from "../../../../../components/ui/Typography";
-import TagForm from "../../../../../forms/TagForm";
-import { getTag } from "../../../../../services/tags";
-import useAuthStore from "../../../../../stores/auth";
-import useDictStore from "../../../../../stores/dict";
+import Container from "../../../../../../components/layout/Container";
+import { Subtitle, Title } from "../../../../../../components/ui/Typography";
+import TagForm from "../../../../../../forms/TagForm";
+import { getTag } from "../../../../../../services/tags";
+import useAuthStore from "../../../../../../stores/auth";
+import useDictStore from "../../../../../../stores/dict";
 
 const TagDetailsWindow: FC = () => {
   const { dict } = useDictStore();
@@ -45,7 +45,7 @@ const TagDetailsWindow: FC = () => {
           color: tag.color,
           icon: tag.icon,
         }}
-        onSubmitSuccess={() => navigate("/accounts")}
+        onSubmitSuccess={() => navigate("/tools/tags")}
       />
     </Container>
   );

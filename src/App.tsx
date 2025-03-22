@@ -15,8 +15,9 @@ import AccountAddWindow from "./windows/(panel)/accounts/add/window";
 import AccountDetailsWindow from "./windows/(panel)/accounts/details/[id]/window";
 import AccountsWindow from "./windows/(panel)/accounts/window";
 import SettingsWindow from "./windows/(panel)/settings/window";
-import TagAddWindow from "./windows/(panel)/tags/add/window";
-import TagDetailsWindow from "./windows/(panel)/tags/details/[id]/window";
+import TagAddWindow from "./windows/(panel)/tools/tags/add/window";
+import TagDetailsWindow from "./windows/(panel)/tools/tags/details/[id]/window";
+import TagsWindow from "./windows/(panel)/tools/tags/window";
 import ToolsWindow from "./windows/(panel)/tools/window";
 import SplashWindow from "./windows/window";
 
@@ -44,8 +45,9 @@ const router = createBrowserRouter([
       { path: "/accounts", element: <AccountsWindow /> },
       { path: "/accounts/details/:id", element: <AccountDetailsWindow /> },
       { path: "/accounts/add", element: <AccountAddWindow /> },
-      { path: "/tags/add", element: <TagAddWindow /> },
-      { path: "/tags/details/:id", element: <TagDetailsWindow /> },
+      { path: "/tools/tags", element: <TagsWindow /> },
+      { path: "/tools/tags/add", element: <TagAddWindow /> },
+      { path: "/tools/tags/details/:id", element: <TagDetailsWindow /> },
       { path: "/tools", element: <ToolsWindow /> },
       { path: "/settings", element: <SettingsWindow /> },
     ],

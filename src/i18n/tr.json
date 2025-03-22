@@ -68,12 +68,7 @@
       "continue": "Devam Et"
     },
     "accounts": {
-      "notFound": "Hesap bulunamadı. Bir tane ekleyin.",
-      "tagsModal": {
-        "title": "Etiketler",
-        "add": "Etiket Ekle",
-        "noTags": "Etiket bulunamadı. Hadi bir tane ekleyelim."
-      }
+      "notFound": "Hesap bulunamadı. Bir tane ekleyin."
     },
     "addAccount": {
       "title": "Hesap Ekle",
@@ -121,6 +116,11 @@
         "error": "Hesap silinemedi."
       }
     },
+    "tags": {
+      "title": "Etiketler",
+      "description": "Hesaplarınıza ekleyeceğiniz etiketleri yönetin.",
+      "noTags": "Etiket bulunamadı. Hadi bir tane ekleyelim."
+    },
     "addTag": {
       "title": "Etiket Ekle",
       "form": {
@@ -148,45 +148,49 @@
     },
     "tools": {
       "title": "Araçlar",
-      "items": [
-        {
+      "items": {
+        "tags": {
+          "title": "Etiketler",
+          "description": "Hesaplarınıza ekleyeceğiniz etiketleri yönetin."
+        },
+        "statistics": {
           "title": "İstatistikler",
           "description": "Grafikler, tablolar ve daha fazlası."
         },
-        {
+        "wordlists": {
           "title": "Kelime Listesileri",
           "description": "Yeni listeler ekleyin ve onları yönetin."
         },
-        {
+        "analyses": {
           "title": "Analizler",
           "description": "Yeni analiz başlatın veya raporlarınızı görün."
         },
-        {
+        "news": {
           "title": "Haberler",
           "description": "Son sızıntılardan haberdar olun."
         }
-      ]
+      }
     },
     "settings": {
       "title": "Ayarlar",
-      "items": [
-        {
+      "items": {
+        "importAccounts": {
           "title": "Hesapları İçe Aktar",
           "description": "Tarayıcı ve parola yöneticilerinden içe aktarın."
         },
-        {
+        "exportAccounts": {
           "title": "Hesapları Dışa Aktar",
           "description": "Tarayıcı ve parola yöneticileri için CSV olarak dışa aktarın."
         },
-        {
+        "changePassphrase": {
           "title": "Ana Parolayı Değiştir",
           "description": "Giriş yapmada kullandığınız parolayı değiştirin."
         },
-        {
+        "preferences": {
           "title": "Tercihler",
           "description": "Katı mod, arayüz renkleri ve daha fazlası."
         }
-      ]
+      }
     }
   },
   "forms": {

@@ -68,12 +68,7 @@
       "continue": "Continue"
     },
     "accounts": {
-      "notFound": "No accounts found. Add one to get started.",
-      "tagsModal": {
-        "title": "Tags",
-        "add": "Add Tag",
-        "noTags": "No tags found. Let's add one."
-      }
+      "notFound": "No accounts found. Add one to get started."
     },
     "addAccount": {
       "title": "Add Account",
@@ -121,6 +116,11 @@
         "error": "Failed to delete account."
       }
     },
+    "tags": {
+      "title": "Tags",
+      "description": "Manage and add tags to your accounts.",
+      "noTags": "No tags found. Let's add one."
+    },
     "addTag": {
       "title": "Add Tag",
       "form": {
@@ -148,45 +148,49 @@
     },
     "tools": {
       "title": "Tools",
-      "items": [
-        {
+      "items": {
+        "tags": {
+          "title": "Tags",
+          "description": "Manage and add tags to your accounts."
+        },
+        "statistics": {
           "title": "Statistics",
           "description": "Graphs, charts, and more."
         },
-        {
+        "wordlists": {
           "title": "Wordlists",
           "description": "Import and manage brute force wordlists."
         },
-        {
+        "analyses": {
           "title": "Analyses",
           "description": "Initialize new analysis or view their reports."
         },
-        {
+        "news": {
           "title": "News",
           "description": "Get the latest leaks and breaches."
         }
-      ]
+      }
     },
     "settings": {
       "title": "Settings",
-      "items": [
-        {
+      "items": {
+        "importAccounts": {
           "title": "Import Accounts",
           "description": "Import from browser and password managers."
         },
-        {
+        "exportAccounts": {
           "title": "Export Accounts",
           "description": "Export CSV for browser and password managers."
         },
-        {
+        "changePassphrase": {
           "title": "Change Master Passphrase",
           "description": "Passphrase when you login."
         },
-        {
+        "preferences": {
           "title": "Preferences",
           "description": "Strict mode, interface theme, etc."
         }
-      ]
+      }
     }
   },
   "forms": {

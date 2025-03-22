@@ -38,7 +38,7 @@ const TagDeleteButton: FC<Pick<Tag, "id">> = ({ id }) => {
           deleteTag(token, id)
             .then(() => {
               setIsOpen(false);
-              navigate("/accounts");
+              navigate("/tools/tags");
             })
             .catch((error) => toastError(error, dict));
         }}

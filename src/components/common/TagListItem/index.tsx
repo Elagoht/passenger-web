@@ -6,7 +6,7 @@ const TagListItem: FC<Tag> = (props) => {
   return (
     <Link
       className="flex items-center justify-center"
-      to={`/tags/details/${props.id}`}
+      to={`/tools/tags/details/${props.id}`}
     >
       <TagBadge
         icon={props.icon}

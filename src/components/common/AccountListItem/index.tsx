@@ -26,27 +26,27 @@ const AccountListItem: FC<AccountCard> = ({
         className="flex flex-col overflow-auto grow truncate font-semibold"
       >
         {platform}
+
+        <div className="flex items-center -space-x-1.5 shrink-0">
+          {tags.slice(0, 3).map((tag) => (
+            <TagBadge
+              key={tag.id}
+              color={tag.color}
+              icon={tag.icon}
+              size="xsmall"
+            />
+          ))}
+
+          {tags.length > 3 && (
+            <div
+              className="rounded-2xl bg-day-100 dark:bg-night-100 h-min px-1
+          translate-x-1 text-xs"
+            >
+              +{tags.length - 3}
+            </div>
+          )}
+        </div>
       </Link>
-
-      <div className="flex items-center -space-x-1.5 shrink-0">
-        {tags.slice(0, 3).map((tag) => (
-          <TagBadge
-            key={tag.id}
-            color={tag.color}
-            icon={tag.icon}
-            size="xsmall"
-          />
-        ))}
-
-        {tags.length > 3 && (
-          <div
-            className="rounded-2xl bg-day-100 dark:bg-night-100 h-min px-1
-            translate-x-1 text-xs"
-          >
-            +{tags.length - 3}
-          </div>
-        )}
-      </div>
 
       <div className="flex">
         <AccountIdentityCopier identity={identity} />

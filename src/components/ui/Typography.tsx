@@ -13,7 +13,7 @@ export const Title: FC<TypographyProps> = ({ children, className }) => {
 
 export const Subtitle: FC<TypographyProps> = ({ children, className }) => {
   return (
-    <h2 className={classNames("text-xl font-bold", className)}>{children}</h2>
+    <h2 className={classNames("text-xl font-medium", className)}>{children}</h2>
   );
 };
 
