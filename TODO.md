@@ -2,7 +2,7 @@
 
 - [X] /accounts
 - [X] /accounts/{id}
-- [ ] /accounts/{id}/similar-passphrases
+- [X] /accounts/{id}/similar-passphrases
 - [X] /accounts/{id}/passphrase
 - [ ] /analyses/initialize/{wordlistId}
 - [ ] /analyses/stop/{analysisId}
