@@ -88,11 +88,16 @@ const BottomSheet: FC<BottomSheetProps> = ({ children, isOpen, onClose }) => {
           )}
         >
           {/* Drag handle indicator */}
-          <div className="w-12 h-1 bg-gray-300 rounded-full mx-auto mb-4 md:hidden" />
+          <div
+            className="w-12 h-1 bg-gray-300 rounded-full mx-auto
+          mb-4 md:hidden"
+          />
+
           {/* Close button for desktop   */}
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 max-md:hidden bg-red-500 rounded-full p-1"
+            className="absolute top-4 right-4 max-md:hidden bg-red-500
+            rounded-full p-1 text-red-50"
           >
             <IconX />
           </button>

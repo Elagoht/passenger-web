@@ -22,8 +22,8 @@ const LeakCard: FC<Leak> = (props) => {
       {props.domain && (
         <a
           href={new URL(`https://${props.domain}`).toString()}
-          className="flex items-center gap-2 text-blue-500
-          visited:text-purple-600 underline"
+          className="flex items-center gap-1 text-blue-500
+          visited:text-purple-500 underline"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -31,26 +31,28 @@ const LeakCard: FC<Leak> = (props) => {
         </a>
       )}
 
-      <div className="grid grid-cols-3 gap-2 mt-2">
-        <time
-          className="flex flex-col items-center bg-day-200
-          dark:bg-night-600 rounded-lg p-2"
-        >
-          <IconCalendar />
-          {props.date}
-        </time>
+      <div className="flex gap-2 mt-2">
+        <div className="flex flex-col grow items-stretch gap-1">
+          <time
+            className="flex items-center bg-day-200
+          dark:bg-night-600 rounded-lg p-1 gap-1"
+          >
+            <IconCalendar />
+            {props.date}
+          </time>
 
-        <span
-          className="flex flex-col items-center bg-day-200
-          dark:bg-night-600 rounded-lg p-2"
-        >
-          <IconHash />
-          {props.pwnCount}
-        </span>
+          <span
+            className="flex items-center bg-day-200
+          dark:bg-night-600 rounded-lg p-1 gap-1"
+          >
+            <IconHash />
+            {props.pwnCount}
+          </span>
+        </div>
 
-        <span
+        <div
           className={classNames(
-            "flex flex-col items-center bg-day-200",
+            "flex flex-col justify-center items-center bg-day-200",
             "dark:bg-night-600 rounded-lg p-2 text-red-500",
             { grayscale: !props.verified },
           )}
@@ -64,7 +66,7 @@ const LeakCard: FC<Leak> = (props) => {
               <IconHelpCircle /> {dict.windows.leaks.unverified}
             </>
           )}
-        </span>
+        </div>
       </div>
     </div>
   );

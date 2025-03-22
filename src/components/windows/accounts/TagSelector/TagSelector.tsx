@@ -1,3 +1,4 @@
+import { IconCheck } from "@tabler/icons-react";
 import classNames from "classnames";
 import { useFormikContext } from "formik";
 import { FC, useEffect, useState } from "react";
@@ -27,14 +28,15 @@ const TagSelector: FC = () => {
       <Paragraph className="ml-4">
         {dict.windows.addAccount.form.tags}
       </Paragraph>
+
       <div>
         {tags?.map((tag) => (
           <button
             type="button"
             key={tag.id}
-            className={classNames("transition-all", {
-              "grayscale scale-75": !fields.values.tags?.some(
-                (t) => t.id === tag.id,
+            className={classNames("transition-all relative", {
+              "grayscale scale-75 opacity-50": !fields.values.tags?.some(
+                (currentTag) => currentTag.id === tag.id,
               ),
             })}
             onClick={() => {
@@ -46,6 +48,16 @@ const TagSelector: FC = () => {
               );
             }}
           >
+            {fields.values.tags?.some(
+              (currentTag) => currentTag.id === tag.id,
+            ) && (
+              <IconCheck
+                size={16}
+                className="bg-green-500 text-green-50 rounded
+                absolute -top-1 right-2.5"
+              />
+            )}
+
             <TagBadge {...tag} size="small" />
           </button>
         ))}
