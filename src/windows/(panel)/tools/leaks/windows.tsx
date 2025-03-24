@@ -1,6 +1,7 @@
 import { IconLoader } from "@tabler/icons-react";
 import { FC, useEffect, useState } from "react";
 import Pagination from "../../../../components/common/Pagination";
+import PaginationInfo from "../../../../components/common/Pagination/PaginationInfo";
 import Container from "../../../../components/layout/Container";
 import { Subtitle, Title } from "../../../../components/ui/Typography";
 import LeakCard from "../../../../components/windows/leaks/LeakCard";
@@ -9,6 +10,9 @@ import { getLeaks } from "../../../../services/news";
 import useAuthStore from "../../../../stores/auth";
 import useDictStore from "../../../../stores/dict";
 import toastError from "../../../../utilities/ToastError";
+
+const PER_PAGE = 12;
+
 const LeaksWindow: FC = () => {
   const { dict } = useDictStore();
   const { token } = useAuthStore();
@@ -48,17 +52,25 @@ const LeaksWindow: FC = () => {
       )}
 
       {leaks && !loading && (
-        <div
-          className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3
-          gap-4 w-full my-6"
-        >
-          {leaks.map((leak) => (
-            <LeakCard key={leak.id} {...leak} />
-          ))}
-        </div>
+        <>
+          <PaginationInfo
+            total={total}
+            perPage={query.take || 12}
+            current={query.page || 1}
+          />
+
+          <div
+            className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3
+            gap-4 w-full my-6"
+          >
+            {leaks.map((leak) => (
+              <LeakCard key={leak.id} {...leak} />
+            ))}
+          </div>
+        </>
       )}
 
-      {total > 0 && (
+      {total > PER_PAGE && (
         <Pagination
           total={total}
           current={query.page || 1}

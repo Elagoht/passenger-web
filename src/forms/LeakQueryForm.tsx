@@ -46,7 +46,7 @@ const LeakQueryForm: FC<LeakQueryFormProps> = ({ query, setQuery }) => {
               />
             </div>
 
-            <div className="flex-1">
+            <div className="shrink-0 flex items-end gap-2">
               <Combobox
                 label={dict.windows.leaks.query.sortBy}
                 name="sortBy"
@@ -57,37 +57,37 @@ const LeakQueryForm: FC<LeakQueryFormProps> = ({ query, setQuery }) => {
                   { value: "domain", label: dict.windows.leaks.query.domain },
                 ]}
               />
-            </div>
 
-            <div className="flex items-center">
-              {[
-                {
-                  onClick: () => setFieldValue("sortOrder", "asc"),
-                  className: "rounded-r-none",
-                  value: "asc",
-                  icon: <IconSortAscending />,
-                },
-                {
-                  onClick: () => setFieldValue("sortOrder", "desc"),
-                  className: "rounded-l-none",
-                  value: "desc",
-                  icon: <IconSortDescending />,
-                },
-              ].map((option) => (
-                <Button
-                  key={option.value}
-                  variant={
-                    values.sortOrder === option.value ? "solid" : "outlined"
-                  }
-                  className={classNames(
-                    "h-10 flex items-center justify-center",
-                    option.className,
-                  )}
-                  onClick={option.onClick}
-                >
-                  {option.icon}
-                </Button>
-              ))}
+              <div className="flex items-center">
+                {[
+                  {
+                    onClick: () => setFieldValue("sortOrder", "asc"),
+                    className: "rounded-r-none",
+                    value: "asc",
+                    icon: <IconSortAscending />,
+                  },
+                  {
+                    onClick: () => setFieldValue("sortOrder", "desc"),
+                    className: "rounded-l-none",
+                    value: "desc",
+                    icon: <IconSortDescending />,
+                  },
+                ].map((option) => (
+                  <Button
+                    key={option.value}
+                    variant={
+                      values.sortOrder === option.value ? "solid" : "outlined"
+                    }
+                    className={classNames(
+                      "size-10 !p-0 flex items-center justify-center",
+                      option.className,
+                    )}
+                    onClick={option.onClick}
+                  >
+                    {option.icon}
+                  </Button>
+                ))}
+              </div>
             </div>
           </div>
 

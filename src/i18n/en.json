@@ -268,5 +268,8 @@
     "min": "Password must be at least {{min}} characters long.",
     "max": "Password must be at most {{max}} characters long.",
     "masterPassphrase": "Password must contain at least 2 lowercase letters, 2 uppercase letters, 2 numbers, and 2 special characters (!@#$%^&*,.?\":{}|<>)"
+  },
+  "pagination": {
+    "info": "Showing from {{from}} to {{to}} of {{total}} results."
   }
 }

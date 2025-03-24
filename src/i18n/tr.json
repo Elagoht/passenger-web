@@ -268,5 +268,8 @@
     "min": "Parola en az {{min}} karakter olmalı.",
     "max": "Parola en fazla {{max}} karakter olmalı.",
     "masterPassphrase": "Parola en az 2 küçük harf, 2 büyük harf, 2 sayı ve 2 özel karakter (!@#$%^&*,.?\":{}|<>) içermelidir."
+  },
+  "pagination": {
+    "info": "{{total}} sonuçtan {{from}} ile {{to}} arası gösteriliyor."
   }
 }
