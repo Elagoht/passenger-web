@@ -25,7 +25,7 @@ const Pagination: FC<PaginationProps> = ({ total, current, onChange }) => {
   };
 
   return (
-    <div className="flex items-center justify-center gap-2">
+    <div className="flex flex-wrap items-center justify-center sm:gap-1">
       <Button
         size="small"
         className="size-9 !p-0 grid place-items-center"

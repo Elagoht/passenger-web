@@ -27,30 +27,29 @@ export const Switch: FC<SwitchProps> = ({ label, ...props }) => {
   return (
     <div className="w-full text-left">
       <label className="flex items-center cursor-pointer">
-        <div className="relative">
-          <input
-            type="checkbox"
-            className="sr-only"
-            checked={field.value}
-            onChange={handleChange}
-            tabIndex={0}
-            {...props}
-          />
+        <input
+          type="checkbox"
+          className="sr-only"
+          checked={field.value}
+          onChange={handleChange}
+          tabIndex={0}
+          {...props}
+        />
+
+        <div
+          className={classNames(
+            "block w-10 h-6 my-2 rounded-full transition-colors duration-200 ease-in-out",
+            "bg-day-400 dark:bg-night-400 relative",
+            { "bg-cream-400 dark:bg-cream-600": field.value },
+          )}
+        >
           <div
             className={classNames(
-              "block w-10 h-6 rounded-full transition-colors duration-200 ease-in-out",
-              "bg-day-400 dark:bg-night-400",
-              { "bg-cream-400 dark:bg-cream-600": field.value },
+              "absolute left-1 top-1 w-4 h-4 rounded-full transition-transform duration-200 ease-in-out",
+              "bg-white dark:bg-day-200",
+              { "translate-x-4": field.value },
             )}
-          >
-            <div
-              className={classNames(
-                "absolute left-1 top-1 w-4 h-4 rounded-full transition-transform duration-200 ease-in-out",
-                "bg-white dark:bg-day-200",
-                { "translate-x-4": field.value },
-              )}
-            />
-          </div>
+          />
         </div>
 
         {label && (

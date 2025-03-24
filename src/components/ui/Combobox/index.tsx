@@ -1,4 +1,4 @@
-import { Icon, IconProps } from "@tabler/icons-react";
+import { Icon, IconChevronDown, IconProps } from "@tabler/icons-react";
 import classNames from "classnames";
 import { FieldHookConfig, useField } from "formik";
 import React, { createElement, FC, useEffect, useRef, useState } from "react";
@@ -19,6 +19,9 @@ interface ComboboxProps
   options: ComboboxOption[];
   icon?: React.ForwardRefExoticComponent<IconProps & React.RefAttributes<Icon>>;
   placeholder?: string;
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  disabled?: boolean;
 }
 
 export const Combobox: FC<ComboboxProps> = ({
@@ -27,21 +30,20 @@ export const Combobox: FC<ComboboxProps> = ({
   icon,
   options,
   placeholder = "Select an option",
+  value,
+  onChange,
+  disabled = false,
   ...props
 }) => {
   const [field, meta] = useField(props as FieldHookConfig<string>);
   const [isOpen, setIsOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
   const [highlightedIndex, setHighlightedIndex] = useState(0);
   const wrapperRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
   const comboboxRef = useRef<HTMLDivElement>(null);
 
-  const filteredOptions = options.filter((option) =>
-    option.label.toLowerCase().includes(searchQuery.toLowerCase()),
+  const selectedOption = options.find(
+    (option) => option.value === (value || field.value),
   );
-
-  const selectedOption = options.find((option) => option.value === field.value);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -58,12 +60,6 @@ export const Combobox: FC<ComboboxProps> = ({
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  useEffect(() => {
-    if (isOpen && inputRef.current) {
-      inputRef.current.focus();
-    }
-  }, [isOpen]);
-
   const handleKeyDown = (event: React.KeyboardEvent) => {
     if (!isOpen) {
       if (event.key === "Enter" || event.key === " ") {
@@ -77,38 +73,51 @@ export const Combobox: FC<ComboboxProps> = ({
       case "ArrowDown":
         event.preventDefault();
         setHighlightedIndex((prev) =>
-          prev < filteredOptions.length - 1 ? prev + 1 : 0,
+          prev < options.length - 1 ? prev + 1 : 0,
         );
         break;
       case "ArrowUp":
         event.preventDefault();
         setHighlightedIndex((prev) =>
-          prev > 0 ? prev - 1 : filteredOptions.length - 1,
+          prev > 0 ? prev - 1 : options.length - 1,
         );
         break;
       case "Enter":
         event.preventDefault();
-        if (filteredOptions[highlightedIndex]) {
+        if (options[highlightedIndex]) {
           field.onChange({
             target: {
               name: props.name,
-              value: filteredOptions[highlightedIndex].value,
+              value: options[highlightedIndex].value,
             },
           });
           setIsOpen(false);
-          setSearchQuery("");
           setHighlightedIndex(0);
         }
         break;
       case "Escape":
         event.preventDefault();
         setIsOpen(false);
-        setSearchQuery("");
         setHighlightedIndex(0);
         break;
       case "Tab":
         setIsOpen(false);
         break;
+    }
+  };
+
+  const handleOptionClick = (option: ComboboxOption) => {
+    setIsOpen(false);
+    const event = {
+      target: {
+        name: props.name,
+        value: option.value,
+      },
+    } as React.ChangeEvent<HTMLInputElement>;
+    if (onChange) {
+      onChange(event);
+    } else {
+      field.onChange(event);
     }
   };
 
@@ -126,7 +135,7 @@ export const Combobox: FC<ComboboxProps> = ({
       <div className="relative">
         <div
           ref={comboboxRef}
-          tabIndex={0}
+          tabIndex={disabled ? -1 : 0}
           className={classNames(
             "w-full min-w-0 px-4 py-2 min-w-none rounded-2xl",
             "bg-day-100 dark:bg-night-400",
@@ -138,10 +147,12 @@ export const Combobox: FC<ComboboxProps> = ({
               "pl-12": icon,
               "border-red-500 focus:border-red-500 focus:ring-red-500":
                 meta.error && meta.touched,
+              "opacity-50 cursor-not-allowed": disabled,
             },
           )}
           onClick={() => {
-            const selectedIndex = filteredOptions.findIndex(
+            if (disabled) return;
+            const selectedIndex = options.findIndex(
               (option) => option.value === field.value,
             );
             setHighlightedIndex(selectedIndex >= 0 ? selectedIndex : 0);
@@ -152,31 +163,22 @@ export const Combobox: FC<ComboboxProps> = ({
           aria-expanded={isOpen}
           aria-controls="combobox-options"
           aria-activedescendant={
-            isOpen && filteredOptions[highlightedIndex]
-              ? `option-${filteredOptions[highlightedIndex].value}`
+            isOpen && options[highlightedIndex]
+              ? `option-${options[highlightedIndex].value}`
               : undefined
           }
+          aria-disabled={disabled}
         >
           <div className="flex items-center justify-between">
             <span className={!selectedOption ? "text-gray-400" : ""}>
               {selectedOption ? selectedOption.label : placeholder}
             </span>
-            <svg
-              className={classNames(
-                "w-5 h-5 transition-transform",
-                isOpen ? "rotate-180" : "",
-              )}
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
+
+            <IconChevronDown
+              className={classNames("transition-all duration-300", {
+                "rotate-180": isOpen,
+              })}
+            />
           </div>
         </div>
 
@@ -194,24 +196,11 @@ export const Combobox: FC<ComboboxProps> = ({
             className="absolute z-10 w-full mt-1 bg-white dark:bg-night-400 rounded-2xl shadow-lg border border-gray-200 dark:border-night-300"
             role="listbox"
           >
-            <div className="p-2">
-              <input
-                ref={inputRef}
-                type="text"
-                className="w-full px-3 py-2 rounded-xl bg-day-100 dark:bg-night-500 text-night-900 dark:text-day-200 outline-none focus:ring-2 ring-dream-600"
-                placeholder="Search..."
-                value={searchQuery}
-                onChange={(event) => setSearchQuery(event.target.value)}
-                onClick={(event) => event.stopPropagation()}
-                onKeyDown={handleKeyDown}
-              />
-            </div>
-
             <div
               className="max-h-60 overflow-y-auto"
               onMouseLeave={() => setHighlightedIndex(-1)}
             >
-              {filteredOptions.map((option, index) => (
+              {options.map((option, index) => (
                 <div
                   key={option.value}
                   id={`option-${option.value}`}
@@ -227,17 +216,7 @@ export const Combobox: FC<ComboboxProps> = ({
                         option.value !== field.value,
                     },
                   )}
-                  onClick={() => {
-                    field.onChange({
-                      target: {
-                        name: props.name,
-                        value: option.value,
-                      },
-                    });
-                    setIsOpen(false);
-                    setSearchQuery("");
-                    setHighlightedIndex(0);
-                  }}
+                  onClick={() => handleOptionClick(option)}
                   onMouseEnter={() => setHighlightedIndex(index)}
                 >
                   {option.label}

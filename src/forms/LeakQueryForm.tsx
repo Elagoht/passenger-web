@@ -8,6 +8,7 @@ import { Form, Formik } from "formik";
 import { FC } from "react";
 import Button from "../components/ui/Button";
 import { Combobox } from "../components/ui/Combobox";
+import { DatePicker } from "../components/ui/DatePicker";
 import { Input } from "../components/ui/Input";
 import { Switch } from "../components/ui/Switch";
 import useDictStore from "../stores/dict";
@@ -24,23 +25,27 @@ const LeakQueryForm: FC<LeakQueryFormProps> = ({ query, setQuery }) => {
     <Formik<LeaksQuery>
       initialValues={query}
       onSubmit={(values, { setSubmitting }) => {
-        setQuery(values);
+        setQuery(
+          Object.fromEntries(
+            Object.entries(values).filter(
+              ([, value]) => value !== undefined && value !== "",
+            ),
+          ),
+        );
         setSubmitting(false);
       }}
     >
       {({ values, setFieldValue }) => (
-        <Form className="flex flex-col w-full gap-2">
-          <div className="flex items-center gap-2">
-            <Input
-              name="name"
-              icon={IconSearch}
-              label={dict.windows.leaks.query.searchTerm}
-            />
+        <Form className="flex flex-col w-full gap-2 mt-4">
+          <div className="flex max-lg:flex-col lg:items-end gap-2">
+            <div className="flex-1">
+              <Input
+                name="name"
+                icon={IconSearch}
+                label={dict.windows.leaks.query.searchTerm}
+              />
+            </div>
 
-            <Switch name="verified" label={dict.windows.leaks.query.verified} />
-          </div>
-
-          <div className="flex items-end gap-2">
             <div className="flex-1">
               <Combobox
                 label={dict.windows.leaks.query.sortBy}
@@ -86,11 +91,17 @@ const LeakQueryForm: FC<LeakQueryFormProps> = ({ query, setQuery }) => {
             </div>
           </div>
 
+          <div className="flex max-lg:flex-col items-center gap-2">
+            <DatePicker name="date" label={dict.windows.leaks.query.date} />
+
+            <DatePicker name="dateTo" label={dict.windows.leaks.query.dateTo} />
+          </div>
+
+          <Switch name="verified" label={dict.windows.leaks.query.verified} />
+
           <Button type="submit" variant="solid">
             {dict.windows.leaks.query.search}
           </Button>
-
-          <pre>{JSON.stringify(values, null, 2)}</pre>
         </Form>
       )}
     </Formik>
