@@ -1,26 +1,37 @@
 import { IconLoader } from "@tabler/icons-react";
 import { FC, useEffect, useState } from "react";
+import Pagination from "../../../../components/common/Pagination";
 import Container from "../../../../components/layout/Container";
 import { Subtitle, Title } from "../../../../components/ui/Typography";
 import LeakCard from "../../../../components/windows/leaks/LeakCard";
+import LeakQueryForm from "../../../../forms/LeakQueryForm";
 import { getLeaks } from "../../../../services/news";
 import useAuthStore from "../../../../stores/auth";
 import useDictStore from "../../../../stores/dict";
 import toastError from "../../../../utilities/ToastError";
-
 const LeaksWindow: FC = () => {
   const { dict } = useDictStore();
   const { token } = useAuthStore();
 
   const [loading, setLoading] = useState(true);
-  const [leaks, setLeaks] = useState<ResponseLeaks>();
+  const [leaks, setLeaks] = useState<Leak[]>();
+  const [total, setTotal] = useState<number>(0);
+  const [query, setQuery] = useState<LeaksQuery>({
+    sortBy: "date",
+    sortOrder: "desc",
+  });
 
   useEffect(() => {
-    getLeaks(token)
-      .then(setLeaks)
+    setLoading(true);
+
+    getLeaks(token, query)
+      .then(({ data, total }) => {
+        setLeaks(data);
+        setTotal(total);
+      })
       .catch((error) => toastError(error, dict))
       .finally(() => setLoading(false));
-  }, [dict, token]);
+  }, [dict, token, query]);
 
   return (
     <Container>
@@ -28,21 +39,31 @@ const LeaksWindow: FC = () => {
 
       <Subtitle>{dict.windows.leaks.description}</Subtitle>
 
+      <LeakQueryForm query={query} setQuery={setQuery} />
+
       {loading && (
         <div className="flex justify-center items-center">
           <IconLoader className="animate-spin" size={96} />
         </div>
       )}
 
-      {leaks && (
+      {leaks && !loading && (
         <div
-          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3
-          gap-4 w-full mt-6"
+          className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3
+          gap-4 w-full my-6"
         >
-          {leaks.data.map((leak) => (
+          {leaks.map((leak) => (
             <LeakCard key={leak.id} {...leak} />
           ))}
         </div>
+      )}
+
+      {total > 0 && (
+        <Pagination
+          total={total}
+          current={query.page || 1}
+          onChange={(page) => setQuery({ ...query, page })}
+        />
       )}
     </Container>
   );

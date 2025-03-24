@@ -13,10 +13,7 @@ const LeakCard: FC<Leak> = (props) => {
   const { dict } = useDictStore();
 
   return (
-    <div
-      className="bg-day-100 dark:bg-night-500 rounded-lg p-2
-      shadow-md flex flex-col"
-    >
+    <div className="bg-day-100 dark:bg-night-500 rounded-lg p-2 flex flex-col">
       <strong>{getTitle(props.title, props.name)}</strong>
 
       {props.domain && (

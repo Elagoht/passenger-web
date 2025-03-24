@@ -186,7 +186,19 @@
       "description": "Get the known leaks and breaches.",
       "seeLatest": "See Latest News",
       "verified": "Verified",
-      "unverified": "Unverified"
+      "unverified": "Unverified",
+      "query": {
+        "searchTerm": "Search Term",
+        "sortBy": "Sort By",
+        "sortOrder": "Sort Order",
+        "date": "Date",
+        "verified": "Show Verified Leaks Only",
+        "search": "Search",
+        "name": "Name",
+        "domain": "Domain",
+        "asc": "Asc",
+        "desc": "Desc"
+      }
     },
     "settings": {
       "title": "Settings",

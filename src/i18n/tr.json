@@ -186,7 +186,19 @@
       "description": "Bilinen sızıntılar ve ihlalleri görün.",
       "seeLatest": "En Son Haberleri Görün",
       "verified": "Doğrulandı",
-      "unverified": "Doğrulanmadı"
+      "unverified": "Doğrulanmadı",
+      "query": {
+        "searchTerm": "Arama Terimi",
+        "sortBy": "Sıralama",
+        "sortOrder": "Sıralama Sırası",
+        "date": "Tarih",
+        "verified": "Yalnızca Doğrulananları Göster",
+        "search": "Ara",
+        "name": "Ad",
+        "domain": "Alan Adı",
+        "asc": "Artan",
+        "desc": "Azalan"
+      }
     },
     "settings": {
       "title": "Ayarlar",
