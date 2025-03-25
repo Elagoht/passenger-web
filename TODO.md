@@ -27,7 +27,7 @@
 - [X] /tags
 - [X] /tags/{id}
 - [X] /transfer/import
-- [ ] /transfer/export
+- [X] /transfer/export
 - [ ] /word-lists/import
 - [ ] /word-lists
 - [ ] /word-lists/{id}
