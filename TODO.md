@@ -26,7 +26,7 @@
 - [X] /stats/graph/strength/{accountId}
 - [X] /tags
 - [X] /tags/{id}
-- [ ] /transfer/import
+- [X] /transfer/import
 - [ ] /transfer/export
 - [ ] /word-lists/import
 - [ ] /word-lists
