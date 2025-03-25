@@ -27,7 +27,7 @@ const ExportForm: FC = () => {
           .finally(() => setSubmitting(false));
       }}
     >
-      <Form className="flex flex-col gap-4 max-w-lg w-full">
+      <Form className="flex flex-col gap-4 max-w-screen-md w-full">
         <Combobox
           name="format"
           options={[
