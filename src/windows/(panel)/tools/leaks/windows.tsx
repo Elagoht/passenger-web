@@ -1,8 +1,11 @@
-import { IconLoader } from "@tabler/icons-react";
+import { IconFilter, IconLoader, IconNews } from "@tabler/icons-react";
 import { FC, useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import Pagination from "../../../../components/common/Pagination";
 import PaginationInfo from "../../../../components/common/Pagination/PaginationInfo";
 import Container from "../../../../components/layout/Container";
+import Button from "../../../../components/ui/Button";
+import Collapsible from "../../../../components/ui/Collapsible";
 import { Subtitle, Title } from "../../../../components/ui/Typography";
 import LeakCard from "../../../../components/windows/leaks/LeakCard";
 import LeakQueryForm from "../../../../forms/LeakQueryForm";
@@ -16,6 +19,8 @@ const PER_PAGE = 12;
 const LeaksWindow: FC = () => {
   const { dict } = useDictStore();
   const { token } = useAuthStore();
+
+  const navigate = useNavigate();
 
   const [loading, setLoading] = useState(true);
   const [leaks, setLeaks] = useState<Leak[]>();
@@ -37,13 +42,46 @@ const LeaksWindow: FC = () => {
       .finally(() => setLoading(false));
   }, [dict, token, query]);
 
+  const [filtersOpen, setFiltersOpen] = useState<boolean>(false);
+
   return (
     <Container>
       <Title>{dict.windows.leaks.title}</Title>
 
       <Subtitle>{dict.windows.leaks.description}</Subtitle>
 
-      <LeakQueryForm query={query} setQuery={setQuery} />
+      <div className="w-full">
+        <div className="flex gap-2 mt-4">
+          <Button
+            solidIcon
+            icon={IconFilter}
+            className="w-full"
+            variant={filtersOpen ? "solid" : "outlined"}
+            onClick={() => setFiltersOpen((prev) => !prev)}
+          >
+            {
+              dict.windows.leaks.query.showFilters[
+                filtersOpen ? "hide" : "show"
+              ]
+            }
+          </Button>
+
+          <Button
+            solidIcon
+            color="info"
+            icon={IconNews}
+            variant="outlined"
+            className="w-full"
+            onClick={() => navigate("/leaks/new")}
+          >
+            {dict.windows.leaks.news}
+          </Button>
+        </div>
+
+        <Collapsible open={filtersOpen} outerClassName="w-full">
+          <LeakQueryForm query={query} setQuery={setQuery} />
+        </Collapsible>
+      </div>
 
       {loading && (
         <div className="flex justify-center items-center">

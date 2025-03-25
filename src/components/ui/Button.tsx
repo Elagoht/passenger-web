@@ -17,6 +17,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   className?: string;
   icon?: React.ForwardRefExoticComponent<IconProps & React.RefAttributes<Icon>>;
+  solidIcon?: boolean;
 }
 
 const Button = ({
@@ -27,6 +28,7 @@ const Button = ({
   className,
   disabled,
   icon,
+  solidIcon = false,
   ...props
 }: ButtonProps) => {
   const formik = useFormikContext();
@@ -39,26 +41,26 @@ const Button = ({
         sizeStyles[size],
         variantStyles[variant][color],
         className,
+        { relative: !solidIcon },
       )}
       disabled={isDisabled}
       type="button"
       {...props}
     >
-      {children}
+      {icon && solidIcon ? <div className="grow">{children}</div> : children}
 
       {icon &&
         createElement(icon, {
-          className: classNames(
-            iconSizeStyles[size],
-            "absolute top-1/2 -translate-y-1/2",
-          ),
+          className: classNames(iconSizeStyles[size], {
+            "absolute top-1/2 -translate-y-1/2": !solidIcon,
+          }),
         })}
     </button>
   );
 };
 
 const baseStyles =
-  "relative rounded-2xl border-2 font-semibold transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed hover:brightness-110";
+  "rounded-2xl flex items-center justify-center border-2 font-semibold transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed hover:brightness-110";
 
 const sizeStyles = {
   small: "px-2 py-1",
@@ -98,13 +100,13 @@ const variantStyles = {
       "bg-gradient-to-br from-day-500 to-day-600 text-day-50 border-day-500",
   },
   text: {
-    primary: "text-cream-600",
-    secondary: "text-dream-600",
-    success: "text-green-600",
-    warning: "text-orange-600",
-    danger: "text-red-600",
-    info: "text-blue-600",
-    neutral: "text-day-600",
+    primary: "text-cream-600 border-transparent",
+    secondary: "text-dream-600 border-transparent",
+    success: "text-green-600 border-transparent",
+    warning: "text-orange-600 border-transparent",
+    danger: "text-red-600 border-transparent",
+    info: "text-blue-600 border-transparent",
+    neutral: "text-day-600 border-transparent",
   },
   outlined: {
     primary: "border-cream-600 text-cream-600",

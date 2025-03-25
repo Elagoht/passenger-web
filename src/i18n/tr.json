@@ -187,7 +187,12 @@
       "seeLatest": "En Son Haberleri Görün",
       "verified": "Doğrulandı",
       "unverified": "Doğrulanmadı",
+      "news": "Haberler",
       "query": {
+        "showFilters": {
+          "show": "Göster",
+          "hide": "Gizle"
+        },
         "searchTerm": "Arama Terimi",
         "sortBy": "Sıralama",
         "sortOrder": "Sıralama Sırası",

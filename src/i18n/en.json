@@ -187,7 +187,12 @@
       "seeLatest": "See Latest News",
       "verified": "Verified",
       "unverified": "Unverified",
+      "news": "News",
       "query": {
+        "showFilters": {
+          "show": "Show",
+          "hide": "Hide"
+        },
         "searchTerm": "Search Term",
         "sortBy": "Sort By",
         "sortOrder": "Sort Order",
