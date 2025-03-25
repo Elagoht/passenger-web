@@ -28,7 +28,7 @@ const LeakQueryForm: FC<LeakQueryFormProps> = ({ query, setQuery }) => {
         setQuery(
           Object.fromEntries(
             // It's okay to discard "false" values in this endpoint
-            Object.entries(values).filter(([, value]) => !value),
+            Object.entries(values).filter(([, value]) => !!value),
           ),
         );
         setSubmitting(false);
