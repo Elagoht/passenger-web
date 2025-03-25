@@ -224,7 +224,7 @@
     "wordLists": {
       "title": "Wordlists",
       "description": "Import and manage wordlists. You can brute force yourself before hackers do!",
-      "flow": "Add wordlist repositories. Download, verify. Start an analysis from the Analyses menu.",
+      "flow": "Add wordlist repositories. Download, validate. Start an analysis from the Analyses menu.",
       "addModal": {
         "title": "Add Wordlist Repository",
         "description": "The URL you enter should contain a JSON data.",
