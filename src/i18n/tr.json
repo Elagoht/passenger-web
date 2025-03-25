@@ -272,11 +272,11 @@
       "items": {
         "strictMode": {
           "title": "Katı Mod",
-          "description": "Katı mod, arayüz renkleri ve daha fazlası."
+          "description": "Kasanıza yeni hesap eklerken tercih ettiğiniz kelime listesini kullanarak zayıf parolaları engelleyin."
         },
         "wordlist": {
           "title": "Kelime Listesi",
-          "description": "Kelime listesi, arayüz renkleri ve daha fazlası."
+          "description": "Kasanızın kullanacağı kelime listesini seçin."
         }
       }
     }

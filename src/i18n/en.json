@@ -276,7 +276,7 @@
         },
         "wordlist": {
           "title": "Wordlist",
-          "description": "Use your preferred wordlist to block adding weak passphrases while adding new accounts."
+          "description": "Select the wordlist you want to use for strict mode."
         }
       }
     }

@@ -47,7 +47,7 @@ const StatisticsWindow: FC = () => {
         </div>
       )}
 
-      {!loading && strengthGraph && (
+      {!loading && strengthGraph && strengthGraph.length > 0 && (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 w-full">
           <div className="flex flex-col gap-2">
             <Subtitle>{dict.windows.statistics.strengthGraph.title}</Subtitle>

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router";
 import Button from "../components/ui/Button";
 import { Combobox } from "../components/ui/Combobox";
 import { Switch } from "../components/ui/Switch";
+import { Paragraph } from "../components/ui/Typography";
 import { postPreference } from "../services/preferences";
 import useAuthStore from "../stores/auth";
 import useDictStore from "../stores/dict";
@@ -58,7 +59,7 @@ const PreferencesForm: FC<PreferencesFormProps> = ({
                 {dict.windows.preferences.items[setting.key].title}
               </strong>
 
-              <code className="text-xs text-day-900">{setting.key}</code>
+              {getDescription(setting.key, dict)}
             </div>
 
             <div>{renderValueOption(setting.key, wordlists)}</div>
@@ -70,6 +71,17 @@ const PreferencesForm: FC<PreferencesFormProps> = ({
         </Button>
       </Form>
     </Formik>
+  );
+};
+
+const getDescription = (
+  key: keyof typeof dict.windows.preferences.items,
+  dict: Dict,
+) => {
+  return (
+    <Paragraph className="text-sm text-day-900">
+      {dict.windows.preferences.items[key].description}
+    </Paragraph>
   );
 };
 
