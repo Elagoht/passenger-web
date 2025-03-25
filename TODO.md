@@ -19,7 +19,7 @@
 - [X] /generate/alternative
 - [ ] /leaks/news
 - [ ] /leaks/{id}
-- [ ] /leaks
+- [X] /leaks
 - [ ] /preferences
 - [ ] /preferences/{key}
 - [ ] /stats/graph/strength

@@ -92,7 +92,7 @@ const LeakQueryForm: FC<LeakQueryFormProps> = ({ query, setQuery }) => {
           </div>
 
           <div className="flex max-lg:flex-col items-center gap-2">
-            <DatePicker name="date" label={dict.windows.leaks.query.date} />
+            <DatePicker name="date" label={dict.windows.leaks.query.dateFrom} />
 
             <DatePicker name="dateTo" label={dict.windows.leaks.query.dateTo} />
           </div>

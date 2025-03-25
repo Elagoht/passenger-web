@@ -149,11 +149,13 @@ export const DatePicker: FC<DatePickerProps> = ({ name, label, error }) => {
   return (
     <div className="flex flex-col gap-2 w-full">
       {label && (
-        <label className="text-sm font-medium text-gray-700">{label}</label>
+        <label className="text-sm font-medium text-night-900 dark:text-day-200">
+          {label}
+        </label>
       )}
       <div className="relative">
         <div
-          className="w-full px-3 py-2 rounded-2xl bg-night-400 text-day-200 transition-all outline-none focus:ring-2 ring-dream-600 cursor-pointer flex items-center gap-3"
+          className="w-full px-3 py-2 rounded-2xl bg-day-100 dark:bg-night-400 text-night-900 dark:text-day-200 transition-all outline-none focus:ring-2 ring-dream-600 cursor-pointer flex items-center gap-3"
           onClick={() => setIsOpen(!isOpen)}
           tabIndex={0}
         >
@@ -165,7 +167,7 @@ export const DatePicker: FC<DatePickerProps> = ({ name, label, error }) => {
             <button
               type="button"
               onClick={handleClear}
-              className="p-1 hover:bg-night-300 rounded-lg transition-colors"
+              className="p-1 hover:bg-day-300 dark:hover:bg-night-300 rounded-lg transition-colors"
             >
               <IconX size={16} />
             </button>
@@ -178,7 +180,7 @@ export const DatePicker: FC<DatePickerProps> = ({ name, label, error }) => {
               className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50"
               onClick={() => setIsOpen(false)}
             />
-            <div className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-full max-w-80 bg-night-400 rounded-2xl shadow-lg border border-night-300 p-4">
+            <div className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-full max-w-80 bg-day-100 dark:bg-night-400 rounded-2xl shadow-lg border border-day-300 dark:border-night-300 p-4">
               <div className="flex items-center justify-between mb-6">
                 <div className="flex gap-3 flex-1">
                   <Combobox
@@ -206,7 +208,7 @@ export const DatePicker: FC<DatePickerProps> = ({ name, label, error }) => {
                     event.stopPropagation();
                     handleGoToToday();
                   }}
-                  className="ml-3 p-2 rounded-xl hover:bg-night-300 transition-colors"
+                  className="ml-3 p-2 rounded-xl hover:bg-day-300 dark:hover:bg-night-300 transition-colors"
                 >
                   <IconCalendarDown />
                 </button>
@@ -217,7 +219,7 @@ export const DatePicker: FC<DatePickerProps> = ({ name, label, error }) => {
                   (day) => (
                     <div
                       key={day}
-                      className="text-center text-sm font-medium text-gray-400"
+                      className="text-center text-sm font-medium text-night-700 dark:text-day-300"
                     >
                       {day}
                     </div>
@@ -232,10 +234,12 @@ export const DatePicker: FC<DatePickerProps> = ({ name, label, error }) => {
                     className={classNames(
                       "aspect-square rounded-xl text-base font-medium flex items-center justify-center transition-colors",
                       {
-                        "text-gray-500": !day.isCurrentMonth,
-                        "text-day-200 hover:bg-night-300":
+                        "text-night-500 dark:text-day-500 opacity-50 cursor-not-allowed":
+                          !day.isCurrentMonth,
+                        "text-night-900 dark:text-day-200 hover:bg-day-300 dark:hover:bg-night-300 cursor-pointer":
                           day.isCurrentMonth && !day.isSelected,
-                        "bg-dream-600 text-white": day.isSelected,
+                        "bg-dream-600 text-white cursor-pointer":
+                          day.isSelected,
                       },
                     )}
                     onClick={() => handleDateSelect(day.date)}
