@@ -33,19 +33,21 @@ export const getWordlistStatus = async (token: string, id: string) => {
 };
 
 export const postWordlistDownload = async (token: string, id: string) => {
-  return await apiCall.post<void>(`/word-lists/${id}/download`, {
+  return await apiCall.post<void>(`/word-lists/${id}/download`, undefined, {
     Authorization: `Bearer ${token}`,
   });
 };
 
 export const postWordlistCancelDownload = async (token: string, id: string) => {
-  return await apiCall.post<void>(`/word-lists/${id}/cancel-download`, {
-    Authorization: `Bearer ${token}`,
-  });
+  return await apiCall.post<void>(
+    `/word-lists/${id}/cancel-download`,
+    undefined,
+    { Authorization: `Bearer ${token}` },
+  );
 };
 
 export const postWordlistValidate = async (token: string, id: string) => {
-  return await apiCall.post<void>(`/word-lists/${id}/validate`, {
+  return await apiCall.post<void>(`/word-lists/${id}/validate`, undefined, {
     Authorization: `Bearer ${token}`,
   });
 };

@@ -235,8 +235,18 @@
       },
       "actions": {
         "download": "İndir",
-        "verify": "Doğrula",
+        "cancelDownload": "İndirmeyi İptal Et",
+        "validate": "Doğrula",
         "delete": "Sil"
+      },
+      "status": {
+        "IMPORTED": "İçe Aktarıldı",
+        "DOWNLOADING": "İndiriliyor",
+        "DOWNLOADED": "İndirildi",
+        "VALIDATING": "Doğrulanıyor",
+        "VALIDATED": "Doğrulandı",
+        "ANALYZING": "Analiz Ediliyor",
+        "FAILED": "Başarısız"
       }
     },
     "settings": {

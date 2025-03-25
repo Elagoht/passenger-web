@@ -13,7 +13,6 @@ type WordlistStatus =
   | "IMPORTED"
   | "DOWNLOADING"
   | "DOWNLOADED"
-  | "UNVALIDATED"
   | "VALIDATING"
   | "VALIDATED"
   | "ANALYZING"

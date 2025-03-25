@@ -235,8 +235,18 @@
       },
       "actions": {
         "download": "Download",
-        "verify": "Verify",
+        "cancelDownload": "Cancel Download",
+        "validate": "Validate",
         "delete": "Delete"
+      },
+      "status": {
+        "IMPORTED": "Imported",
+        "DOWNLOADING": "Downloading",
+        "DOWNLOADED": "Downloaded",
+        "VALIDATING": "Validating",
+        "VALIDATED": "Validated",
+        "ANALYZING": "Analyzing",
+        "FAILED": "Failed"
       }
     },
     "settings": {
