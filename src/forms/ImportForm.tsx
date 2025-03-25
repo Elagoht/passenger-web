@@ -24,7 +24,7 @@ const ImportForm: FC = () => {
           .finally(() => setSubmitting(false));
       }}
     >
-      <Form className="flex gap-4 w-full max-w-screen-md">
+      <Form className="flex flex-col gap-4 w-full max-w-screen-md">
         <FileInput name="file" accept=".csv" />
 
         <Button type="submit">{dict.windows.import.form.submit}</Button>
