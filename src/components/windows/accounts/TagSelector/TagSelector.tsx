@@ -29,39 +29,45 @@ const TagSelector: FC = () => {
         {dict.windows.addAccount.form.tags}
       </Paragraph>
 
-      <div>
-        {tags?.map((tag) => (
-          <button
-            type="button"
-            key={tag.id}
-            className={classNames("transition-all relative", {
-              "grayscale scale-75 opacity-50": !fields.values.tags?.some(
+      {tags.length === 0 ? (
+        <div className="bg-day-300 dark:bg-night-500 rounded-2xl px-4 py-2 text-sm text-day-900">
+          {dict.windows.addAccount.form.noTags}
+        </div>
+      ) : (
+        <div>
+          {tags?.map((tag) => (
+            <button
+              type="button"
+              key={tag.id}
+              className={classNames("transition-all relative", {
+                "grayscale scale-75 opacity-50": !fields.values.tags?.some(
+                  (currentTag) => currentTag.id === tag.id,
+                ),
+              })}
+              onClick={() => {
+                fields.setFieldValue(
+                  "tags",
+                  fields.values.tags?.some((t) => t.id === tag.id)
+                    ? fields.values.tags?.filter((t) => t.id !== tag.id)
+                    : [...(fields.values.tags || []), tag],
+                );
+              }}
+            >
+              {fields.values.tags?.some(
                 (currentTag) => currentTag.id === tag.id,
-              ),
-            })}
-            onClick={() => {
-              fields.setFieldValue(
-                "tags",
-                fields.values.tags?.some((t) => t.id === tag.id)
-                  ? fields.values.tags?.filter((t) => t.id !== tag.id)
-                  : [...(fields.values.tags || []), tag],
-              );
-            }}
-          >
-            {fields.values.tags?.some(
-              (currentTag) => currentTag.id === tag.id,
-            ) && (
-              <IconCheck
-                size={16}
-                className="bg-green-500 text-green-50 rounded
+              ) && (
+                <IconCheck
+                  size={16}
+                  className="bg-green-500 text-green-50 rounded
                 absolute -top-1 right-2.5"
-              />
-            )}
+                />
+              )}
 
-            <TagBadge {...tag} size="small" />
-          </button>
-        ))}
-      </div>
+              <TagBadge {...tag} size="small" />
+            </button>
+          ))}
+        </div>
+      )}
     </>
   );
 };

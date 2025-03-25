@@ -74,6 +74,7 @@
       "title": "Add Account",
       "form": {
         "tags": "Tags",
+        "noTags": "No tags found. Add one to list them here.",
         "platform": "Platform",
         "identity": "Identity",
         "icon": "Icon",
@@ -239,6 +240,15 @@
           "title": "Preferences",
           "description": "Strict mode, interface theme, etc."
         }
+      }
+    },
+    "import": {
+      "title": "Import Accounts",
+      "subtitle": "Import from browser and password managers.",
+      "description": "Passenger will detect the type of the file you upload and import the accounts accordingly.",
+      "form": {
+        "csvFile": "CSV File",
+        "submit": "Import"
       }
     },
     "changePassphrase": {

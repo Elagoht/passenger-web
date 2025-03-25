@@ -7,19 +7,26 @@ class ApiHandler {
     this.baseUrl = baseUrl;
   }
 
-  private async request<TResponse, TBody>(
+  private async request<TResponse>(
     method: string,
     endpoint: string,
-    body?: TBody,
+    body?: unknown,
     headers?: Record<string, string>,
   ): Promise<TResponse> {
     const response = await fetch(`${this.baseUrl}${endpoint}`, {
       method,
       headers: {
-        "Content-Type": "application/json",
+        ...(body instanceof FormData
+          ? {}
+          : { "Content-Type": "application/json" }),
         ...headers,
       },
-      body: body ? JSON.stringify(body) : undefined,
+      body:
+        body instanceof FormData
+          ? body
+          : body
+            ? JSON.stringify(body)
+            : undefined,
     });
 
     if (!response.ok) {
@@ -38,45 +45,40 @@ class ApiHandler {
 
   public post<TResponse>(
     endpoint: string,
-    body: unknown,
+    body?: unknown,
     headers?: Record<string, string>,
   ): Promise<TResponse> {
-    return this.request<TResponse, unknown>("POST", endpoint, body, headers);
+    return this.request<TResponse>("POST", endpoint, body, headers);
   }
 
   public get<T>(
     endpoint: string,
     headers?: Record<string, string>,
   ): Promise<T> {
-    return this.request<T, undefined>("GET", endpoint, undefined, headers);
+    return this.request<T>("GET", endpoint, undefined, headers);
   }
 
   public put<TResponse>(
     endpoint: string,
-    body: unknown,
+    body?: unknown,
     headers?: Record<string, string>,
   ): Promise<TResponse> {
-    return this.request<TResponse, unknown>("PUT", endpoint, body, headers);
+    return this.request<TResponse>("PUT", endpoint, body, headers);
   }
 
   public patch<TResponse>(
     endpoint: string,
-    body: unknown,
+    body?: unknown,
     headers?: Record<string, string>,
   ): Promise<TResponse> {
-    return this.request<TResponse, unknown>("PATCH", endpoint, body, headers);
+    return this.request<TResponse>("PATCH", endpoint, body, headers);
   }
 
   public delete<TResponse>(
     endpoint: string,
     headers?: Record<string, string>,
   ): Promise<TResponse> {
-    return this.request<TResponse, undefined>(
-      "DELETE",
-      endpoint,
-      undefined,
-      headers,
-    );
+    return this.request<TResponse>("DELETE", endpoint, undefined, headers);
   }
 }
 

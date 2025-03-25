@@ -74,6 +74,7 @@
       "title": "Hesap Ekle",
       "form": {
         "tags": "Etiketler",
+        "noTags": "Etiket bulunamadı. Burada listelenmesi için bir tane ekleyin.",
         "platform": "Platform",
         "identity": "Kimlik",
         "icon": "Simge",
@@ -239,6 +240,15 @@
           "title": "Tercihler",
           "description": "Katı mod, arayüz renkleri ve daha fazlası."
         }
+      }
+    },
+    "import": {
+      "title": "Hesapları İçe Aktar",
+      "subtitle": "Tarayıcı ve parola yöneticilerinden içe aktarın.",
+      "description": "Passenger, yüklediğiniz dosyanın türünü algılayacak ve hesaplarınızı uygun şekilde içe aktaracaktır.",
+      "form": {
+        "csvFile": "CSV Dosyası",
+        "submit": "İçe Aktar"
       }
     },
     "changePassphrase": {
