@@ -221,6 +221,24 @@
         "description": "Unlike other strength graphs, this one shows the total strength of your Vault over time. Calculated by days."
       }
     },
+    "wordLists": {
+      "title": "Wordlists",
+      "description": "Import and manage wordlists. You can brute force yourself before hackers do!",
+      "flow": "Add wordlist repositories. Download, verify. Start an analysis from the Analyses menu.",
+      "addModal": {
+        "title": "Add Wordlist Repository",
+        "description": "The URL you enter should contain a JSON data.",
+        "form": {
+          "url": "URL",
+          "submit": "Add"
+        }
+      },
+      "actions": {
+        "download": "Download",
+        "verify": "Verify",
+        "delete": "Delete"
+      }
+    },
     "settings": {
       "title": "Settings",
       "items": {

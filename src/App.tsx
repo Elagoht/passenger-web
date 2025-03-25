@@ -26,6 +26,7 @@ import TagAddWindow from "./windows/(panel)/tools/tags/add/window";
 import TagDetailsWindow from "./windows/(panel)/tools/tags/details/[id]/window";
 import TagsWindow from "./windows/(panel)/tools/tags/window";
 import ToolsWindow from "./windows/(panel)/tools/window";
+import WordListsWindow from "./windows/(panel)/tools/word-lists/window";
 import SplashWindow from "./windows/window";
 
 const router = createBrowserRouter([
@@ -59,6 +60,7 @@ const router = createBrowserRouter([
       { path: "/tools/leaks", element: <LeaksWindow /> },
       { path: "/tools/leaks/news", element: <LeaksNewsWindow /> },
       { path: "/tools/statistics", element: <StatisticsWindow /> },
+      { path: "/tools/wordlists", element: <WordListsWindow /> },
       { path: "/settings", element: <SettingsWindow /> },
       { path: "/settings/import-accounts", element: <ImportWindow /> },
       { path: "/settings/export-accounts", element: <ExportWindow /> },

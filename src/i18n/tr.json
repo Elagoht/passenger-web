@@ -221,6 +221,24 @@
         "description": "Diğer güç grafiklerinden farklı olarak, bu grafik günlere göre kasanızın toplam gücünü gösterir. Günlere göre hesaplanır."
       }
     },
+    "wordLists": {
+      "title": "Kelime Listesileri",
+      "description": "Kelime listelerini içe ve dışa aktarın ve yönetin. Hackers önce kendinizi zorlayabilirsiniz!",
+      "flow": "Kelime listesi depolarını ekleyin. İndirin, doğrulayın. Analizler menüsünden bir analiz başlatın.",
+      "addModal": {
+        "title": "Kelime Listesi Ekle",
+        "description": "Girdiğiniz URL'de bir JSON veri içermelidir.",
+        "form": {
+          "url": "URL",
+          "submit": "Ekle"
+        }
+      },
+      "actions": {
+        "download": "İndir",
+        "verify": "Doğrula",
+        "delete": "Sil"
+      }
+    },
     "settings": {
       "title": "Ayarlar",
       "items": {
