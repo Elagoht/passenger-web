@@ -14,19 +14,25 @@ const LeakCard: FC<Leak> = (props) => {
 
   return (
     <div className="bg-day-100 dark:bg-night-500 rounded-lg p-2 flex flex-col">
-      <strong>{getTitle(props.title, props.name)}</strong>
+      <div className="flex gap-2">
+        <img src={props.logo} alt={props.name} className="size-10" />
 
-      {props.domain && (
-        <a
-          href={new URL(`https://${props.domain}`).toString()}
-          className="flex items-center gap-1 text-blue-500
+        <div className="flex flex-col grow">
+          <strong>{getTitle(props.title, props.name)}</strong>
+
+          {props.domain && (
+            <a
+              href={new URL(`https://${props.domain}`).toString()}
+              className="flex items-center gap-1 text-blue-500
           visited:text-purple-500 underline"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <IconExternalLink /> {props.domain}
-        </a>
-      )}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <IconExternalLink /> {props.domain}
+            </a>
+          )}
+        </div>
+      </div>
 
       <div className="flex gap-2 mt-2">
         <div className="flex flex-col grow items-stretch gap-1">

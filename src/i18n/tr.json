@@ -207,6 +207,10 @@
         "desc": "Azalan"
       }
     },
+    "leaksNews": {
+      "title": "Haberler",
+      "description": "Burada Have I Been Pwned tarafından doğrulanan en son 12 sızıntı haberi yer almaktadır."
+    },
     "settings": {
       "title": "Ayarlar",
       "items": {

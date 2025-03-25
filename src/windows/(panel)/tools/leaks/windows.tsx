@@ -72,7 +72,7 @@ const LeaksWindow: FC = () => {
             icon={IconNews}
             variant="outlined"
             className="w-full"
-            onClick={() => navigate("/leaks/new")}
+            onClick={() => navigate("/tools/leaks/news")}
           >
             {dict.windows.leaks.news}
           </Button>

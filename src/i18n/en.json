@@ -207,6 +207,10 @@
         "desc": "Desc"
       }
     },
+    "news": {
+      "title": "News",
+      "description": "Here is the latest 12 leaks that validated by Have I Been Pwned."
+    },
     "settings": {
       "title": "Settings",
       "items": {
