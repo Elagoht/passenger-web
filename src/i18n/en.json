@@ -265,6 +265,20 @@
         "submit": "Change",
         "success": "Passphrase changed."
       }
+    },
+    "preferences": {
+      "title": "Preferences",
+      "save": "Save",
+      "items": {
+        "strictMode": {
+          "title": "Strict Mode",
+          "description": "Use your preferred wordlist to block adding weak passphrases while adding new accounts."
+        },
+        "wordlist": {
+          "title": "Wordlist",
+          "description": "Use your preferred wordlist to block adding weak passphrases while adding new accounts."
+        }
+      }
     }
   },
   "forms": {
@@ -276,6 +290,9 @@
   "generators": {
     "generate": "Generate",
     "alternate": "Alternate"
+  },
+  "inputs": {
+    "placeholder": "Select an option"
   },
   "strength": {
     "checks": {

@@ -2,6 +2,7 @@ import { Icon, IconChevronDown, IconProps } from "@tabler/icons-react";
 import classNames from "classnames";
 import { FieldHookConfig, useField } from "formik";
 import React, { createElement, FC, useEffect, useRef, useState } from "react";
+import useDictStore from "../../../stores/dict";
 
 interface ComboboxOption {
   value: string;
@@ -29,12 +30,14 @@ export const Combobox: FC<ComboboxProps> = ({
   className,
   icon,
   options,
-  placeholder = "Select an option",
+  placeholder,
   value,
   onChange,
   disabled = false,
   ...props
 }) => {
+  const { dict } = useDictStore();
+
   const [field, meta] = useField(props as FieldHookConfig<string>);
   const [isOpen, setIsOpen] = useState(false);
   const [highlightedIndex, setHighlightedIndex] = useState(0);
@@ -171,7 +174,9 @@ export const Combobox: FC<ComboboxProps> = ({
         >
           <div className="flex items-center justify-between">
             <span className={!selectedOption ? "text-gray-400" : ""}>
-              {selectedOption ? selectedOption.label : placeholder}
+              {selectedOption
+                ? selectedOption.label
+                : placeholder || dict.inputs.placeholder}
             </span>
 
             <IconChevronDown

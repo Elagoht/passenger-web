@@ -38,15 +38,17 @@ export const Switch: FC<SwitchProps> = ({ label, ...props }) => {
 
         <div
           className={classNames(
-            "block w-10 h-6 my-2 rounded-full transition-colors duration-200 ease-in-out",
-            "bg-day-400 dark:bg-night-400 relative",
-            { "bg-cream-400 dark:bg-cream-600": field.value },
+            "block w-10 h-6 my-2 rounded-full transition-colors duration-200 ease-in-out relative",
+            {
+              "bg-cream-400 dark:bg-cream-600": field.value,
+              "bg-day-500 dark:bg-night-400": !field.value,
+            },
           )}
         >
           <div
             className={classNames(
               "absolute left-1 top-1 w-4 h-4 rounded-full transition-transform duration-200 ease-in-out",
-              "bg-white dark:bg-day-200",
+              "bg-day-200",
               { "translate-x-4": field.value },
             )}
           />

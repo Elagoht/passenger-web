@@ -17,6 +17,7 @@ import AccountsWindow from "./windows/(panel)/accounts/window";
 import ChangePassphraseWindow from "./windows/(panel)/settings/change-passphrase/window";
 import ExportWindow from "./windows/(panel)/settings/export-accounts/window";
 import ImportWindow from "./windows/(panel)/settings/import-accounts/window";
+import PreferencesWindow from "./windows/(panel)/settings/preferences/window";
 import SettingsWindow from "./windows/(panel)/settings/window";
 import LeaksNewsWindow from "./windows/(panel)/tools/leaks/news/window";
 import LeaksWindow from "./windows/(panel)/tools/leaks/windows";
@@ -65,6 +66,7 @@ const router = createBrowserRouter([
         path: "/settings/change-passphrase",
         element: <ChangePassphraseWindow />,
       },
+      { path: "/settings/preferences", element: <PreferencesWindow /> },
     ],
   },
 ]);
