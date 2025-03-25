@@ -251,6 +251,12 @@
         "submit": "Import"
       }
     },
+    "export": {
+      "title": "Export Accounts",
+      "subtitle": "Export to browser and password managers.",
+      "description": "You can chose which format you want to export to.",
+      "download": "Export & Download"
+    },
     "changePassphrase": {
       "title": "Change Master Passphrase",
       "description": "Master passphrase is your keyto login to your Vault.",

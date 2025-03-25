@@ -37,7 +37,15 @@ class ApiHandler {
     }
 
     try {
-      return (await response.json()) as TResponse;
+      if (response.headers.get("content-type")?.startsWith("text/")) {
+        return (await response.text()) as TResponse;
+      } else if (
+        response.headers.get("content-type")?.startsWith("application/json")
+      ) {
+        return (await response.json()) as TResponse;
+      } else {
+        return {} as TResponse;
+      }
     } catch {
       return {} as TResponse;
     }

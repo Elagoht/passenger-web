@@ -251,6 +251,12 @@
         "submit": "İçe Aktar"
       }
     },
+    "export": {
+      "title": "Hesapları Dışa Aktar",
+      "subtitle": "Tarayıcı ve parola yöneticileri için CSV olarak dışa aktarın.",
+      "description": "Hangi formatta dışa aktarılacağını seçebilirsiniz.",
+      "download": "Dışa Aktar & İndir"
+    },
     "changePassphrase": {
       "title": "Ana Parolayı Değiştir",
       "description": "Giriş yapmada kullandığınız anahtarınızı değiştirin.",
