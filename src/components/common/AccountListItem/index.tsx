@@ -17,7 +17,7 @@ const AccountListItem: FC<AccountCard> = ({
       className="flex items-center w-full gap-2 p-2
       rounded-2xl transition-all duration-200 text-day-900
       hover:text-night-100 dark:text-day-400
-      hover:dark:text-day-100 bg-day-50 dark:bg-night-900"
+      hover:dark:text-day-100 bg-day-100 dark:bg-night-900"
     >
       <AccountIcon url={url} platform={platform} />
 
