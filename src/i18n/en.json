@@ -211,6 +211,15 @@
       "title": "News",
       "description": "Here is the latest 12 leaks that validated by Have I Been Pwned."
     },
+    "statistics": {
+      "title": "Statistics",
+      "description": "Here is the statistics of your Vault.",
+      "noData": "No data found.",
+      "strengthGraph": {
+        "title": "Strength Over Time",
+        "description": "Unlike other strength graphs, this one shows the total strength of your Vault over time. Calculated by days."
+      }
+    },
     "settings": {
       "title": "Settings",
       "items": {

@@ -207,9 +207,18 @@
         "desc": "Azalan"
       }
     },
-    "leaksNews": {
+    "news": {
       "title": "Haberler",
       "description": "Burada Have I Been Pwned tarafından doğrulanan en son 12 sızıntı haberi yer almaktadır."
+    },
+    "statistics": {
+      "title": "İstatistikler",
+      "description": "İşte kasanızın istatistikleri burada.",
+      "noData": "Veri bulunamadı.",
+      "strengthGraph": {
+        "title": "Zamana Göre Güç",
+        "description": "Diğer güç grafiklerinden farklı olarak, bu grafik günlere göre kasanızın toplam gücünü gösterir. Günlere göre hesaplanır."
+      }
     },
     "settings": {
       "title": "Ayarlar",

@@ -5,3 +5,9 @@ export const getStrengthGraphOfAccount = async (token: string, id: string) => {
     Authorization: `Bearer ${token}`,
   });
 };
+
+export const getStrengthGraph = async (token: string) => {
+  return await apiCall.get<StrengthGraph>("/stats/graph/strength", {
+    Authorization: `Bearer ${token}`,
+  });
+};

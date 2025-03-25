@@ -18,6 +18,7 @@ import ChangePassphraseWindow from "./windows/(panel)/settings/change-passphrase
 import SettingsWindow from "./windows/(panel)/settings/window";
 import LeaksNewsWindow from "./windows/(panel)/tools/leaks/news/window";
 import LeaksWindow from "./windows/(panel)/tools/leaks/windows";
+import StatisticsWindow from "./windows/(panel)/tools/statistics/window";
 import TagAddWindow from "./windows/(panel)/tools/tags/add/window";
 import TagDetailsWindow from "./windows/(panel)/tools/tags/details/[id]/window";
 import TagsWindow from "./windows/(panel)/tools/tags/window";
@@ -54,6 +55,7 @@ const router = createBrowserRouter([
       { path: "/tools", element: <ToolsWindow /> },
       { path: "/tools/leaks", element: <LeaksWindow /> },
       { path: "/tools/leaks/news", element: <LeaksNewsWindow /> },
+      { path: "/tools/statistics", element: <StatisticsWindow /> },
       { path: "/settings", element: <SettingsWindow /> },
       {
         path: "/settings/change-passphrase",

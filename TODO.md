@@ -17,12 +17,12 @@
 - [X] /auth/change-passphrase
 - [X] /generate
 - [X] /generate/alternative
-- [ ] /leaks/news
-- [ ] /leaks/{id}
+- [X] /leaks/news
+- [X] /leaks/{id}
 - [X] /leaks
 - [ ] /preferences
 - [ ] /preferences/{key}
-- [ ] /stats/graph/strength
+- [X] /stats/graph/strength
 - [X] /stats/graph/strength/{accountId}
 - [X] /tags
 - [X] /tags/{id}
