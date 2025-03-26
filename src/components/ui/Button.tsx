@@ -41,7 +41,7 @@ const Button = ({
         sizeStyles[size],
         variantStyles[variant][color],
         className,
-        { relative: !solidIcon },
+        { relative: !solidIcon, "gap-2": icon && solidIcon },
       )}
       disabled={isDisabled}
       type="button"

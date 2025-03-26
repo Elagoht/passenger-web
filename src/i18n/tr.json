@@ -225,15 +225,9 @@
       "title": "Kelime Listesileri",
       "description": "Kelime listelerini içe ve dışa aktarın ve yönetin. Hackers önce kendinizi zorlayabilirsiniz!",
       "flow": "Kelime listesi depolarını ekleyin. İndirin, doğrulayın. Analizler menüsünden bir analiz başlatın.",
-      "addModal": {
-        "title": "Kelime Listesi Ekle",
-        "description": "Girdiğiniz URL'de bir JSON veri içermelidir.",
-        "form": {
-          "url": "URL",
-          "submit": "Ekle"
-        }
-      },
+      "noWordlists": "Kelime listesi bulunamadı. Bir tane ekleyin.",
       "actions": {
+        "add": "Ekle",
         "download": "İndir",
         "cancelDownload": "İndirmeyi İptal Et",
         "validate": "Doğrula",
@@ -247,6 +241,16 @@
         "VALIDATED": "Doğrulandı",
         "ANALYZING": "Analiz Ediliyor",
         "FAILED": "Başarısız"
+      }
+    },
+    "wordListAdd": {
+      "title": "Kelime Listesi Ekle",
+      "description": "Girdiğiniz URL bir ham JSON veri içermelidir.",
+      "form": {
+        "url": "URL",
+        "submit": "Ekle",
+        "alreadyExists": "Bu kelime listesi zaten mevcut.",
+        "invalidUrl": "Geçersiz URL."
       }
     },
     "settings": {

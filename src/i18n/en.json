@@ -225,15 +225,9 @@
       "title": "Wordlists",
       "description": "Import and manage wordlists. You can brute force yourself before hackers do!",
       "flow": "Add wordlist repositories. Download, validate. Start an analysis from the Analyses menu.",
-      "addModal": {
-        "title": "Add Wordlist Repository",
-        "description": "The URL you enter should contain a JSON data.",
-        "form": {
-          "url": "URL",
-          "submit": "Add"
-        }
-      },
+      "noWordlists": "No wordlists found. Add one to get started.",
       "actions": {
+        "add": "Add",
         "download": "Download",
         "cancelDownload": "Cancel Download",
         "validate": "Validate",
@@ -247,6 +241,16 @@
         "VALIDATED": "Validated",
         "ANALYZING": "Analyzing",
         "FAILED": "Failed"
+      }
+    },
+    "wordListAdd": {
+      "title": "Add Wordlist Repository",
+      "description": "The URL you enter should contain a raw JSON data.",
+      "form": {
+        "url": "URL",
+        "submit": "Add",
+        "alreadyExists": "This wordlist repository already exists.",
+        "invalidUrl": "Invalid URL."
       }
     },
     "settings": {

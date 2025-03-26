@@ -1,17 +1,10 @@
-import {
-  IconCalendar,
-  IconDownload,
-  IconDownloadOff,
-  IconLock,
-  IconRosetteDiscountCheck,
-  IconTrash,
-  IconWeight,
-} from "@tabler/icons-react";
+import { IconCalendar, IconLock, IconWeight } from "@tabler/icons-react";
 import classNames from "classnames";
-import { FC } from "react";
+import { FC, useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   deleteWordlist,
+  getWordlistStatus,
   postWordlistCancelDownload,
   postWordlistDownload,
   postWordlistValidate,
@@ -24,6 +17,29 @@ import { Paragraph } from "../../ui/Typography";
 const WordlistCard: FC<WordlistCard> = (props) => {
   const { dict } = useDictStore();
   const { token } = useAuthStore();
+
+  const [status, setStatus] = useState<WordlistStatus>(props.status);
+  const [shouldPoll, setShouldPoll] = useState<boolean>(
+    doesRequirePolling(props.status),
+  );
+
+  const handlePoll = useCallback(() => {
+    getWordlistStatus(token, props.id).then(({ status }) => {
+      setShouldPoll(doesRequirePolling(status));
+      setStatus(status);
+    });
+  }, [props.id, token]);
+
+  useEffect(() => {
+    if (!shouldPoll) return;
+
+    const interval = setInterval(() => {
+      handlePoll();
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [handlePoll, shouldPoll]);
+
   return (
     <div className="grow flex flex-col items-start justify-between bg-day-100 dark:bg-night-400 rounded-2xl">
       <Link to={props.id} className="flex flex-col grow gap-2 p-3">
@@ -35,9 +51,9 @@ const WordlistCard: FC<WordlistCard> = (props) => {
       </Link>
 
       <div className="flex mt-0 w-full">
-        {generateStatus(props.status, dict)}
+        {generateStatus(status, dict)}
 
-        {generateActionButton(token, props, dict)}
+        {generateActionButton(token, props, handlePoll, dict)}
       </div>
     </div>
   );
@@ -67,56 +83,76 @@ const generateStatus = (status: WordlistStatus, dict: Dict) => {
 const generateActionButton = (
   token: string,
   wordlist: WordlistCard,
+  handlePoll: () => void,
   dict: Dict,
 ) => {
-  if (wordlist.status === "VALIDATING" || wordlist.status === "ANALYZING") {
+  if (
+    wordlist.status === "VALIDATING" ||
+    wordlist.status === "ANALYZING" ||
+    wordlist.status === "FAILED"
+  ) {
     return null;
   }
 
   const props = {
-    IMPORTED: {
-      icon: IconDownload,
-      color: "success",
-      label: dict.windows.wordLists.actions.download,
-      onClick: () => postWordlistDownload(token, wordlist.id),
-    },
-    DOWNLOADING: {
-      icon: IconDownloadOff,
-      color: "danger",
-      label: dict.windows.wordLists.actions.cancelDownload,
-      onClick: () => postWordlistCancelDownload(token, wordlist.id),
-    },
-    DOWNLOADED: {
-      icon: IconRosetteDiscountCheck,
-      color: "info",
-      label: dict.windows.wordLists.actions.validate,
-      onClick: () => postWordlistValidate(token, wordlist.id),
-    },
-    VALIDATED: {
-      icon: IconTrash,
-      color: "danger",
-      label: dict.windows.wordLists.actions.delete,
-      onClick: () => deleteWordlist(token, wordlist.id),
-    },
-    FAILED: {
-      icon: IconRosetteDiscountCheck,
-      color: "danger",
-      label: dict.windows.wordLists.actions.validate,
-      onClick: () => postWordlistValidate(token, wordlist.id),
-    },
+    IMPORTED: [
+      {
+        color: "danger",
+        label: dict.windows.wordLists.actions.delete,
+        onClick: () => deleteWordlist(token, wordlist.id),
+      },
+      {
+        color: "success",
+        label: dict.windows.wordLists.actions.download,
+        onClick: () => postWordlistDownload(token, wordlist.id),
+      },
+    ],
+    DOWNLOADING: [
+      {
+        color: "danger",
+        label: dict.windows.wordLists.actions.cancelDownload,
+        onClick: () => postWordlistCancelDownload(token, wordlist.id),
+      },
+    ],
+    DOWNLOADED: [
+      {
+        color: "info",
+        label: dict.windows.wordLists.actions.validate,
+        onClick: () => postWordlistValidate(token, wordlist.id),
+      },
+    ],
+    VALIDATED: [
+      {
+        color: "danger",
+        label: dict.windows.wordLists.actions.delete,
+        onClick: () => deleteWordlist(token, wordlist.id),
+      },
+    ],
+    FAILED: [
+      {
+        color: "danger",
+        label: dict.windows.wordLists.actions.validate,
+        onClick: () => postWordlistValidate(token, wordlist.id),
+      },
+    ],
   } as const;
 
-  return (
+  return props[wordlist.status].map((prop, index) => (
     <Button
-      color={props[wordlist.status].color}
-      className="flex-1 border-l-0 rounded-l-none rounded-t-none"
-      onClick={props[wordlist.status].onClick}
-      solidIcon
-      icon={props[wordlist.status].icon}
+      color={prop.color}
+      size="small"
+      className={classNames(" border-l-0 rounded-l-none rounded-t-none", {
+        "rounded-r-none":
+          index !== props[wordlist.status as keyof typeof props].length - 1,
+      })}
+      onClick={() => {
+        prop.onClick();
+        handlePoll();
+      }}
     >
-      {props[wordlist.status].label}
+      {prop.label}
     </Button>
-  );
+  ));
 };
 
 const generateInfoCards = (wordlist: WordlistCard) => {
@@ -142,6 +178,10 @@ const generateInfoCards = (wordlist: WordlistCard) => {
       {infoCard.value}
     </div>
   ));
+};
+
+const doesRequirePolling = (status: WordlistStatus) => {
+  return status.endsWith("ING");
 };
 
 export default WordlistCard;
