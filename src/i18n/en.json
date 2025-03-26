@@ -278,6 +278,17 @@
         }
       }
     },
+    "analyses": {
+      "title": "Analyses",
+      "description": "Brute force your accounts before hackers do!",
+      "allReports": "See All Reports"
+    },
+    "analysesWordlist": {
+      "title": "Wordlist Analyses",
+      "description": "Initialize new analysis or view its reports.",
+      "initialize": "Initialize",
+      "reports": "Reports"
+    },
     "settings": {
       "title": "Settings",
       "items": {

@@ -278,6 +278,17 @@
         }
       }
     },
+    "analyses": {
+      "title": "Analizler",
+      "description": "Hesaplarınızı bilgisayar korsanlarından önce kırın!",
+      "allReports": "Tüm Raporları Gör"
+    },
+    "analysesWordlist": {
+      "title": "Kelime Listesi Analizleri",
+      "description": "Yeni analiz başlatın veya raporlarınızı görün.",
+      "initialize": "Başlat",
+      "reports": "Raporlar"
+    },
     "settings": {
       "title": "Ayarlar",
       "items": {

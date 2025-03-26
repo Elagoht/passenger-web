@@ -19,6 +19,7 @@ import ExportWindow from "./windows/(panel)/settings/export-accounts/window";
 import ImportWindow from "./windows/(panel)/settings/import-accounts/window";
 import PreferencesWindow from "./windows/(panel)/settings/preferences/window";
 import SettingsWindow from "./windows/(panel)/settings/window";
+import AnalysesWindow from "./windows/(panel)/tools/analyses/window";
 import LeaksNewsWindow from "./windows/(panel)/tools/leaks/news/window";
 import LeaksWindow from "./windows/(panel)/tools/leaks/windows";
 import StatisticsWindow from "./windows/(panel)/tools/statistics/window";
@@ -68,6 +69,8 @@ const router = createBrowserRouter([
         path: "/tools/wordlists/details/:id",
         element: <WordListDetailsWindow />,
       },
+      { path: "/tools/analyses", element: <AnalysesWindow /> },
+      { path: "/settings", element: <SettingsWindow /> },
       { path: "/settings", element: <SettingsWindow /> },
       { path: "/settings/import-accounts", element: <ImportWindow /> },
       { path: "/settings/export-accounts", element: <ExportWindow /> },

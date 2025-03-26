@@ -1,3 +1,10 @@
+import {
+  IconCalendar,
+  IconChevronRight,
+  IconLock,
+  IconWeight,
+} from "@tabler/icons-react";
+import classNames from "classnames";
 import { type NavigateFunction } from "react-router";
 import {
   deleteWordlist,
@@ -85,6 +92,54 @@ class Wordlister {
       ANALYZING: [],
       VALIDATING: [],
     } as const;
+  }
+
+  public static generateInfoCards(wordlist: WordlistCard) {
+    const infoCards = [
+      {
+        icon: IconLock,
+        value: Intl.NumberFormat().format(wordlist.totalPasswords),
+      },
+      {
+        icon: IconCalendar,
+        value: wordlist.year,
+      },
+      {
+        icon: IconWeight,
+        value: `${wordlist.size} ${wordlist.sizeUnits}`,
+      },
+    ];
+
+    return (
+      <div className="flex flex-wrap gap-2 p-2 bg-day-200 dark:bg-night-500 rounded-b-2xl">
+        {infoCards.map((infoCard) => (
+          <div className="flex items-center max-md:grow gap-1.5 bg-day-200 dark:bg-night-300 rounded-lg p-2 text-xs">
+            <infoCard.icon size={16} />
+
+            {infoCard.value}
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  public static doesRequirePolling(status: WordlistStatus) {
+    return status.endsWith("ING");
+  }
+
+  public static generateStatus(status: WordlistStatus, dict: Dict) {
+    return (
+      <strong
+        className={classNames(
+          "flex-1 flex items-center justify-between bg-opacity-30 px-2 py-1",
+          Wordlister.getStatusColor(status),
+        )}
+      >
+        {dict.windows.wordLists.status[status] || status}
+
+        <IconChevronRight />
+      </strong>
+    );
   }
 }
 
