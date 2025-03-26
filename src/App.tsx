@@ -27,6 +27,7 @@ import TagDetailsWindow from "./windows/(panel)/tools/tags/details/[id]/window";
 import TagsWindow from "./windows/(panel)/tools/tags/window";
 import ToolsWindow from "./windows/(panel)/tools/window";
 import WordListAddWindow from "./windows/(panel)/tools/word-lists/add/window";
+import WordListDetailsWindow from "./windows/(panel)/tools/word-lists/details/window";
 import WordListsWindow from "./windows/(panel)/tools/word-lists/window";
 import SplashWindow from "./windows/window";
 
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
       { path: "/tools/statistics", element: <StatisticsWindow /> },
       { path: "/tools/wordlists", element: <WordListsWindow /> },
       { path: "/tools/wordlists/add", element: <WordListAddWindow /> },
+      {
+        path: "/tools/wordlists/details/:id",
+        element: <WordListDetailsWindow />,
+      },
       { path: "/settings", element: <SettingsWindow /> },
       { path: "/settings/import-accounts", element: <ImportWindow /> },
       { path: "/settings/export-accounts", element: <ExportWindow /> },

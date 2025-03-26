@@ -1,6 +1,6 @@
 import { IconCalendar, IconLock, IconWeight } from "@tabler/icons-react";
 import classNames from "classnames";
-import { FC, useCallback, useEffect, useState } from "react";
+import { FC, Fragment, useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   deleteWordlist,
@@ -11,6 +11,7 @@ import {
 } from "../../../services/wordlists";
 import useAuthStore from "../../../stores/auth";
 import useDictStore from "../../../stores/dict";
+import Wordlister from "../../../utilities/Wordlister";
 import Button from "../../ui/Button";
 import { Paragraph } from "../../ui/Typography";
 
@@ -44,7 +45,10 @@ const WordlistCard: FC<WordlistCard> = (props) => {
 
   return (
     <div className="grow flex flex-col items-start justify-between bg-day-100 dark:bg-night-400 rounded-2xl">
-      <Link to={props.id} className="flex flex-col grow gap-2 p-3">
+      <Link
+        to={`/tools/wordlists/details/${props.id}`}
+        className="flex flex-col grow gap-2 p-3"
+      >
         <strong>{props.displayName}</strong>
 
         <Paragraph className="text-sm mb-2">{props.description}</Paragraph>
@@ -52,7 +56,7 @@ const WordlistCard: FC<WordlistCard> = (props) => {
         <div className="flex flex-wrap gap-2">{generateInfoCards(props)}</div>
       </Link>
 
-      <div className="flex mt-0 w-full">
+      <div className="flex w-full">
         {generateStatus(status, dict)}
 
         {generateActionButton(token, props, handlePoll, dict)}
@@ -66,15 +70,7 @@ const generateStatus = (status: WordlistStatus, dict: Dict) => {
     <strong
       className={classNames(
         "flex-1 grid place-items-center bg-opacity-30 rounded-bl-2xl",
-        {
-          "bg-amber-500 text-amber-500": status === "IMPORTED",
-          "bg-indigo-500 text-indigo-500": status === "DOWNLOADING",
-          "bg-blue-500 text-blue-500": status === "DOWNLOADED",
-          "bg-pink-500 text-pink-500": status === "VALIDATING",
-          "bg-dream-500 text-dream-500": status === "VALIDATED",
-          "bg-green-500 text-green-500": status === "ANALYZING",
-          "bg-red-500 text-red-500": status === "FAILED",
-        },
+        Wordlister.getStatusColor(status),
       )}
     >
       {dict.windows.wordLists.status[status] || status}
@@ -144,23 +140,27 @@ const generateActionButton = (
     ],
   } as const;
 
-  return props[wordlist.status].map((prop, index) => (
-    <Button
-      key={new Date().getTime()}
-      color={prop.color}
-      size="small"
-      className={classNames(" border-l-0 rounded-l-none rounded-t-none", {
-        "rounded-r-none":
-          index !== props[wordlist.status as keyof typeof props].length - 1,
-      })}
-      onClick={() => {
-        prop.onClick();
-        handlePoll();
-      }}
-    >
-      {prop.label}
-    </Button>
-  ));
+  return (
+    <Fragment key={new Date().getTime()}>
+      {props[wordlist.status].map((prop, index) => (
+        <Button
+          key={index}
+          color={prop.color}
+          size="small"
+          className={classNames(" border-l-0 rounded-l-none rounded-t-none", {
+            "rounded-r-none":
+              index !== props[wordlist.status as keyof typeof props].length - 1,
+          })}
+          onClick={() => {
+            prop.onClick();
+            handlePoll();
+          }}
+        >
+          {prop.label}
+        </Button>
+      ))}
+    </Fragment>
+  );
 };
 
 const generateInfoCards = (wordlist: WordlistCard) => {

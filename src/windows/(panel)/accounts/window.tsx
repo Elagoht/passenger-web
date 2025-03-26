@@ -9,6 +9,7 @@ import SearchAccountsForm from "../../../forms/SearchAccountsForm";
 import { getAccounts } from "../../../services/accounts";
 import useAuthStore from "../../../stores/auth";
 import useDictStore from "../../../stores/dict";
+import toastError from "../../../utilities/ToastError";
 
 const AccountsWindow: FC = () => {
   const { token } = useAuthStore();
@@ -22,14 +23,11 @@ const AccountsWindow: FC = () => {
   useEffect(() => {
     setIsLoading(true);
 
-    const fetchAccounts = async () => {
-      getAccounts(token).then((accounts) => {
-        setAccounts(accounts);
-      });
-    };
-    fetchAccounts();
-    setIsLoading(false);
-  }, [token]);
+    getAccounts(token)
+      .then((accounts) => setAccounts(accounts))
+      .catch((error) => toastError(error, dict))
+      .finally(() => setIsLoading(false));
+  }, [token, dict]);
 
   if (isLoading) {
     return (

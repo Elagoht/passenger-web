@@ -253,6 +253,31 @@
         "invalidUrl": "Geçersiz URL."
       }
     },
+    "wordListDetails": {
+      "title": "Detaylar",
+      "pills": {
+        "year": "Yıl",
+        "size": "Boyut",
+        "minLength": "Min",
+        "maxLength": "Max",
+        "totalFiles": "Toplam Dosya"
+      },
+      "repositories": {
+        "repository": "Depo",
+        "seeRepository": "Depoyu Görün",
+        "original": "Orijinal Depoyu Yayınlayan",
+        "adaptedBy": "Passenger'a Uyarlan"
+      },
+      "analyses": {
+        "title": "Analizler",
+        "description": "Bu kelime listesini kullanarak yapılan analizler.",
+        "noAnalyses": "Henüz bir analiz yapılmamış.",
+        "actions": {
+          "new": "Yeni Analiz",
+          "view": "Tümünü Gör"
+        }
+      }
+    },
     "settings": {
       "title": "Ayarlar",
       "items": {

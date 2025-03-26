@@ -253,6 +253,31 @@
         "invalidUrl": "Invalid URL."
       }
     },
+    "wordListDetails": {
+      "title": "Details",
+      "pills": {
+        "year": "Year",
+        "size": "Size",
+        "minLength": "Min",
+        "maxLength": "Max",
+        "totalFiles": "Total Files"
+      },
+      "repositories": {
+        "repository": "Repository",
+        "seeRepository": "See Repository",
+        "original": "Original Repository By",
+        "adaptedBy": "Adapted To Passenger By"
+      },
+      "analyses": {
+        "title": "Analyses",
+        "description": "Analyses made with this wordlist.",
+        "noAnalyses": "No analyses found.",
+        "actions": {
+          "new": "New Analysis",
+          "view": "View All"
+        }
+      }
+    },
     "settings": {
       "title": "Settings",
       "items": {
