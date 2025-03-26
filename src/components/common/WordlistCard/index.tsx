@@ -146,6 +146,7 @@ const generateActionButton = (
 
   return props[wordlist.status].map((prop, index) => (
     <Button
+      key={new Date().getTime()}
       color={prop.color}
       size="small"
       className={classNames(" border-l-0 rounded-l-none rounded-t-none", {

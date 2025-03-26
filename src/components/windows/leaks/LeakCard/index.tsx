@@ -18,7 +18,9 @@ const LeakCard: FC<Leak> = (props) => {
         <img src={props.logo} alt={props.name} className="size-10" />
 
         <div className="flex flex-col grow">
-          <strong>{getTitle(props.title, props.name)}</strong>
+          <strong className="font-medium text-red-700">
+            {getTitle(props.title, props.name)}
+          </strong>
 
           {props.domain && (
             <a
@@ -56,7 +58,7 @@ const LeakCard: FC<Leak> = (props) => {
         <div
           className={classNames(
             "flex flex-col justify-center items-center bg-day-200",
-            "dark:bg-night-600 rounded-lg p-2 text-red-500",
+            "dark:bg-night-600 rounded-lg p-2 text-green-500",
             { grayscale: !props.verified },
           )}
         >
