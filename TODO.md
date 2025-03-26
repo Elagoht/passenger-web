@@ -28,10 +28,10 @@
 - [X] /tags/{id}
 - [X] /transfer/import
 - [X] /transfer/export
-- [ ] /word-lists/import
-- [ ] /word-lists
+- [X] /word-lists/import
+- [X] /word-lists
 - [ ] /word-lists/{id}
-- [ ] /word-lists/{id}/status
-- [ ] /word-lists/{id}/download
-- [ ] /word-lists/{id}/cancel-download
-- [ ] /word-lists/{id}/validate
+- [X] /word-lists/{id}/status
+- [X] /word-lists/{id}/download
+- [X] /word-lists/{id}/cancel-download
+- [X] /word-lists/{id}/validate
