@@ -57,13 +57,15 @@ const WordListsWindow: FC = () => {
 
       {isLoading && <IconLoader className="animate-spin" size={96} />}
 
-      {!isLoading && wordLists && wordLists.length > 0 ? (
+      {!isLoading && wordLists && wordLists.length > 0 && (
         <div className="w-full grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-4">
           {wordLists.map((wordlist) => (
             <WordlistCard key={wordlist.id} {...wordlist} />
           ))}
         </div>
-      ) : (
+      )}
+
+      {!isLoading && wordLists && wordLists.length === 0 && (
         <div className="w-full flex justify-center items-center bg-day-100 dark:bg-night-400 rounded-2xl gap-2 p-4">
           <IconInfoCircle />
 
