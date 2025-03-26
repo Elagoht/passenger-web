@@ -1,14 +1,8 @@
 import { IconCalendar, IconLock, IconWeight } from "@tabler/icons-react";
 import classNames from "classnames";
 import { FC, Fragment, useCallback, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import {
-  deleteWordlist,
-  getWordlistStatus,
-  postWordlistCancelDownload,
-  postWordlistDownload,
-  postWordlistValidate,
-} from "../../../services/wordlists";
+import { Link, NavigateFunction, useNavigate } from "react-router-dom";
+import { getWordlistStatus } from "../../../services/wordlists";
 import useAuthStore from "../../../stores/auth";
 import useDictStore from "../../../stores/dict";
 import Wordlister from "../../../utilities/Wordlister";
@@ -18,6 +12,8 @@ import { Paragraph } from "../../ui/Typography";
 const WordlistCard: FC<WordlistCard> = (props) => {
   const { dict } = useDictStore();
   const { token } = useAuthStore();
+
+  const navigate = useNavigate();
 
   const [status, setStatus] = useState<WordlistStatus>(props.status);
   const [shouldPoll, setShouldPoll] = useState<boolean>(
@@ -32,9 +28,9 @@ const WordlistCard: FC<WordlistCard> = (props) => {
   }, [props.id, token]);
 
   useEffect(() => {
-    if (!shouldPoll) return;
     // Poll immediately
     handlePoll();
+    if (!shouldPoll) return;
     // Then set up interval for subsequent polls
     const interval = setInterval(() => {
       handlePoll();
@@ -59,7 +55,7 @@ const WordlistCard: FC<WordlistCard> = (props) => {
       <div className="flex w-full">
         {generateStatus(status, dict)}
 
-        {generateActionButton(token, props, handlePoll, dict)}
+        {generateActionButton(token, props, handlePoll, dict, navigate)}
       </div>
     </div>
   );
@@ -83,6 +79,7 @@ const generateActionButton = (
   wordlist: WordlistCard,
   handlePoll: () => void,
   dict: Dict,
+  navigate: NavigateFunction,
 ) => {
   if (
     wordlist.status === "VALIDATING" ||
@@ -92,53 +89,7 @@ const generateActionButton = (
     return null;
   }
 
-  const props = {
-    IMPORTED: [
-      {
-        color: "danger",
-        label: dict.windows.wordLists.actions.delete,
-        onClick: () => deleteWordlist(token, wordlist.id),
-      },
-      {
-        color: "success",
-        label: dict.windows.wordLists.actions.download,
-        onClick: () => postWordlistDownload(token, wordlist.id),
-      },
-    ],
-    DOWNLOADING: [
-      {
-        color: "danger",
-        label: dict.windows.wordLists.actions.cancelDownload,
-        onClick: () => postWordlistCancelDownload(token, wordlist.id),
-      },
-    ],
-    DOWNLOADED: [
-      {
-        color: "danger",
-        label: dict.windows.wordLists.actions.delete,
-        onClick: () => deleteWordlist(token, wordlist.id),
-      },
-      {
-        color: "info",
-        label: dict.windows.wordLists.actions.validate,
-        onClick: () => postWordlistValidate(token, wordlist.id),
-      },
-    ],
-    VALIDATED: [
-      {
-        color: "danger",
-        label: dict.windows.wordLists.actions.delete,
-        onClick: () => deleteWordlist(token, wordlist.id),
-      },
-    ],
-    FAILED: [
-      {
-        color: "danger",
-        label: dict.windows.wordLists.actions.validate,
-        onClick: () => postWordlistValidate(token, wordlist.id),
-      },
-    ],
-  } as const;
+  const props = Wordlister.getActionButtons(wordlist, dict, token, navigate);
 
   return (
     <Fragment key={new Date().getTime()}>

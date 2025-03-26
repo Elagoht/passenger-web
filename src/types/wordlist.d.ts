@@ -9,14 +9,11 @@ type WordlistCard = {
   sizeUnits: string;
 };
 
-type WordlistStatus =
-  | "IMPORTED"
-  | "DOWNLOADING"
-  | "DOWNLOADED"
-  | "VALIDATING"
-  | "VALIDATED"
-  | "ANALYZING"
-  | "FAILED";
+type WordlistWIPStatus = "DOWNLOADING" | "VALIDATING" | "ANALYZING";
+
+type WordlistIDLEStatus = "IMPORTED" | "DOWNLOADED" | "VALIDATED" | "FAILED";
+
+type WordlistStatus = WordlistWIPStatus | WordlistIDLEStatus;
 
 type Wordlist = {
   id: string;

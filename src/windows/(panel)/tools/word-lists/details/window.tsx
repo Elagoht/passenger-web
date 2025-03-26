@@ -111,7 +111,15 @@ const WordListDetailsWindow: FC = () => {
         ))}
       </div>
 
-      <div className="w-full flex max-lg:flex-col lg:items-end lg:gap-4 bg-day-100 dark:bg-night-900 p-4 rounded-2xl">
+      <div
+        className={classNames(
+          "w-full flex max-lg:flex-col bg-day-100 dark:bg-night-900 p-4 rounded-2xl",
+          {
+            "lg:gap-4 lg:items-end": wordlist.analysesCount > 0,
+            "flex-col": wordlist.analysesCount === 0,
+          },
+        )}
+      >
         <div className="flex-1">
           <Subtitle>{dict.windows.wordListDetails.analyses.title}</Subtitle>
 
@@ -120,7 +128,7 @@ const WordListDetailsWindow: FC = () => {
           </Paragraph>
         </div>
 
-        {wordlist.analysesCount > -1 ? (
+        {wordlist.analysesCount > 0 ? (
           <div className="flex gap-2 -m-2 self-end">
             <Button solidIcon size="small" color="success" icon={IconPlus}>
               {dict.windows.wordListDetails.analyses.actions.new}
@@ -135,6 +143,21 @@ const WordListDetailsWindow: FC = () => {
             {dict.windows.wordListDetails.analyses.noAnalyses}
           </div>
         )}
+      </div>
+
+      <div className="flex w-full max-w-screen-sm">
+        {Wordlister.getActionButtons(wordlist, dict, token, navigate)[
+          wordlist.status
+        ].map((button) => (
+          <Button
+            key={button.label}
+            color={button.color}
+            className="w-full rounded-none first:rounded-l-lg last:rounded-r-lg"
+            onClick={button.onClick}
+          >
+            {button.label}
+          </Button>
+        ))}
       </div>
     </Container>
   );
