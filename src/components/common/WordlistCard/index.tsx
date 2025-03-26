@@ -32,7 +32,9 @@ const WordlistCard: FC<WordlistCard> = (props) => {
 
   useEffect(() => {
     if (!shouldPoll) return;
-
+    // Poll immediately
+    handlePoll();
+    // Then set up interval for subsequent polls
     const interval = setInterval(() => {
       handlePoll();
     }, 1000);
@@ -115,6 +117,11 @@ const generateActionButton = (
       },
     ],
     DOWNLOADED: [
+      {
+        color: "danger",
+        label: dict.windows.wordLists.actions.delete,
+        onClick: () => deleteWordlist(token, wordlist.id),
+      },
       {
         color: "info",
         label: dict.windows.wordLists.actions.validate,
