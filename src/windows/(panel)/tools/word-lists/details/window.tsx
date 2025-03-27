@@ -13,7 +13,7 @@ import {
   IconWeight,
 } from "@tabler/icons-react";
 import classNames from "classnames";
-import { FC, useEffect, useState } from "react";
+import { FC, useCallback, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import Container from "../../../../../components/layout/Container";
 import Button from "../../../../../components/ui/Button";
@@ -37,6 +37,21 @@ const WordListDetailsWindow: FC = () => {
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [wordlist, setWordlist] = useState<Wordlist>();
+  const [actionTriggered, setActionTriggered] = useState<number>(0);
+
+  useEffect(() => {
+    if (!id || !wordlist) return;
+
+    const hasPollRequired = Wordlister.doesRequirePolling(wordlist);
+
+    if (!hasPollRequired) return;
+
+    const interval = setInterval(() => {
+      getWordlist(token, id).then((wordlist) => setWordlist(wordlist));
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, [id, token, wordlist, actionTriggered]);
 
   useEffect(() => {
     if (!id) return;
@@ -45,6 +60,10 @@ const WordListDetailsWindow: FC = () => {
       .catch((error) => toastError(error, dict))
       .finally(() => setIsLoading(false));
   }, [token, id, dict]);
+
+  const handleActionButtonClick = useCallback(() => {
+    setActionTriggered((prev) => prev + 1);
+  }, []);
 
   if (!wordlist) {
     navigate("/tools/wordlists");
@@ -158,7 +177,10 @@ const WordListDetailsWindow: FC = () => {
             key={button.label}
             color={button.color}
             className="w-full rounded-none first:rounded-l-lg last:rounded-r-lg"
-            onClick={button.onClick}
+            onClick={() => {
+              button.onClick();
+              handleActionButtonClick();
+            }}
           >
             {button.label}
           </Button>
