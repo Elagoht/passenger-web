@@ -7,7 +7,7 @@
 - [ ] /analyses/initialize/{wordlistId}
 - [ ] /analyses/stop/{analysisId}
 - [ ] /analyses/observe/{id}
-- [ ] /analyses/available-wordlists
+- [X] /analyses/available-wordlists
 - [ ] /analyses/reports
 - [ ] /analyses/reports/{id}
 - [X] /auth/is-initialized
@@ -30,7 +30,7 @@
 - [X] /transfer/export
 - [X] /word-lists/import
 - [X] /word-lists
-- [ ] /word-lists/{id}
+- [X] /word-lists/{id}
 - [X] /word-lists/{id}/status
 - [X] /word-lists/{id}/download
 - [X] /word-lists/{id}/cancel-download
