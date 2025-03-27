@@ -43,7 +43,7 @@ const LeakCard: FC<Leak> = (props) => {
           dark:bg-night-600 rounded-lg p-1 gap-1"
           >
             <IconCalendar />
-            {props.date}
+            {new Date(props.date).toLocaleDateString()}
           </time>
 
           <span
