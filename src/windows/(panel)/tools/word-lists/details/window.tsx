@@ -142,7 +142,7 @@ const WordListDetailsWindow: FC = () => {
           [
             {
               label: dict.windows.wordListDetails.analyses.actions.new,
-              color: "success",
+              color: "secondary",
             },
             {
               label: dict.windows.wordListDetails.analyses.actions.view,
