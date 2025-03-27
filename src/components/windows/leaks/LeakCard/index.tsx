@@ -25,8 +25,7 @@ const LeakCard: FC<Leak> = (props) => {
           {props.domain && (
             <a
               href={new URL(`https://${props.domain}`).toString()}
-              className="flex items-center gap-1 text-blue-500
-          visited:text-purple-500 underline"
+              className="flex items-center gap-1 text-blue-500 visited:text-purple-500 underline"
               target="_blank"
               rel="noopener noreferrer"
             >
