@@ -111,7 +111,7 @@ class Wordlister {
     ];
 
     return (
-      <div className="flex flex-wrap gap-2 p-2 bg-day-200 dark:bg-night-500 rounded-b-2xl">
+      <div className="flex flex-wrap gap-2 p-2 bg-day-300 dark:bg-night-500 rounded-b-2xl">
         {infoCards.map((infoCard) => (
           <div className="flex items-center max-md:grow gap-1.5 bg-day-200 dark:bg-night-300 rounded-lg p-2 text-xs">
             <infoCard.icon size={16} />

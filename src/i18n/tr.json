@@ -274,13 +274,17 @@
         "noAnalyses": "Henüz bir analiz yapılmamış.",
         "actions": {
           "new": "Yeni Analiz",
-          "view": "Tümünü Gör"
+          "view": "Analizleri Gör"
         }
       }
     },
     "analyses": {
       "title": "Analizler",
       "description": "Hesaplarınızı bilgisayar korsanlarından önce kırın!",
+      "list": {
+        "description": "Doğrulanmış kelime listelerini kullanarak hesaplarınızı kırmak için kullanın.",
+        "noWordlists": "Uygun kelime listesi bulunamadı. Bir tane doğrulayın."
+      },
       "allReports": "Tüm Raporları Gör"
     },
     "analysesWordlist": {

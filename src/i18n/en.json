@@ -274,13 +274,17 @@
         "noAnalyses": "No analyses found.",
         "actions": {
           "new": "New Analysis",
-          "view": "View All"
+          "view": "View Analyses"
         }
       }
     },
     "analyses": {
       "title": "Analyses",
       "description": "Brute force your accounts before hackers do!",
+      "list": {
+        "description": "You can use validated wordlists to brute force your accounts.",
+        "noWordlists": "No suitable wordlists found. Validate one to get started."
+      },
       "allReports": "See All Reports"
     },
     "analysesWordlist": {

@@ -1,13 +1,11 @@
 import {
   IconCalendar,
   IconExternalLink,
-  IconEye,
   IconGitFork,
   IconGitMerge,
   IconHash,
   IconInfoCircle,
   IconLoader,
-  IconPlus,
   IconRuler2,
   IconRuler3,
   IconWeight,
@@ -17,11 +15,7 @@ import { FC, useCallback, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import Container from "../../../../../components/layout/Container";
 import Button from "../../../../../components/ui/Button";
-import {
-  Paragraph,
-  Subtitle,
-  Title,
-} from "../../../../../components/ui/Typography";
+import { Paragraph, Title } from "../../../../../components/ui/Typography";
 import { getWordlist } from "../../../../../services/wordlists";
 import useAuthStore from "../../../../../stores/auth";
 import useDictStore from "../../../../../stores/dict";
@@ -62,8 +56,16 @@ const WordListDetailsWindow: FC = () => {
   }, [token, id, dict]);
 
   const handleActionButtonClick = useCallback(() => {
-    setActionTriggered((prev) => prev + 1);
-  }, []);
+    new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(true);
+      }, 1000);
+    }).then(() => {
+      if (!id) return;
+      getWordlist(token, id).then((wordlist) => setWordlist(wordlist));
+      setActionTriggered((prev) => prev + 1);
+    });
+  }, [token, id]);
 
   if (!wordlist) {
     navigate("/tools/wordlists");
@@ -113,7 +115,7 @@ const WordListDetailsWindow: FC = () => {
         {getRepositories(wordlist, dict).map((repository) => (
           <div
             key={repository.title}
-            className="w-full flex flex-col gap-2 bg-day-100 dark:bg-night-900 p-4 rounded-lg"
+            className="w-full flex flex-col gap-2 bg-day-100 dark:bg-night-900 p-4 rounded-2xl"
           >
             <div className="flex flex-wrap items-center gap-2 justify-center text-center">
               <repository.icon className="shrink-0" />
@@ -135,48 +137,31 @@ const WordListDetailsWindow: FC = () => {
         ))}
       </div>
 
-      <div
-        className={classNames(
-          "w-full flex max-lg:flex-col bg-day-100 dark:bg-night-900 p-4 rounded-2xl",
-          {
-            "lg:gap-4 lg:items-end": wordlist.analysesCount > 0,
-            "flex-col": wordlist.analysesCount === 0,
-          },
-        )}
-      >
-        <div className="flex-1">
-          <Subtitle>{dict.windows.wordListDetails.analyses.title}</Subtitle>
-
-          <Paragraph className="mb-4">
-            {dict.windows.wordListDetails.analyses.description}
-          </Paragraph>
-        </div>
-
-        {wordlist.analysesCount > 0 ? (
-          <div className="flex gap-2 -m-2 self-end">
-            <Button solidIcon size="small" color="success" icon={IconPlus}>
-              {dict.windows.wordListDetails.analyses.actions.new}
-            </Button>
-
-            <Button solidIcon size="small" color="info" icon={IconEye}>
-              {dict.windows.wordListDetails.analyses.actions.view}
-            </Button>
-          </div>
-        ) : (
-          <div className="text-day-900 text-center bg-day-200 dark:bg-night-600 p-2 -m-2 rounded-xl">
-            {dict.windows.wordListDetails.analyses.noAnalyses}
-          </div>
-        )}
-      </div>
-
-      <div className="flex w-full max-w-screen-sm">
+      <div className="flex flex-wrap justify-center gap-2 w-full max-w-screen-sm">
+        {(
+          [
+            {
+              label: dict.windows.wordListDetails.analyses.actions.new,
+              color: "success",
+            },
+            {
+              label: dict.windows.wordListDetails.analyses.actions.view,
+              color: "info",
+            },
+          ] as const
+        ).map((button) => (
+          <Button solidIcon size="small" className="grow" color={button.color}>
+            {button.label}
+          </Button>
+        ))}
         {Wordlister.getActionButtons(wordlist, dict, token, navigate)[
           wordlist.status
         ].map((button) => (
           <Button
             key={button.label}
             color={button.color}
-            className="w-full rounded-none first:rounded-l-lg last:rounded-r-lg"
+            size="small"
+            className="grow"
             onClick={() => {
               button.onClick();
               handleActionButtonClick();
@@ -238,14 +223,3 @@ const getRepositories = (wordlist: Wordlist, dict: Dict) => {
     },
   ];
 };
-
-/**
-  remaining properties:
-
-  repository: string;
-  source: string;
-  publishedBy: string;
-  adaptedBy: string;
-  message: string;
-  analysesCount: number;
- */
