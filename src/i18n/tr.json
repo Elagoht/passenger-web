@@ -284,8 +284,7 @@
       "list": {
         "description": "Doğrulanmış kelime listelerini kullanarak hesaplarınızı kırmak için kullanın.",
         "noWordlists": "Uygun kelime listesi bulunamadı. Bir tane doğrulayın."
-      },
-      "allReports": "Tüm Raporları Gör"
+      }
     },
     "analysesWordlist": {
       "title": "Kelime Listesi Analizleri",

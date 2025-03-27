@@ -1,14 +1,13 @@
-import { IconLoader, IconReport } from "@tabler/icons-react";
+import { IconInfoCircle, IconLoader } from "@tabler/icons-react";
 import { FC, useEffect, useState } from "react";
 import WordlistCard from "../../../../components/common/WordlistCard";
 import Container from "../../../../components/layout/Container";
-import Button from "../../../../components/ui/Button";
 import {
   Paragraph,
   Subtitle,
   Title,
 } from "../../../../components/ui/Typography";
-import { getAvailableWordlists } from "../../../../services/analyses";
+import { getAnalysisAvailableWordlists } from "../../../../services/analyses";
 import useAuthStore from "../../../../stores/auth";
 import useDictStore from "../../../../stores/dict";
 import toastError from "../../../../utilities/ToastError";
@@ -23,7 +22,7 @@ const AnalysesWindow: FC = () => {
   useEffect(() => {
     setIsLoading(true);
 
-    getAvailableWordlists(token)
+    getAnalysisAvailableWordlists(token)
       .then((wordlists) => setWordlists(wordlists))
       .catch((error) => toastError(error, dict))
       .finally(() => setIsLoading(false));
@@ -45,22 +44,19 @@ const AnalysesWindow: FC = () => {
 
       <Paragraph>{dict.windows.analyses.list.description}</Paragraph>
 
-      {wordlists.length === 0 && (
-        <Paragraph>{dict.windows.analyses.list.noWordlists}</Paragraph>
+      {!isLoading && wordlists && wordlists.length === 0 && (
+        <div className="flex justify-center items-center bg-day-100 dark:bg-night-400 rounded-2xl gap-2 p-4">
+          <IconInfoCircle className="shrink-0" />
+
+          <Paragraph>{dict.windows.analyses.list.noWordlists}</Paragraph>
+        </div>
       )}
 
-      {wordlists.map((wordlist) => (
-        <div
-          key={wordlist.id}
-          className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-4 my-4"
-        >
-          <WordlistCard {...wordlist} />
-        </div>
-      ))}
-
-      <Button icon={IconReport} solidIcon color="info">
-        {dict.windows.analyses.allReports}
-      </Button>
+      <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-4 my-4">
+        {wordlists.map((wordlist) => (
+          <WordlistCard key={wordlist.id} {...wordlist} />
+        ))}
+      </div>
     </Container>
   );
 };

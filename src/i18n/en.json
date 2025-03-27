@@ -284,8 +284,7 @@
       "list": {
         "description": "You can use validated wordlists to brute force your accounts.",
         "noWordlists": "No suitable wordlists found. Validate one to get started."
-      },
-      "allReports": "See All Reports"
+      }
     },
     "analysesWordlist": {
       "title": "Wordlist Analyses",

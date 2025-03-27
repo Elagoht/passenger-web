@@ -16,6 +16,7 @@ import { useNavigate, useParams } from "react-router";
 import Container from "../../../../../components/layout/Container";
 import Button from "../../../../../components/ui/Button";
 import { Paragraph, Title } from "../../../../../components/ui/Typography";
+import { postAnalysisInitialize } from "../../../../../services/analyses";
 import { getWordlist } from "../../../../../services/wordlists";
 import useAuthStore from "../../../../../stores/auth";
 import useDictStore from "../../../../../stores/dict";
@@ -67,7 +68,7 @@ const WordListDetailsWindow: FC = () => {
     });
   }, [token, id]);
 
-  if (!wordlist) {
+  if (!wordlist || !id) {
     navigate("/tools/wordlists");
     return;
   }
@@ -143,14 +144,30 @@ const WordListDetailsWindow: FC = () => {
             {
               label: dict.windows.wordListDetails.analyses.actions.new,
               color: "secondary",
+              onClick: () => {
+                postAnalysisInitialize(token, id).then(() => {
+                  setActionTriggered((prev) => prev + 1);
+                });
+              },
             },
             {
-              label: dict.windows.wordListDetails.analyses.actions.view,
+              label: `${dict.windows.wordListDetails.analyses.actions.view}: ${
+                wordlist.analysesCount
+              }`,
               color: "info",
+              onClick: () => {
+                navigate(`/tools/analyses/${id}`);
+              },
             },
           ] as const
         ).map((button) => (
-          <Button solidIcon size="small" className="grow" color={button.color}>
+          <Button
+            solidIcon
+            size="small"
+            className="grow"
+            color={button.color}
+            onClick={button.onClick}
+          >
             {button.label}
           </Button>
         ))}
