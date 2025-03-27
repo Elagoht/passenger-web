@@ -10,6 +10,7 @@ import { getWordlists } from "../../../../services/wordlists";
 import useAuthStore from "../../../../stores/auth";
 import useDictStore from "../../../../stores/dict";
 import toastError from "../../../../utilities/ToastError";
+import Wordlister from "../../../../utilities/Wordlister";
 
 const WordListsWindow: FC = () => {
   const { dict } = useDictStore();
@@ -19,6 +20,22 @@ const WordListsWindow: FC = () => {
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [wordLists, setWordLists] = useState<WordlistCard[]>();
+
+  useEffect(() => {
+    if (!wordLists) return;
+
+    const hasPollRequired = wordLists.some((wordlist) =>
+      Wordlister.doesRequirePolling(wordlist),
+    );
+
+    if (!hasPollRequired) return;
+
+    const interval = setInterval(() => {
+      getWordlists(token).then((wordlists) => setWordLists(wordlists));
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, [token, wordLists]);
 
   useEffect(() => {
     setIsLoading(true);

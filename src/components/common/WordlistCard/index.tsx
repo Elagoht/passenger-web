@@ -5,7 +5,7 @@ import Wordlister from "../../../utilities/Wordlister";
 import { Paragraph } from "../../ui/Typography";
 
 type WordlistCardProps = WordlistCard & {
-  mode: "analyses" | "wordlists";
+  mode?: "analyses" | "wordlists";
 };
 
 const WordlistCard: FC<WordlistCardProps> = ({

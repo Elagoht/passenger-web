@@ -51,7 +51,12 @@ const WordListDetailsWindow: FC = () => {
     return;
   }
 
-  if (isLoading) return <IconLoader className="animate-spin" size={96} />;
+  if (isLoading)
+    return (
+      <Container>
+        <IconLoader className="animate-spin" size={96} />
+      </Container>
+    );
 
   return (
     <Container className="gap-4">

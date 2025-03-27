@@ -123,8 +123,8 @@ class Wordlister {
     );
   }
 
-  public static doesRequirePolling(status: WordlistStatus) {
-    return status.endsWith("ING");
+  public static doesRequirePolling(wordlist: WordlistCard) {
+    return wordlist.status.endsWith("ING");
   }
 
   public static generateStatus(status: WordlistStatus, dict: Dict) {
