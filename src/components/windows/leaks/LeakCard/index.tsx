@@ -51,7 +51,7 @@ const LeakCard: FC<Leak> = (props) => {
           dark:bg-night-600 rounded-lg p-1 gap-1"
           >
             <IconHash />
-            {props.pwnCount}
+            {Intl.NumberFormat().format(props.pwnCount)}
           </span>
         </div>
 
