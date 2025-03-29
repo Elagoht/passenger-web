@@ -260,7 +260,8 @@
         "size": "Size",
         "minLength": "Min",
         "maxLength": "Max",
-        "totalFiles": "Total Files"
+        "totalFiles": "Total Files",
+        "analysesCount": "Analyses Count"
       },
       "repositories": {
         "repository": "Repository",
@@ -272,10 +273,7 @@
         "title": "Analyses",
         "description": "Analyses made with this wordlist.",
         "noAnalyses": "No analyses found.",
-        "actions": {
-          "new": "New Analysis",
-          "view": "View Analyses"
-        }
+        "new": "New Analysis"
       }
     },
     "analyses": {
@@ -283,14 +281,12 @@
       "description": "Brute force your accounts before hackers do!",
       "list": {
         "description": "You can use validated wordlists to brute force your accounts.",
-        "noWordlists": "No suitable wordlists found. Validate one to get started."
+        "noAnalyses": "No analyses found."
       }
     },
-    "analysesWordlist": {
-      "title": "Wordlist Analyses",
-      "description": "Initialize new analysis or view its reports.",
-      "initialize": "Initialize",
-      "reports": "Reports"
+    "analysisReport": {
+      "title": "Analysis Report",
+      "description": "Here is the report of the analysis."
     },
     "settings": {
       "title": "Settings",

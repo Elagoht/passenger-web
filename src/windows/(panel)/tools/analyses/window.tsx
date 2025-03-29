@@ -1,13 +1,12 @@
 import { IconInfoCircle, IconLoader } from "@tabler/icons-react";
 import { FC, useEffect, useState } from "react";
-import WordlistCard from "../../../../components/common/WordlistCard";
 import Container from "../../../../components/layout/Container";
 import {
   Paragraph,
   Subtitle,
   Title,
 } from "../../../../components/ui/Typography";
-import { getAnalysisAvailableWordlists } from "../../../../services/analyses";
+import { getAnalysisReports } from "../../../../services/analyses";
 import useAuthStore from "../../../../stores/auth";
 import useDictStore from "../../../../stores/dict";
 import toastError from "../../../../utilities/ToastError";
@@ -17,13 +16,13 @@ const AnalysesWindow: FC = () => {
   const { token } = useAuthStore();
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [wordlists, setWordlists] = useState<WordlistCard[]>([]);
+  const [reports, setReports] = useState<AnalysisReport[]>([]);
 
   useEffect(() => {
     setIsLoading(true);
 
-    getAnalysisAvailableWordlists(token)
-      .then((wordlists) => setWordlists(wordlists))
+    getAnalysisReports(token)
+      .then((reports) => setReports(reports))
       .catch((error) => toastError(error, dict))
       .finally(() => setIsLoading(false));
   }, [token, dict]);
@@ -44,17 +43,17 @@ const AnalysesWindow: FC = () => {
 
       <Paragraph>{dict.windows.analyses.list.description}</Paragraph>
 
-      {!isLoading && wordlists && wordlists.length === 0 && (
+      {!isLoading && reports && reports.length === 0 && (
         <div className="flex justify-center items-center bg-day-100 dark:bg-night-400 rounded-2xl gap-2 p-4">
           <IconInfoCircle className="shrink-0" />
 
-          <Paragraph>{dict.windows.analyses.list.noWordlists}</Paragraph>
+          <Paragraph>{dict.windows.analyses.list.noAnalyses}</Paragraph>
         </div>
       )}
 
       <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-4 my-4">
-        {wordlists.map((wordlist) => (
-          <WordlistCard key={wordlist.id} {...wordlist} />
+        {reports.map((report) => (
+          <pre key={report.id}>{JSON.stringify(report, null, 2)}</pre>
         ))}
       </div>
     </Container>

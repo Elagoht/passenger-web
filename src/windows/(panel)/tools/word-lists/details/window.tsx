@@ -6,6 +6,7 @@ import {
   IconHash,
   IconInfoCircle,
   IconLoader,
+  IconNumber,
   IconRuler2,
   IconRuler3,
   IconWeight,
@@ -142,21 +143,12 @@ const WordListDetailsWindow: FC = () => {
         {(
           [
             {
-              label: dict.windows.wordListDetails.analyses.actions.new,
+              label: dict.windows.wordListDetails.analyses.new,
               color: "secondary",
               onClick: () => {
-                postAnalysisInitialize(token, id).then(() => {
-                  setActionTriggered((prev) => prev + 1);
-                });
-              },
-            },
-            {
-              label: `${dict.windows.wordListDetails.analyses.actions.view}: ${
-                wordlist.analysesCount
-              }`,
-              color: "info",
-              onClick: () => {
-                navigate(`/tools/analyses/${id}`);
+                postAnalysisInitialize(token, id).then(() =>
+                  setActionTriggered((prev) => prev + 1),
+                );
               },
             },
           ] as const
@@ -220,6 +212,11 @@ const getPills = (wordlist: Wordlist, dict: Dict) => {
       icon: IconHash,
       label: dict.windows.wordListDetails.pills.totalFiles,
       value: wordlist.totalFiles,
+    },
+    {
+      icon: IconNumber,
+      label: dict.windows.wordListDetails.pills.analysesCount,
+      value: wordlist.analysesCount,
     },
   ];
 };

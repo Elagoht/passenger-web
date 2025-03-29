@@ -28,13 +28,13 @@ export const getAnalysisAvailableWordlists = async (token: string) => {
 };
 
 export const getAnalysisReports = async (token: string) => {
-  return await apiCall.get(`/analyses/reports`, {
+  return await apiCall.get<AnalysisReport[]>(`/analyses/reports`, {
     Authorization: `Bearer ${token}`,
   });
 };
 
 export const getAnalysisReport = async (token: string, id: string) => {
-  return await apiCall.get(`/analyses/reports/${id}`, {
+  return await apiCall.get<AnalysisReport>(`/analyses/reports/${id}`, {
     Authorization: `Bearer ${token}`,
   });
 };

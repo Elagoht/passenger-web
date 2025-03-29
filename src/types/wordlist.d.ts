@@ -40,3 +40,16 @@ type ResponseWordlistStatus = {
   status: WordlistStatus;
   message: string;
 };
+
+type AnalysisReport = {
+  id: string;
+  status: AnalysisReportStatus;
+  message: string;
+  totalMatched: number;
+  totalChecked: number;
+  tookMiliseconds: number;
+  createdAt: string;
+  updatedAt: string;
+};
+
+type AnalysisReportStatus = "IDLE" | "RUNNING" | "COMPLETED" | "FAILED";

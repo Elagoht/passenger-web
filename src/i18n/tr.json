@@ -260,7 +260,8 @@
         "size": "Boyut",
         "minLength": "Min",
         "maxLength": "Max",
-        "totalFiles": "Toplam Dosya"
+        "totalFiles": "Toplam Dosya",
+        "analysesCount": "Analiz Sayısı"
       },
       "repositories": {
         "repository": "Depo",
@@ -272,10 +273,7 @@
         "title": "Analizler",
         "description": "Bu kelime listesini kullanarak yapılan analizler.",
         "noAnalyses": "Henüz bir analiz yapılmamış.",
-        "actions": {
-          "new": "Yeni Analiz",
-          "view": "Analizleri Gör"
-        }
+        "new": "Yeni Analiz"
       }
     },
     "analyses": {
@@ -283,14 +281,12 @@
       "description": "Hesaplarınızı bilgisayar korsanlarından önce kırın!",
       "list": {
         "description": "Doğrulanmış kelime listelerini kullanarak hesaplarınızı kırmak için kullanın.",
-        "noWordlists": "Uygun kelime listesi bulunamadı. Bir tane doğrulayın."
+        "noAnalyses": "Henüz bir analiz yapılmamış."
       }
     },
-    "analysesWordlist": {
-      "title": "Kelime Listesi Analizleri",
-      "description": "Yeni analiz başlatın veya raporlarınızı görün.",
-      "initialize": "Başlat",
-      "reports": "Raporlar"
+    "analysisReport": {
+      "title": "Analiz Raporu",
+      "description": "Analizinizin raporu burada."
     },
     "settings": {
       "title": "Ayarlar",
