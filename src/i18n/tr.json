@@ -159,24 +159,30 @@
     },
     "tools": {
       "title": "Araçlar",
+      "soon": "Çok Yakında",
       "items": {
         "tags": {
+          "soon": false,
           "title": "Etiketler",
           "description": "Hesaplarınıza ekleyeceğiniz etiketleri yönetin."
         },
         "statistics": {
+          "soon": false,
           "title": "İstatistikler",
           "description": "Grafikler, tablolar ve daha fazlası."
         },
         "wordlists": {
+          "soon": true,
           "title": "Kelime Listesileri",
           "description": "Yeni listeler ekleyin ve onları yönetin."
         },
         "analyses": {
+          "soon": true,
           "title": "Analizler",
           "description": "Yeni analiz başlatın veya raporlarınızı görün."
         },
         "leaks": {
+          "soon": false,
           "title": "Sızıntılar",
           "description": "Bilinen sızıntılar ve ihlalleri görün."
         }
@@ -292,18 +298,22 @@
       "title": "Ayarlar",
       "items": {
         "import-accounts": {
+          "soon": false,
           "title": "Hesapları İçe Aktar",
           "description": "Tarayıcı ve parola yöneticilerinden içe aktarın."
         },
         "export-accounts": {
+          "soon": false,
           "title": "Hesapları Dışa Aktar",
           "description": "Tarayıcı ve parola yöneticileri için CSV olarak dışa aktarın."
         },
         "change-passphrase": {
+          "soon": false,
           "title": "Ana Parolayı Değiştir",
           "description": "Giriş yapmada kullandığınız parolayı değiştirin."
         },
         "preferences": {
+          "soon": true,
           "title": "Tercihler",
           "description": "Katı mod, arayüz renkleri ve daha fazlası."
         }

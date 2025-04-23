@@ -159,24 +159,30 @@
     },
     "tools": {
       "title": "Tools",
+      "soon": "Coming Soon",
       "items": {
         "tags": {
+          "soon": false,
           "title": "Tags",
           "description": "Manage and add tags to your accounts."
         },
         "statistics": {
+          "soon": false,
           "title": "Statistics",
           "description": "Graphs, charts, and more."
         },
         "wordlists": {
+          "soon": true,
           "title": "Wordlists",
           "description": "Import and manage brute force wordlists."
         },
         "analyses": {
+          "soon": true,
           "title": "Analyses",
           "description": "Initialize new analysis or view their reports."
         },
         "leaks": {
+          "soon": false,
           "title": "Leaks",
           "description": "Get the known leaks and breaches."
         }
@@ -292,18 +298,22 @@
       "title": "Settings",
       "items": {
         "import-accounts": {
+          "soon": false,
           "title": "Import Accounts",
           "description": "Import from browser and password managers."
         },
         "export-accounts": {
+          "soon": false,
           "title": "Export Accounts",
           "description": "Export CSV for browser and password managers."
         },
         "change-passphrase": {
+          "soon": false,
           "title": "Change Master Passphrase",
           "description": "Passphrase when you login."
         },
         "preferences": {
+          "soon": true,
           "title": "Preferences",
           "description": "Strict mode, interface theme, etc."
         }

@@ -7,6 +7,7 @@ import {
 } from "@tabler/icons-react";
 import { Form, Formik } from "formik";
 import { FC } from "react";
+import slugify from "slugify";
 import PassphraseGenerators from "../components/common/PassphraseGenerators";
 import StrengthMeter from "../components/common/StrengthMeter";
 import StrengthGraph from "../components/stats/StrengthGraph";
@@ -58,10 +59,10 @@ const AccountForm: FC<AccountFormProps> = ({
 
         if (mode === "edit") {
           const addTags = values.tags.filter(
-            (tag) => !initialValues.tags.some((t) => t.id === tag.id),
+            (tag) => !initialValues.tags.some((t) => t.id === tag.id)
           );
           const removeTags = initialValues.tags.filter(
-            (tag) => !values.tags.some((t) => t.id === tag.id),
+            (tag) => !values.tags.some((t) => t.id === tag.id)
           );
 
           const data = {
@@ -120,7 +121,14 @@ const AccountForm: FC<AccountFormProps> = ({
                 inputMode="url"
                 label={dict.windows.accountDetails.edit.form.url}
                 name="url"
+                list="suggestions"
               />
+
+              <datalist id="suggestions">
+                {suggestURLbyTitle(values.platform).map((suggestion) => (
+                  <option key={suggestion} value={suggestion} />
+                ))}
+              </datalist>
 
               <Input
                 icon={IconUser}
@@ -189,7 +197,7 @@ const AccountForm: FC<AccountFormProps> = ({
                           {
                             date: dict.windows.addAccount.form.today,
                             strength: new Strength(dict).evaluate(
-                              values.passphrase || "",
+                              values.passphrase || ""
                             ).score,
                             isNew: true,
                           },
@@ -199,7 +207,7 @@ const AccountForm: FC<AccountFormProps> = ({
                         {
                           date: dict.windows.addAccount.form.today,
                           strength: new Strength(dict).evaluate(
-                            values.passphrase || "",
+                            values.passphrase || ""
                           ).score,
                           isNew: true,
                         },
@@ -231,6 +239,38 @@ const defaultValues = {
   note: "",
   passphrase: "",
   tags: [],
+};
+
+const suggestURLbyTitle = (title: string) => {
+  const slug = slugify(title, {
+    lower: true,
+    strict: true,
+    trim: true,
+    locale: "en",
+  });
+
+  // if the slug is already a valid URL, return it
+  try {
+    new URL(slug);
+    return [slug];
+  } catch (error) {
+    const topLevelDomains = [
+      "com",
+      "net",
+      "org",
+      "edu",
+      "gov",
+      "io",
+      "co",
+      "me",
+      "dev",
+      "xyz",
+      "ai",
+      "int",
+      "mil",
+    ];
+    return topLevelDomains.map((tld) => `https://${slug}.${tld}`);
+  }
 };
 
 export default AccountForm;
