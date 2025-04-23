@@ -39,7 +39,7 @@ const AccountsWindow: FC = () => {
 
   return (
     <Container className="flex md:gap-4 gap-2 items-stretch !justify-start">
-      <SearchAccountsForm />
+      <SearchAccountsForm setAccounts={setAccounts} />
 
       {accounts.length === 0 ? (
         <Paragraph>{dict.windows.accounts.notFound}</Paragraph>

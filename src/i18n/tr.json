@@ -68,7 +68,11 @@
       "continue": "Devam Et"
     },
     "accounts": {
-      "notFound": "Hesap bulunamadı. Bir tane ekleyin."
+      "notFound": "Hesap bulunamadı. Bir tane ekleyin.",
+      "query": {
+        "placeholder": "Hesap Ara",
+        "tags": "Etiketler"
+      }
     },
     "addAccount": {
       "title": "Hesap Ekle",

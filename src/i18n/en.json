@@ -68,7 +68,11 @@
       "continue": "Continue"
     },
     "accounts": {
-      "notFound": "No accounts found. Add one to get started."
+      "notFound": "No accounts found. Add one to get started.",
+      "query": {
+        "placeholder": "Search Accounts",
+        "tags": "Tags"
+      }
     },
     "addAccount": {
       "title": "Add Account",

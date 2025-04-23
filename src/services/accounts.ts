@@ -1,9 +1,13 @@
+import QueryString from "qs";
 import { apiCall } from "../utilities/ApiCall";
 
-export const getAccounts = async (token: string) => {
-  return await apiCall.get<AccountCard[]>("/accounts", {
-    Authorization: `Bearer ${token}`,
-  });
+export const getAccounts = async (token: string, search?: string) => {
+  return await apiCall.get<AccountCard[]>(
+    `/accounts?${QueryString.stringify({ search })}`,
+    {
+      Authorization: `Bearer ${token}`,
+    },
+  );
 };
 
 export const getAccountById = async (token: string, id: string) => {
