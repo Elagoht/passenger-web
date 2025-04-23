@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  passenger-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "13542:80"
+    environment:
+      - VITE_API_URL=http://debian
+    restart: unless-stopped
+    networks:
+      - passenger-network
+
+networks:
+  passenger-network:
+    driver: bridge
