@@ -7,6 +7,10 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Docker
+## .example file included
+docker-compose.yml
+
 node_modules
 dist
 dist-ssr

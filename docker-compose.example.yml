@@ -6,12 +6,14 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "13542:80"
-      - "13543:443"
+      - "80:80"
+      - "443:443"
     environment:
       - VITE_API_URL=http://debian
+      - DOMAIN_NAME=example.com # Replace with your actual domain name
+      - EMAIL=example@email.com # Replace with your email for Let's Encrypt notifications
     volumes:
-      - letsencrypt_certs:/etc/letsencrypt
+      - letsencrypt_certs:/etc/letsencrypt # Persistent storage for certificates
       - letsencrypt_lib:/var/lib/letsencrypt
     restart: unless-stopped
     networks:
